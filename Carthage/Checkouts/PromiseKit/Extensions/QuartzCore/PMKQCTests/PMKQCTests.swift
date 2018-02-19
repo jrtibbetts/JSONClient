@@ -1,15 +1,14 @@
 //
-//  JSONClientTests.swift
-//  JSONClientTests
+//  PMKQCTests.swift
+//  PMKQCTests
 //
-//  Created by Jason R Tibbetts on 2/18/18.
-//  Copyright © 2018 Poikile Creations. All rights reserved.
+//  Created by Max Howell on 8/13/16.
+//  Copyright © 2016 Max Howell. All rights reserved.
 //
 
 import XCTest
-@testable import JSONClient
 
-class JSONClientTests: XCTestCase {
+class PMKQCTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
