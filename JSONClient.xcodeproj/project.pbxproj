@@ -13,7 +13,6 @@
 		966011F7203A83E00035FE96 /* JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F4203A83DF0035FE96 /* JSONClient.swift */; };
 		966011F8203A83E00035FE96 /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F5203A83E00035FE96 /* JSONUtils.swift */; };
 		966011FC203A840D0035FE96 /* JSONTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F9203A840D0035FE96 /* JSONTestBase.swift */; };
-		966011FD203A840D0035FE96 /* JSONClientTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011FA203A840D0035FE96 /* JSONClientTestBase.swift */; };
 		966011FE203A840D0035FE96 /* JSONUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011FB203A840D0035FE96 /* JSONUtilsTests.swift */; };
 		96601202203A88640035FE96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601200203A88640035FE96 /* OAuthSwift.framework */; };
 		96601203203A88640035FE96 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; };
@@ -41,7 +40,6 @@
 		966011F4203A83DF0035FE96 /* JSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONClient.swift; sourceTree = "<group>"; };
 		966011F5203A83E00035FE96 /* JSONUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
 		966011F9203A840D0035FE96 /* JSONTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTestBase.swift; sourceTree = "<group>"; };
-		966011FA203A840D0035FE96 /* JSONClientTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONClientTestBase.swift; sourceTree = "<group>"; };
 		966011FB203A840D0035FE96 /* JSONUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtilsTests.swift; sourceTree = "<group>"; };
 		96601200203A88640035FE96 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		96601201203A88640035FE96 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				966011E9203A839C0035FE96 /* Info.plist */,
-				966011FA203A840D0035FE96 /* JSONClientTestBase.swift */,
 				966011F9203A840D0035FE96 /* JSONTestBase.swift */,
 				966011FB203A840D0035FE96 /* JSONUtilsTests.swift */,
 			);
@@ -242,7 +239,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966011FD203A840D0035FE96 /* JSONClientTestBase.swift in Sources */,
 				966011FE203A840D0035FE96 /* JSONUtilsTests.swift in Sources */,
 				966011FC203A840D0035FE96 /* JSONTestBase.swift in Sources */,
 			);
