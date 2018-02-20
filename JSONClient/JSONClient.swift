@@ -4,14 +4,18 @@ import Foundation
 import OAuthSwift
 import PromiseKit
 
+/// A REST client that uses OAuth authentication and gets and posts JSON data.
 open class JSONClient: NSObject {
-    
+
+    public enum JSONError: Error {
+        case invalidUrl(urlString: String?)
+        case parseFailed(error: Error)
+    }
+
     // MARK: - Properties
 
-    public let userAgent: String
-    
     /// The root URL for server requests.
-    public let baseUrl: URL
+    public let baseUrl: URL?
     
     /// The client that handles OAuth authorization and inserts the relevant
     /// headers in calls to the server. Subclasses should assign a value to
@@ -20,10 +24,8 @@ open class JSONClient: NSObject {
     
     // MARK: - Initializers
     
-    public init(baseUrl: URL,
-                userAgent: String) {
+    public init(baseUrl: URL?) {
         self.baseUrl = baseUrl
-        self.userAgent = userAgent
         super.init()
     }
     
@@ -31,7 +33,7 @@ open class JSONClient: NSObject {
     
     public func get<T: Codable>(path: String,
                                 headers: OAuthSwift.Headers = [:]) -> Promise<T> {
-        let url = URL(string: path, relativeTo: baseUrl)!
+        let url = URL(string: path, relativeTo: baseUrl) ?? URL(string: path)
         return get(url: url, headers: headers)
     }
     
@@ -45,7 +47,7 @@ open class JSONClient: NSObject {
                                         do {
                                             fulfill(try self.handleSuccessfulResponse(response: response))
                                         } catch {
-                                            reject(error)
+                                            reject(JSONError.parseFailed(error: error))
                                         }
             }, failure: { (error) in
                 reject(error)
@@ -64,7 +66,7 @@ open class JSONClient: NSObject {
                    resultsPerPage: resultsPerPage)
     }
     
-    public func get<T: Codable>(url: URL,
+    public func get<T: Codable>(url: URL?,
                                 headers: OAuthSwift.Headers = [:],
                                 pageNumber: Int = 1,
                                 resultsPerPage: Int = 50) -> Promise<T> {
@@ -77,14 +79,19 @@ open class JSONClient: NSObject {
         }
         
         return Promise<T>() { (fulfill, reject) in
-            let _ = oAuthClient?.get(url.absoluteString,
+            guard let absoluteUrl = url?.absoluteString else {
+                reject(JSONError.invalidUrl(urlString: url?.relativeString ?? "nil URL"))
+                return
+            }
+
+            let _ = oAuthClient?.get(absoluteUrl,
                                      parameters: parameters,
                                      headers: headers,
                                      success: { (response) in
                                         do {
                                             fulfill(try self.handleSuccessfulResponse(response: response))
                                         } catch {
-                                            reject(error)
+                                            reject(JSONError.parseFailed(error: error))
                                         }
             }, failure: { (error) in
                 reject(error)
@@ -102,7 +109,7 @@ open class JSONClient: NSObject {
                                         do {
                                             fulfill(try self.handleSuccessfulResponse(response: response))
                                         } catch {
-                                            reject(error)
+                                            reject(JSONError.parseFailed(error: error))
                                         }
             }, failure: { (error) in
                 reject(error)
@@ -125,7 +132,7 @@ open class JSONClient: NSObject {
                                             do {
                                                 fulfill(try self.handleSuccessfulResponse(response: response))
                                             } catch {
-                                                reject(error)
+                                                reject(JSONError.parseFailed(error: error))
                                             }
                 }, failure: { (error) in
                     reject(error)
