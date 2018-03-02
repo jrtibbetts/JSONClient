@@ -68,7 +68,6 @@ public struct JSONUtils {
     /// Decode the JSON data in a specified local file.
     ///
     /// - parameter atUrl: The `URL` of the JSON data.
-    ///
     /// - parameter forFileNamed: The name of the file, *without* an extension.
     /// - parameter ofType: The extension of the file. The default is `json`.
     /// - parameter inBundle: The resource bundle in which the file is found.
