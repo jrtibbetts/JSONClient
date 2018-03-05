@@ -31,12 +31,6 @@ open class JSONClient: NSObject {
     
     // MARK: - REST methods
     
-    public func get<T: Codable>(path: String,
-                                headers: OAuthSwift.Headers = [:]) -> Promise<T> {
-        let url = URL(string: path, relativeTo: baseUrl) ?? URL(string: path)
-        return get(url: url, headers: headers)
-    }
-    
     public func get<T: Codable>(url: URL,
                                 headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         return Promise<T>() { (fulfill, reject) in
@@ -59,13 +53,13 @@ open class JSONClient: NSObject {
                                 headers: OAuthSwift.Headers = [:],
                                 pageNumber: Int = 1,
                                 resultsPerPage: Int = 50) -> Promise<T> {
-        let url = URL(string: path, relativeTo: baseUrl)!
+        let url = URL(string: path, relativeTo: baseUrl)
         return get(url: url,
                    headers: headers,
                    pageNumber: pageNumber,
                    resultsPerPage: resultsPerPage)
     }
-    
+
     public func get<T: Codable>(url: URL?,
                                 headers: OAuthSwift.Headers = [:],
                                 pageNumber: Int = 1,
@@ -77,7 +71,7 @@ open class JSONClient: NSObject {
         } else {
             parameters = ["page" : String(pageNumber), "per_page" : String(resultsPerPage)]
         }
-        
+
         return Promise<T>() { (fulfill, reject) in
             guard let absoluteUrl = url?.absoluteString else {
                 reject(JSONError.invalidUrl(urlString: url?.relativeString ?? "nil URL"))
