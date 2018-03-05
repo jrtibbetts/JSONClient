@@ -19,6 +19,7 @@
 		96601205203A8A310035FE96 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; };
 		9689BC5A2049D0C500F8DEB1 /* SampleFoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 9689BC592049D0C500F8DEB1 /* SampleFoo.json */; };
 		96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC96204B96A00083A7DA /* MockClientTests.swift */; };
+		96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		96601201203A88640035FE96 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		9689BC592049D0C500F8DEB1 /* SampleFoo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleFoo.json; sourceTree = "<group>"; };
 		96D8CC96204B96A00083A7DA /* MockClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClientTests.swift; sourceTree = "<group>"; };
+		96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				966011E9203A839C0035FE96 /* Info.plist */,
+				96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */,
 				966011FB203A840D0035FE96 /* JSONUtilsTests.swift */,
 				96D8CC96204B96A00083A7DA /* MockClientTests.swift */,
 				9689BC592049D0C500F8DEB1 /* SampleFoo.json */,
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */,
+				96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */,
 				966011FE203A840D0035FE96 /* JSONUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
