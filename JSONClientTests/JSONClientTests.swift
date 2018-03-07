@@ -57,18 +57,8 @@ class JSONClientTests: XCTestCase {
         promise.then { (info) -> Void in
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
             }.catch { (error) in
-                guard let error = error as? JSONClient.JSONError else {
-                    XCTFail("get() should have failed with a JSONClient.JSONError.invalidUrl error")
-                    return
-                }
-
-                switch error {
-                case .invalidUrl:
-                    exp.fulfill()
-                    break
-                default:
-                    XCTFail("get() should have failed with a JSONClient.JSONError.invalidUrl error")
-                }
+                XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
+                exp.fulfill()
         }
 
         wait(for: [exp], timeout: 1.0)
@@ -82,19 +72,9 @@ class JSONClientTests: XCTestCase {
         promise.then { (info) -> Void in
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
             }.catch { (error) in
-                guard let error = error as? JSONClient.JSONError else {
-                    XCTFail("get() should have failed with a JSONClient.JSONError.invalidUrl error")
-                    return
-                }
-
-                switch error {
-                case .invalidUrl:
-                    exp.fulfill()
-                    break
-                default:
-                    XCTFail("get() should have failed with a JSONClient.JSONError.invalidUrl error")
-                }
-        }
+                XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
+                exp.fulfill()
+       }
 
         wait(for: [exp], timeout: 1.0)
     }
@@ -107,7 +87,7 @@ class JSONClientTests: XCTestCase {
         promise.then { (info) -> Void in
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
             }.catch { (error) in
-                guard let error = error as? JSONClient.JSONError else {
+                guard let error = error as? JSONClient.JSONErr else {
                     XCTFail("get() should have failed with a JSONClient.JSONError.invalidUrl error")
                     return
                 }
@@ -121,7 +101,15 @@ class JSONClientTests: XCTestCase {
                 }
         }
 
-        wait(for: [exp], timeout: 500.0)
+        wait(for: [exp], timeout: 1.0)
+    }
+
+    func testRequestWithBaseUrlAndPathButNoHeadersOrParamsOk() throws {
+        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com"))
+        let request = try client.request(forPath: "some/path")
+        // For some reason, when there's no path, URLComponents uses a single
+        // "?" instead. I can't find this in the documentation anywhere.
+        XCTAssertEqual(request.url?.absoluteString, "https://api.discogs.com/some/path?")
     }
 
     struct DiscogsInfo: Codable {
