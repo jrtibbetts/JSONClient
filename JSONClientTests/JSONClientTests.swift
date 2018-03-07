@@ -6,6 +6,8 @@ import XCTest
 
 class JSONClientTests: XCTestCase {
 
+    // MARK: init()
+
     func testInitializerWithBaseUrlOk() {
         let baseUrl = URL(string: "https://www.knowyourmeme.com")
         let client = JSONClient(baseUrl: baseUrl)
@@ -16,6 +18,8 @@ class JSONClientTests: XCTestCase {
         let client = JSONClient(baseUrl: nil)
         XCTAssertNil(client.baseUrl)
     }
+
+    // MARK: get()
 
     func testGetWithNilBaseUrlAndAbsolutePathOk() {
         let client = JSONClient(baseUrl: nil)
@@ -104,12 +108,36 @@ class JSONClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
+    // MARK: request()
+
     func testRequestWithBaseUrlAndPathButNoHeadersOrParamsOk() throws {
         let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com"))
         let request = try client.request(forPath: "some/path")
-        // For some reason, when there's no path, URLComponents uses a single
-        // "?" instead. I can't find this in the documentation anywhere.
+        // For some reason, URLComponents always appends a "?", even if there's
+        // no query. I can't find this in the documentation anywhere.
         XCTAssertEqual(request.url?.absoluteString, "https://api.discogs.com/some/path?")
+        XCTAssertNil(request.allHTTPHeaderFields?.count)
+    }
+
+    func testRequestWithBaseUrlAndPathWithHeadersButNoParamsOk() throws {
+        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com"))
+        let headers = ["header1": "foo", "header2": "bar"]
+        let request = try client.request(forPath: "some/path", headers: headers)
+        XCTAssertEqual(request.url?.absoluteString, "https://api.discogs.com/some/path?")
+        XCTAssertEqual(request.allHTTPHeaderFields!.count, 2)
+        XCTAssertEqual(request.allHTTPHeaderFields!["header1"], "foo")
+        XCTAssertEqual(request.allHTTPHeaderFields!["header2"], "bar")
+    }
+
+    func testRequestWithBaseUrlAndPathWithHeadersAndParamsOk() throws {
+        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com"))
+        let headers = ["header1": "foo", "header2": "bar"]
+        let params = [URLQueryItem(name: "foo", value: "foo1"), URLQueryItem(name: "bar", value: "bar2")]
+        let request = try client.request(forPath: "some/path", headers: headers, params: params)
+        XCTAssertEqual(request.url?.absoluteString, "https://api.discogs.com/some/path?foo=foo1&bar=bar2")
+        XCTAssertEqual(request.allHTTPHeaderFields!.count, 2)
+        XCTAssertEqual(request.allHTTPHeaderFields!["header1"], "foo")
+        XCTAssertEqual(request.allHTTPHeaderFields!["header2"], "bar")
     }
 
     struct DiscogsInfo: Codable {
@@ -124,5 +152,7 @@ class JSONClientTests: XCTestCase {
             var releases: Int
         }
     }
+
+
 
 }
