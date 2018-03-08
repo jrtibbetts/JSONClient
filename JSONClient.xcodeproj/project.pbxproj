@@ -83,10 +83,10 @@
 		966011CF203A839B0035FE96 = {
 			isa = PBXGroup;
 			children = (
-				966011DB203A839B0035FE96 /* JSONClient */,
-				966011E6203A839C0035FE96 /* JSONClientTests */,
-				966011DA203A839B0035FE96 /* Products */,
+				966011DB203A839B0035FE96 /* Source */,
+				966011E6203A839C0035FE96 /* Tests */,
 				966011FF203A88630035FE96 /* Frameworks */,
+				966011DA203A839B0035FE96 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,7 +99,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		966011DB203A839B0035FE96 /* JSONClient */ = {
+		966011DB203A839B0035FE96 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				964F13C720509BB500B54B97 /* AuthenticatedJSONClient.swift */,
@@ -109,10 +109,10 @@
 				966011F5203A83E00035FE96 /* JSONUtils.swift */,
 				966011F3203A83DF0035FE96 /* MockClient.swift */,
 			);
-			path = JSONClient;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		966011E6203A839C0035FE96 /* JSONClientTests */ = {
+		966011E6203A839C0035FE96 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				966011E9203A839C0035FE96 /* Info.plist */,
@@ -121,7 +121,7 @@
 				96D8CC96204B96A00083A7DA /* MockClientTests.swift */,
 				9689BC592049D0C500F8DEB1 /* SampleFoo.json */,
 			);
-			path = JSONClientTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		966011FF203A88630035FE96 /* Frameworks */ = {
@@ -403,7 +403,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = JSONClient/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClient;
@@ -430,7 +430,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = JSONClient/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClient;
@@ -451,7 +451,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = JSONClientTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -470,7 +470,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = JSONClientTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
