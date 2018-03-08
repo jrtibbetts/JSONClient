@@ -4,7 +4,7 @@ import OAuthSwift
 import PromiseKit
 import UIKit
 
-class AuthenticatedJSONClient: JSONClient {
+open class AuthenticatedJSONClient: JSONClient {
 
     // MARK: - Properties
 
