@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  JSONClientDemo
-//
-//  Created by Jason R Tibbetts on 3/8/18.
 //  Copyright © 2018 Poikile Creations. All rights reserved.
-//
 
 import UIKit
 
