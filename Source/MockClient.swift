@@ -4,7 +4,7 @@ import Foundation
 import PromiseKit
 
 /// Base class for mock client implementations of third-party services.
-open class MockClient: NSObject {
+open class MockClient: JSONClient {
 
     /// If `true`, each API call will pass a non-`nil` `Error` object to the
     /// completion block instead of a valid data object.
@@ -20,6 +20,7 @@ open class MockClient: NSObject {
         self.errorMode = false
         self.errorDomain = "Error domains aren't used in non-error mode!"
         self.bundle = bundle
+        super.init()
     }
 
     public init(errorDomain: String,
@@ -27,6 +28,7 @@ open class MockClient: NSObject {
         self.errorMode = true
         self.errorDomain = errorDomain
         self.bundle = bundle
+        super.init()
     }
 
     // MARK: - Utilities
