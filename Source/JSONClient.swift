@@ -38,7 +38,7 @@ open class JSONClient: NSObject {
     /// - parameter baseUrl: The URL against which all relative paths will be
     ///             resolved. If it's `nil`, then paths passed to client's
     ///             methods must be absolute ones.
-    public init(baseUrl: URL?) {
+    public init(baseUrl: URL? = nil) {
         self.baseUrl = baseUrl
         self.urlSession = URLSession(configuration: .default)
         super.init()
