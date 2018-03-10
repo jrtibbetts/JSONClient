@@ -22,6 +22,7 @@
 		964F140F20522BFB00B54B97 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F141120522BFB00B54B97 /* JSONClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F1416205333E400B54B97 /* DiscogsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F1415205333E400B54B97 /* DiscogsInfo.swift */; };
+		964F14192053CDE600B54B97 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 964F14182053CDE500B54B97 /* README.md */; };
 		966011E3203A839C0035FE96 /* JSONClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; };
 		966011EA203A839C0035FE96 /* JSONClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 966011DC203A839B0035FE96 /* JSONClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		966011F6203A83E00035FE96 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F3203A83DF0035FE96 /* MockClient.swift */; };
@@ -93,6 +94,7 @@
 		964F13E62051E2B900B54B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964F1415205333E400B54B97 /* DiscogsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsInfo.swift; sourceTree = "<group>"; };
 		964F1417205384FD00B54B97 /* Example.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Example.md; sourceTree = "<group>"; };
+		964F14182053CDE500B54B97 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		966011D9203A839B0035FE96 /* JSONClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		966011DC203A839B0035FE96 /* JSONClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONClient.h; sourceTree = "<group>"; };
 		966011DD203A839B0035FE96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				964F1417205384FD00B54B97 /* Example.md */,
+				964F14182053CDE500B54B97 /* README.md */,
 				966011DB203A839B0035FE96 /* Source */,
 				966011E6203A839C0035FE96 /* Tests */,
 				964F13CE2051E2B900B54B97 /* Demo */,
@@ -393,6 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964F14192053CDE600B54B97 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
