@@ -9,8 +9,6 @@ final class ViewController: UIViewController, UITextFieldDelegate {
     // MARK: Outlets
     @IBOutlet weak var outputLabel: UILabel?
 
-    @IBOutlet weak var urlField: UITextField?
-
     @IBOutlet weak var searchButton: UIButton?
 
     // MARK: Other Properties
