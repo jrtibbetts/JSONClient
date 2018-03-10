@@ -92,6 +92,7 @@
 		964F13E42051E2B900B54B97 /* JSONClientDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONClientDemoTests.swift; sourceTree = "<group>"; };
 		964F13E62051E2B900B54B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964F1415205333E400B54B97 /* DiscogsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsInfo.swift; sourceTree = "<group>"; };
+		964F1417205384FD00B54B97 /* Example.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Example.md; sourceTree = "<group>"; };
 		966011D9203A839B0035FE96 /* JSONClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		966011DC203A839B0035FE96 /* JSONClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONClient.h; sourceTree = "<group>"; };
 		966011DD203A839B0035FE96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +175,7 @@
 		966011CF203A839B0035FE96 = {
 			isa = PBXGroup;
 			children = (
+				964F1417205384FD00B54B97 /* Example.md */,
 				966011DB203A839B0035FE96 /* Source */,
 				966011E6203A839C0035FE96 /* Tests */,
 				964F13CE2051E2B900B54B97 /* Demo */,
