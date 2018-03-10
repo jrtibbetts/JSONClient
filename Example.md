@@ -36,15 +36,32 @@ carthage update --platform iOS
 
 ## 3. Using the `JSONClient` directly
 
- 1. Add the following line to the top of your source file:
+ 1. If necessary, create `Codable`  `class`es and/or `struct`s for each data type that can be returned by the API's JSON responses. Add a property for each of the top-level JSON keys that can be returned. **Important:** all non-`Optional` properties *must* be found in the JSON response, or else the parsing will fail. If you're not sure whether a property will always exist in the response, make it `Optional`.
+```
+struct UserInfo: Codable {
+    var name: String
+    var id: Int
+    var thumbnail: URL?
+}
+```
+ 2. If the JSON response contains subelements, create `Codable` `class`es and/or `struct`s for those, too.
+```
+struct Avatar: Codable {
+    var image: URL
+    var width: Int
+    var height: Int
+    var caption: String?
+}
+```
+ 3. Add the following line to the top of your source file:
 ```
 import JSONClient
 ```
- 2. Initialize the `JSONClient` with an optional base URL against which all subsequent `get()` paths will be resolved.
+ 4. Initialize the `JSONClient` with an optional base URL against which all subsequent `get()` paths will be resolved.
 ```
 var client = JSONClient(baseUrl: URL("https://myawesomeapi.com")
 ```
- 3. Call `get()` for the desired path. Pass in HTTP request headers (a `Dictionary` of `String: String`) and/or query parameters (an `Array` of `URLQueryItem`s, each of which has a `String` key and `Any` value), if needed. The return value is a `Promise` of a `Codable` type that matches the format of the JSON retrieved by `get()`. **It is critically important to specify the `Promise`'s type.**
+ 5. Call `get()` for the desired path. Pass in HTTP request headers (a `Dictionary` of `String: String`) and/or query parameters (an `Array` of `URLQueryItem`s, each of which has a `String` key and `Any` value), if needed. The return value is a `Promise` of a `Codable` type that matches the format of the JSON retrieved by `get()`. **It is critically important to specify the `Promise`'s type.**
 ```
 var promise: Promise<UserInfo> = client.get(path: "userInfo")
 ```
@@ -66,4 +83,4 @@ promise.then { (userInfo) -> Void in
     // handle the error. It's usually a `JSONClient.JSONErr` enumeration value.
 }
 ```
-## 4. Subclassing `JSONClient` and `AuthenticatedJSONClient`
+
