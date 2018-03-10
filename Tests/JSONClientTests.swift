@@ -140,19 +140,4 @@ class JSONClientTests: XCTestCase {
         XCTAssertEqual(request.allHTTPHeaderFields!["header2"], "bar")
     }
 
-    struct DiscogsInfo: Codable {
-        var documentation_url: URL
-        var hello: String
-        var api_version: String
-        var statistics: Stats
-
-        struct Stats: Codable {
-            var labels: Int
-            var artists: Int
-            var releases: Int
-        }
-    }
-
-
-
 }

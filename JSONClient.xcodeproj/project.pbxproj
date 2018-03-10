@@ -21,6 +21,7 @@
 		964F140D20522BFB00B54B97 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96601200203A88640035FE96 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F140F20522BFB00B54B97 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F141120522BFB00B54B97 /* JSONClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		964F1416205333E400B54B97 /* DiscogsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F1415205333E400B54B97 /* DiscogsInfo.swift */; };
 		966011E3203A839C0035FE96 /* JSONClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; };
 		966011EA203A839C0035FE96 /* JSONClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 966011DC203A839B0035FE96 /* JSONClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		966011F6203A83E00035FE96 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F3203A83DF0035FE96 /* MockClient.swift */; };
@@ -90,6 +91,7 @@
 		964F13E02051E2B900B54B97 /* JSONClientDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONClientDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		964F13E42051E2B900B54B97 /* JSONClientDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONClientDemoTests.swift; sourceTree = "<group>"; };
 		964F13E62051E2B900B54B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		964F1415205333E400B54B97 /* DiscogsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsInfo.swift; sourceTree = "<group>"; };
 		966011D9203A839B0035FE96 /* JSONClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		966011DC203A839B0035FE96 /* JSONClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONClient.h; sourceTree = "<group>"; };
 		966011DD203A839B0035FE96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,11 +153,11 @@
 			isa = PBXGroup;
 			children = (
 				964F13CF2051E2B900B54B97 /* AppDelegate.swift */,
-				964F13D12051E2B900B54B97 /* ViewController.swift */,
-				964F13D32051E2B900B54B97 /* Demo.storyboard */,
 				964F13D62051E2B900B54B97 /* Assets.xcassets */,
-				964F13D82051E2B900B54B97 /* LaunchScreen.storyboard */,
+				964F13D32051E2B900B54B97 /* Demo.storyboard */,
 				964F13DB2051E2B900B54B97 /* Info.plist */,
+				964F13D82051E2B900B54B97 /* LaunchScreen.storyboard */,
+				964F13D12051E2B900B54B97 /* ViewController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				964F13C720509BB500B54B97 /* AuthenticatedJSONClient.swift */,
+				964F1415205333E400B54B97 /* DiscogsInfo.swift */,
 				966011DD203A839B0035FE96 /* Info.plist */,
 				966011DC203A839B0035FE96 /* JSONClient.h */,
 				966011F4203A83DF0035FE96 /* JSONClient.swift */,
@@ -424,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				964F13C820509BB600B54B97 /* AuthenticatedJSONClient.swift in Sources */,
+				964F1416205333E400B54B97 /* DiscogsInfo.swift in Sources */,
 				966011F6203A83E00035FE96 /* MockClient.swift in Sources */,
 				966011F8203A83E00035FE96 /* JSONUtils.swift in Sources */,
 				966011F7203A83E00035FE96 /* JSONClient.swift in Sources */,
