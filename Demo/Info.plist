@@ -23,6 +23,10 @@
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
 			<string>net.nrith.JSONClient</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>jsonclientdemo</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
