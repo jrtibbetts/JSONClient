@@ -12,7 +12,7 @@ github "jrtibbetts/JSONClient"
 ```
  If you want to use only a specific version, you can do so with the following line instead:
 ```
-github "jrtibbetts/JSONClient" ~> 0.4.0
+github "jrtibbetts/JSONClient" ~> 0.5.0
 ```
  2. Open a Terminal window at the root folder of your project and run the following command:
 ```
