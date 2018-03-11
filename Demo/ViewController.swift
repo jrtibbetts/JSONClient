@@ -9,29 +9,23 @@ final class ViewController: UIViewController, UITextFieldDelegate {
     // MARK: Outlets
     @IBOutlet weak var outputLabel: UILabel?
 
-    @IBOutlet weak var searchButton: UIButton?
+    @IBOutlet weak var signInButton: UIButton?
 
     // MARK: Other Properties
 
-    fileprivate var jsonClient = JSONClient()
+    fileprivate var gitHubClient = GitHubClient()
 
     // MARK: Actions
-    @IBAction func load(sender: UIView?) {
-        let promise: Promise<DiscogsInfo> = jsonClient.get(path: "https://api.discogs.com/")
 
-        promise.then { (discogsInfo) -> Void in
-            if var text = self.outputLabel?.text {
-                text = "Discogs Information\n"
-                text.append("\(discogsInfo.hello)\n")
-                text.append("API Version: \(discogsInfo.api_version)\n")
-                text.append("Artist count: \(discogsInfo.statistics.artists)\n")
-                text.append("Release count: \(discogsInfo.statistics.releases)\n")
-                text.append("Label count: \(discogsInfo.statistics.labels)\n")
-                self.outputLabel?.text = text
-            }
+    @IBAction func loadGitHub(sender: UIView?) {
+        let promise: Promise<GitHubUser> = gitHubClient.authorize(presentingViewController: self,
+                                             callbackUrlString: AppDelegate.callbackUrl.absoluteString)
+        promise.then { (user) -> Void in
+            self.outputLabel?.text = user.name
             }.catch { (error) in
-                self.outputLabel?.text = error.localizedDescription
-                self.urlField?.text = ""
+                self.outputLabel?.text = "Error: \(error.localizedDescription)"
+            }.always {
+                print("Foo!")
         }
     }
 

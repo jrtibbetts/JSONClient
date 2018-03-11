@@ -18,13 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unr-A5-zhw" userLabel="Load Button">
-                                <rect key="frame" x="170" y="64" width="34" height="30"/>
-                                <state key="normal" title="Load">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unr-A5-zhw" userLabel="Github Button">
+                                <rect key="frame" x="125" y="64" width="124" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign In to GitHub">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loadWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YhI-MR-okj"/>
+                                    <action selector="loadGitHubWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSp-eR-sGl"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pR-qN-mx0">
@@ -61,7 +62,7 @@
                     <navigationItem key="navigationItem" title="JSONClientDemo" id="3gy-Mr-cbf"/>
                     <connections>
                         <outlet property="outputLabel" destination="zo1-Iq-aiO" id="EQo-Bv-pHK"/>
-                        <outlet property="searchButton" destination="Unr-A5-zhw" id="cLh-C8-iLP"/>
+                        <outlet property="signInButton" destination="Unr-A5-zhw" id="cLh-C8-iLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
