@@ -19,11 +19,13 @@ final class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func loadGitHub(sender: UIView?) {
         let promise: Promise<GitHubUser> = gitHubClient.authorize(presentingViewController: self,
-                                             callbackUrlString: AppDelegate.callbackUrlString)
+                                             callbackUrlString: AppDelegate.callbackUrl.absoluteString)
         promise.then { (user) -> Void in
             self.outputLabel?.text = user.name
             }.catch { (error) in
                 self.outputLabel?.text = "Error: \(error.localizedDescription)"
+            }.always {
+                print("Foo!")
         }
     }
 

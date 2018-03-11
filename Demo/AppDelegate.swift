@@ -6,7 +6,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    public static let callbackUrlString = "jsonclientdemo://oauth-callback/github"
+    public static let callbackUrl = URL(string: "jsonclientdemo://oauth-callback/github")!
     var window: UIWindow?
 
 
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         // The callback URL that was used when the OAuth app was created. In
         // this case, the custom URL is "jsonclientdemo://oauth-callback/github".
-        if url.scheme == "jsonclientdemo" && url.host == "oauth-callback" {
+        if url.absoluteString.starts(with: AppDelegate.callbackUrl.absoluteString) {
             OAuthSwift.handle(url: url)
 
             return true
