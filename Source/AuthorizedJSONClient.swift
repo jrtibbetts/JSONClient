@@ -50,10 +50,12 @@ open class AuthorizedJSONClient: JSONClient {
 
         public init(consumerKey: String,
                     consumerSecret: String,
-                    authorizeUrl: String) {
+                    authorizeUrl: String,
+                    accessTokenUrl: String) {
             oAuth2 = OAuth2Swift(consumerKey: consumerKey,
                                  consumerSecret: consumerSecret,
                                  authorizeUrl: authorizeUrl,
+                                 accessTokenUrl: accessTokenUrl,
                                  responseType: "token")
             super.init(oAuth: oAuth2)
         }
