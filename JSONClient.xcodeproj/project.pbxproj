@@ -33,6 +33,8 @@
 		96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC96204B96A00083A7DA /* MockClientTests.swift */; };
 		96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */; };
 		96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */; };
+		96F0EBFF2054DE11004A124A /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EBFE2054DE11004A124A /* GitHubClient.swift */; };
+		96F0EC012054E07F004A124A /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EC002054E07F004A124A /* GitHubUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		96D8CC96204B96A00083A7DA /* MockClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClientTests.swift; sourceTree = "<group>"; };
 		96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONClientTests.swift; sourceTree = "<group>"; };
 		96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedJSONClient.swift; sourceTree = "<group>"; };
+		96F0EBFE2054DE11004A124A /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
+		96F0EC002054E07F004A124A /* GitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 				964F13CF2051E2B900B54B97 /* AppDelegate.swift */,
 				964F13D62051E2B900B54B97 /* Assets.xcassets */,
 				964F13D32051E2B900B54B97 /* Demo.storyboard */,
+				96F0EBFE2054DE11004A124A /* GitHubClient.swift */,
+				96F0EC002054E07F004A124A /* GitHubUser.swift */,
 				964F13DB2051E2B900B54B97 /* Info.plist */,
 				964F13D82051E2B900B54B97 /* LaunchScreen.storyboard */,
 				964F13D12051E2B900B54B97 /* ViewController.swift */,
@@ -351,6 +357,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96F0EBFF2054DE11004A124A /* GitHubClient.swift in Sources */,
+				96F0EC012054E07F004A124A /* GitHubUser.swift in Sources */,
 				964F13D22051E2B900B54B97 /* ViewController.swift in Sources */,
 				964F13D02051E2B900B54B97 /* AppDelegate.swift in Sources */,
 			);

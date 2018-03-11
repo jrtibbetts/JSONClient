@@ -25,7 +25,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loadWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YhI-MR-okj"/>
+                                    <action selector="loadGitHubWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSp-eR-sGl"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pR-qN-mx0">
@@ -62,7 +62,7 @@
                     <navigationItem key="navigationItem" title="JSONClientDemo" id="3gy-Mr-cbf"/>
                     <connections>
                         <outlet property="outputLabel" destination="zo1-Iq-aiO" id="EQo-Bv-pHK"/>
-                        <outlet property="searchButton" destination="Unr-A5-zhw" id="cLh-C8-iLP"/>
+                        <outlet property="signInButton" destination="Unr-A5-zhw" id="cLh-C8-iLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
