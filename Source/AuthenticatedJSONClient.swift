@@ -16,28 +16,16 @@ open class AuthenticatedJSONClient: JSONClient {
     // MARK: - REST methods
 
     open func authenticatedGet<T: Codable>(path: String,
-                                           headers: OAuthSwift.Headers = [:],
-                                           pageNumber: Int = 1,
-                                           resultsPerPage: Int = 50) -> Promise<T> {
+                                           headers: Headers = [:],
+                                           params: [String: Any] = [:]) -> Promise<T> {
         let url = URL(string: path, relativeTo: baseUrl)
-        return authenticatedGet(url: url,
-                                headers: headers,
-                                pageNumber: pageNumber,
-                                resultsPerPage: resultsPerPage)
+        
+        return authenticatedGet(url: url, headers: headers, params: params)
     }
 
     open func authenticatedGet<T: Codable>(url: URL?,
-                                           headers: OAuthSwift.Headers = [:],
-                                           pageNumber: Int = 1,
-                                           resultsPerPage: Int = 50) -> Promise<T> {
-        let parameters: OAuthSwift.Parameters
-
-        if pageNumber == 0 {
-            parameters = [:]
-        } else {
-            parameters = ["page" : String(pageNumber), "per_page" : String(resultsPerPage)]
-        }
-
+                                           headers: Headers = [:],
+                                           params: [String: Any] = [:]) -> Promise<T> {
         return Promise<T>() { (fulfill, reject) in
             guard let absoluteUrl = url?.absoluteString else {
                 reject(JSONErr.invalidUrl(urlString: url?.relativeString ?? "nil URL"))
@@ -45,7 +33,7 @@ open class AuthenticatedJSONClient: JSONClient {
             }
 
             let _ = oAuthClient?.get(absoluteUrl,
-                                     parameters: parameters,
+                                     parameters: params,
                                      headers: headers,
                                      success: { (response) in
                                         do {
