@@ -10,6 +10,7 @@
 		960368992056097200D24CE7 /* OAuth1JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960368982056097200D24CE7 /* OAuth1JSONClient.swift */; };
 		9603689B205609FA00D24CE7 /* OAuth2JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603689A205609FA00D24CE7 /* OAuth2JSONClient.swift */; };
 		9603689D2056D94000D24CE7 /* AuthorizedJSONClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603689C2056D94000D24CE7 /* AuthorizedJSONClientTests.swift */; };
+		9603689E2056E05700D24CE7 /* DiscogsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F1415205333E400B54B97 /* DiscogsInfo.swift */; };
 		964F13C3204F141300B54B97 /* Ambassador.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964F13C1204F141300B54B97 /* Ambassador.framework */; };
 		964F13C4204F141300B54B97 /* Embassy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964F13C2204F141300B54B97 /* Embassy.framework */; };
 		964F13D02051E2B900B54B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13CF2051E2B900B54B97 /* AppDelegate.swift */; };
@@ -20,7 +21,6 @@
 		964F140D20522BFB00B54B97 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96601200203A88640035FE96 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F140F20522BFB00B54B97 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F141120522BFB00B54B97 /* JSONClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		964F1416205333E400B54B97 /* DiscogsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F1415205333E400B54B97 /* DiscogsInfo.swift */; };
 		964F14192053CDE600B54B97 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 964F14182053CDE500B54B97 /* README.md */; };
 		966011E3203A839C0035FE96 /* JSONClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; };
 		966011EA203A839C0035FE96 /* JSONClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 966011DC203A839B0035FE96 /* JSONClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -182,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */,
-				964F1415205333E400B54B97 /* DiscogsInfo.swift */,
 				966011DD203A839B0035FE96 /* Info.plist */,
 				966011DC203A839B0035FE96 /* JSONClient.h */,
 				966011F4203A83DF0035FE96 /* JSONClient.swift */,
@@ -197,6 +196,7 @@
 		966011E6203A839C0035FE96 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				964F1415205333E400B54B97 /* DiscogsInfo.swift */,
 				966011E9203A839C0035FE96 /* Info.plist */,
 				96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */,
 				966011FB203A840D0035FE96 /* JSONUtilsTests.swift */,
@@ -378,7 +378,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				960368992056097200D24CE7 /* OAuth1JSONClient.swift in Sources */,
-				964F1416205333E400B54B97 /* DiscogsInfo.swift in Sources */,
 				96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */,
 				966011F6203A83E00035FE96 /* MockClient.swift in Sources */,
 				966011F8203A83E00035FE96 /* JSONUtils.swift in Sources */,
@@ -392,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */,
+				9603689E2056E05700D24CE7 /* DiscogsInfo.swift in Sources */,
 				9603689D2056D94000D24CE7 /* AuthorizedJSONClientTests.swift in Sources */,
 				96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */,
 				966011FE203A840D0035FE96 /* JSONUtilsTests.swift in Sources */,

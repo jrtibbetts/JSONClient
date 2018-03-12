@@ -3,10 +3,17 @@
 import Foundation
 
 public struct DiscogsInfo: Codable {
-    public var documentation_url: URL
+    public var apiVersion: String
+    public var documentationUrl: URL
     public var hello: String
-    public var api_version: String
     public var statistics: Stats
+
+    fileprivate enum CodingKeys: String, CodingKey {
+        case apiVersion = "api_version"
+        case documentationUrl = "documentation_url"
+        case hello
+        case statistics
+    }
 
     public struct Stats: Codable {
         public var labels: Int
