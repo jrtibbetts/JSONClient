@@ -63,11 +63,11 @@ open class JSONClient: NSObject {
     open func get<T: Codable>(path: String,
                               headers: Headers = [:],
                               params: Parameters = []) -> Promise<T> {
-        return Promise<T>() { (fulfill, reject) in
+        return Promise<T> { (fulfill, reject) in
             do {
                 let urlRequest = try request(forPath: path, headers: headers, params: params)
                 
-                urlSession.dataTask(with: urlRequest) { (data, urlResponse, error) in
+                urlSession.dataTask(with: urlRequest) { (data, _, error) in
                     if let error = error {
                         /// Usually an "unsupported URL" NSError.
                         reject(error)
