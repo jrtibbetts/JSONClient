@@ -69,18 +69,15 @@ open class JSONClient: NSObject {
                 
                 urlSession.dataTask(with: urlRequest) { (data, urlResponse, error) in
                     if let error = error {
-                        /// Usually an "unsupported URL" `NSError`.
+                        /// Usually an "unsupported URL" NSError.
                         reject(error)
+                    } else if data == nil {
+                        /// Make sure that we got some sort of data.
+                        reject(JSONErr.nilData)
                     } else {
                         do {
-                            /// Make sure that we got some sort of data.
-                            guard let data = data else {
-                                reject(JSONErr.nilData)
-                                return
-                            }
-                            
                             /// The data is non-`nil`, so parse it.
-                            fulfill(try self.handleSuccessfulData(data))
+                            fulfill(try self.handleSuccessfulData(data!))
                         } catch {
                             /// The data couldn't be decoded into the expected
                             /// type `T`.
