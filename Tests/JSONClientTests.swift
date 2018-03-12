@@ -6,23 +6,27 @@ import XCTest
 
 class JSONClientTests: XCTestCase {
 
+    func validJSONClient(baseUrl: URL? = nil) -> JSONClient {
+        return JSONClient(baseUrl: baseUrl)
+    }
+
     // MARK: init()
 
     func testInitializerWithBaseUrlOk() {
         let baseUrl = URL(string: "https://www.knowyourmeme.com")
-        let client = JSONClient(baseUrl: baseUrl)
+        let client = validJSONClient(baseUrl: baseUrl)
         XCTAssertEqual(client.baseUrl, baseUrl)
     }
 
     func testInitializerWithNilBaseUrlOk() {
-        let client = JSONClient(baseUrl: nil)
+        let client = validJSONClient(baseUrl: nil)
         XCTAssertNil(client.baseUrl)
     }
 
     // MARK: get()
 
     func testGetWithNilBaseUrlAndAbsolutePathOk() {
-        let client = JSONClient(baseUrl: nil)
+        let client = validJSONClient(baseUrl: nil)
         let exp = expectation(description: "Discogs info")
 
         let promise: Promise<DiscogsInfo> = client.get(path: "https://api.discogs.com")
@@ -39,7 +43,7 @@ class JSONClientTests: XCTestCase {
     }
 
     func testGetWithNilBaseUrlAndRelativePathRejectsPromise() {
-        let client = JSONClient(baseUrl: nil)
+        let client = validJSONClient(baseUrl: nil)
         let exp = expectation(description: "Discogs info")
         let path = "relative/path/that/does/not/exist"
         let promise: Promise<DiscogsInfo> = client.get(path: path)
@@ -54,7 +58,7 @@ class JSONClientTests: XCTestCase {
     }
 
     func testGetWithNilBaseUrlAndGarbagePathRejectsPromise() {
-        let client = JSONClient(baseUrl: nil)
+        let client = validJSONClient(baseUrl: nil)
         let exp = expectation(description: "Discogs info")
         let path = "1(*#%(*DFSLDKU%(*@)"
         let promise: Promise<DiscogsInfo> = client.get(path: path)
@@ -69,7 +73,7 @@ class JSONClientTests: XCTestCase {
     }
 
     func testGetWithValidBaseUrlAndInvalidPathRejectsPromise() {
-        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com")!)
+        let client = validJSONClient(baseUrl: URL(string: "https://api.discogs.com")!)
         let exp = expectation(description: "Discogs info")
         let path = "1(*#%(*DFSLDKU%(*@)"
         let promise: Promise<DiscogsInfo> = client.get(path: path)
@@ -84,7 +88,7 @@ class JSONClientTests: XCTestCase {
     }
 
     func testGetWithValidBaseUrlAndPathButWrongTypeRejectsPromise() {
-        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com")!)
+        let client = validJSONClient(baseUrl: URL(string: "https://api.discogs.com")!)
         let exp = expectation(description: "Discogs info")
         let path = "/"
         let promise: Promise<String> = client.get(path: path)
@@ -105,13 +109,13 @@ class JSONClientTests: XCTestCase {
                 }
         }
 
-        wait(for: [exp], timeout: 1.0)
+        wait(for: [exp], timeout: 5.0)
     }
 
     // MARK: request()
 
     func testRequestWithBaseUrlAndPathButNoHeadersOrParamsOk() throws {
-        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com"))
+        let client = validJSONClient(baseUrl: URL(string: "https://api.discogs.com"))
         let request = try client.request(forPath: "some/path")
         // For some reason, URLComponents always appends a "?", even if there's
         // no query. I can't find this in the documentation anywhere.
@@ -120,7 +124,7 @@ class JSONClientTests: XCTestCase {
     }
 
     func testRequestWithBaseUrlAndPathWithHeadersButNoParamsOk() throws {
-        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com"))
+        let client = validJSONClient(baseUrl: URL(string: "https://api.discogs.com"))
         let headers = ["header1": "foo", "header2": "bar"]
         let request = try client.request(forPath: "some/path", headers: headers)
         XCTAssertEqual(request.url?.absoluteString, "https://api.discogs.com/some/path?")
@@ -130,7 +134,7 @@ class JSONClientTests: XCTestCase {
     }
 
     func testRequestWithBaseUrlAndPathWithHeadersAndParamsOk() throws {
-        let client = JSONClient(baseUrl: URL(string: "https://api.discogs.com"))
+        let client = validJSONClient(baseUrl: URL(string: "https://api.discogs.com"))
         let headers = ["header1": "foo", "header2": "bar"]
         let params = [URLQueryItem(name: "foo", value: "foo1"), URLQueryItem(name: "bar", value: "bar2")]
         let request = try client.request(forPath: "some/path", headers: headers, params: params)
