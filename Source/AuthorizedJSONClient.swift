@@ -14,13 +14,14 @@ open class AuthorizedJSONClient: JSONClient {
                     consumerSecret: String,
                     requestTokenUrl: String,
                     authorizeUrl: String,
-                    accessTokenUrl: String) {
+                    accessTokenUrl: String,
+                    baseUrl: URL? = nil) {
             oAuth1 = OAuth1Swift(consumerKey: consumerKey,
                                  consumerSecret: consumerSecret,
                                  requestTokenUrl: requestTokenUrl,
                                  authorizeUrl: authorizeUrl,
                                  accessTokenUrl: accessTokenUrl)
-            super.init(oAuth: oAuth1)
+            super.init(oAuth: oAuth1, baseUrl: baseUrl)
         }
 
         open func authorize<T>(presentingViewController: UIViewController,
@@ -51,13 +52,14 @@ open class AuthorizedJSONClient: JSONClient {
         public init(consumerKey: String,
                     consumerSecret: String,
                     authorizeUrl: String,
-                    accessTokenUrl: String) {
+                    accessTokenUrl: String,
+                    baseUrl: URL? = nil) {
             oAuth2 = OAuth2Swift(consumerKey: consumerKey,
                                  consumerSecret: consumerSecret,
                                  authorizeUrl: authorizeUrl,
                                  accessTokenUrl: accessTokenUrl,
                                  responseType: "token")
-            super.init(oAuth: oAuth2)
+            super.init(oAuth: oAuth2, baseUrl: baseUrl)
         }
 
         open func authorize<T>(presentingViewController: UIViewController,
