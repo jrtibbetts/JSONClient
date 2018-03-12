@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960368992056097200D24CE7 /* OAuth1JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960368982056097200D24CE7 /* OAuth1JSONClient.swift */; };
+		9603689B205609FA00D24CE7 /* OAuth2JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603689A205609FA00D24CE7 /* OAuth2JSONClient.swift */; };
 		964F13C3204F141300B54B97 /* Ambassador.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964F13C1204F141300B54B97 /* Ambassador.framework */; };
 		964F13C4204F141300B54B97 /* Embassy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964F13C2204F141300B54B97 /* Embassy.framework */; };
 		964F13D02051E2B900B54B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13CF2051E2B900B54B97 /* AppDelegate.swift */; };
@@ -71,6 +73,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		960368982056097200D24CE7 /* OAuth1JSONClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth1JSONClient.swift; sourceTree = "<group>"; };
+		9603689A205609FA00D24CE7 /* OAuth2JSONClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2JSONClient.swift; sourceTree = "<group>"; };
 		964F13C1204F141300B54B97 /* Ambassador.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ambassador.framework; path = Carthage/Build/iOS/Ambassador.framework; sourceTree = "<group>"; };
 		964F13C2204F141300B54B97 /* Embassy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Embassy.framework; path = Carthage/Build/iOS/Embassy.framework; sourceTree = "<group>"; };
 		964F13CD2051E2B900B54B97 /* JSONClientDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONClientDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +186,8 @@
 				966011F4203A83DF0035FE96 /* JSONClient.swift */,
 				966011F5203A83E00035FE96 /* JSONUtils.swift */,
 				966011F3203A83DF0035FE96 /* MockClient.swift */,
+				960368982056097200D24CE7 /* OAuth1JSONClient.swift */,
+				9603689A205609FA00D24CE7 /* OAuth2JSONClient.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -368,11 +374,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				960368992056097200D24CE7 /* OAuth1JSONClient.swift in Sources */,
 				964F1416205333E400B54B97 /* DiscogsInfo.swift in Sources */,
 				96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */,
 				966011F6203A83E00035FE96 /* MockClient.swift in Sources */,
 				966011F8203A83E00035FE96 /* JSONUtils.swift in Sources */,
 				966011F7203A83E00035FE96 /* JSONClient.swift in Sources */,
+				9603689B205609FA00D24CE7 /* OAuth2JSONClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
