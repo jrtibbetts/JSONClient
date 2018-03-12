@@ -32,8 +32,8 @@ class JSONClientTests: XCTestCase {
         let promise: Promise<DiscogsInfo> = client.get(path: "https://api.discogs.com")
 
         promise.then { (info) -> Void in
-            XCTAssertEqual(info.api_version, "v2")
-            XCTAssertEqual(info.documentation_url, URL(string: "http://www.discogs.com/developers/"))
+            XCTAssertEqual(info.apiVersion, "v2")
+            XCTAssertEqual(info.documentationUrl, URL(string: "http://www.discogs.com/developers/"))
             exp.fulfill()
             }.catch { (error) in
                 XCTFail("Failed to get Discogs info: \(error.localizedDescription)")
