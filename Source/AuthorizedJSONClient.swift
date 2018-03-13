@@ -3,6 +3,8 @@
 import OAuthSwift
 import PromiseKit
 
+/// A JSON client that can be authenticated against a server and make
+/// authorized REST calls for restricted resources.
 open class AuthorizedJSONClient: JSONClient {
 
     // MARK: - Properties
@@ -38,24 +40,28 @@ open class AuthorizedJSONClient: JSONClient {
     open func authorizedGet<T: Codable>(path: String,
                                         headers: Headers = [:],
                                         params: [String: Any] = [:]) -> Promise<T> {
-        let url = URL(string: path, relativeTo: baseUrl)
+        guard let url = URL(string: path, relativeTo: baseUrl) else {
+            return Promise<T>() { (_, reject) in
+                reject(JSONErr.invalidUrl(urlString: path))
+            }
+        }
 
         return authorizedGet(url: url, headers: headers, params: params)
     }
 
-    open func authorizedGet<T: Codable>(url: URL?,
+    open func authorizedGet<T: Codable>(url: URL,
                                         headers: Headers = [:],
                                         params: [String: Any] = [:]) -> Promise<T> {
         return Promise<T>() { (fulfill, reject) in
-            guard let absoluteUrl = url?.absoluteString else {
-                reject(JSONErr.invalidUrl(urlString: url?.relativeString ?? "nil URL"))
+            guard let oAuthClient = oAuthClient else {
+                reject(JSONErr.unauthorizedAttempt)
                 return
             }
 
-            let _ = oAuthClient?.get(absoluteUrl,
-                                     parameters: params,
-                                     headers: headers,
-                                     success: { (response) in
+            let _ = oAuthClient.get(url.absoluteString,
+                                    parameters: params,
+                                    headers: headers,
+                                    success: { (response) in
                                         do {
                                             fulfill(try self.handleSuccessfulResponse(response))
                                         } catch {
@@ -70,10 +76,15 @@ open class AuthorizedJSONClient: JSONClient {
     open func authorizedPost<T: Codable>(url: URL,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         return Promise<T>() { (fulfill, reject) in
-            let _ = oAuthClient?.post(url.absoluteString,
-                                      parameters: [:],
-                                      headers: headers,
-                                      success: { (response) in
+            guard let oAuthClient = oAuthClient else {
+                reject(JSONErr.unauthorizedAttempt)
+                return
+            }
+
+            let _ = oAuthClient.post(url.absoluteString,
+                                     parameters: [:],
+                                     headers: headers,
+                                     success: { (response) in
                                         do {
                                             fulfill(try self.handleSuccessfulResponse(response))
                                         } catch {
@@ -85,18 +96,23 @@ open class AuthorizedJSONClient: JSONClient {
         }
     }
 
-    open func authenticatedPost<T: Codable>(url: URL,
-                                            object: T,
-                                            headers: OAuthSwift.Headers = [:]) -> Promise<T> {
+    open func authorizedPost<T: Codable>(url: URL,
+                                         object: T,
+                                         headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         return Promise<T>() { (fulfill, reject) in
+            guard let oAuthClient = oAuthClient else {
+                reject(JSONErr.unauthorizedAttempt)
+                return
+            }
+
             do {
                 let data = try JSONUtils.jsonData(forObject: object)
 
-                let _ = oAuthClient?.post(url.absoluteString,
-                                          parameters: [:],
-                                          headers: headers,
-                                          body: data,
-                                          success: { (response) in
+                let _ = oAuthClient.post(url.absoluteString,
+                                         parameters: [:],
+                                         headers: headers,
+                                         body: data,
+                                         success: { (response) in
                                             do {
                                                 fulfill(try self.handleSuccessfulResponse(response))
                                             } catch {

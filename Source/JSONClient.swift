@@ -21,6 +21,7 @@ open class JSONClient: NSObject {
         /// Thrown if the JSON at a given path can't be decoded into the
         /// expected type.
         case parseFailed(error: Error)
+        case unauthorizedAttempt
     }
     
     // MARK: - Properties
