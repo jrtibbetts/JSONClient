@@ -3,48 +3,88 @@
 import Foundation
 
 public struct GitHubUser: Codable {
-    public var login: String
-    public var id: Int
-    public var avatar_url: String
-    public var gravatar_id: String
-    public var url: String
-    public var html_url: String
-    public var followers_url: String
-    public var following_url: String
-    public var gists_url: String
-    public var starred_url: String
-    public var subscriptions_url: String
-    public var organizations_url: String
-    public var repos_url: String
-    public var events_url: String
-    public var received_events_url: String
-    public var type: String
-    public var site_admin: Bool
-    public var name: String
-    public var company: String
-    public var blog: URL
-    public var location: String
-    public var email: String
-    public var hireable: Bool
+    public var avatarUrl: String
     public var bio: String
-    public var public_repos: Int
-    public var public_gists: Int
+    public var blog: URL
+    public var collaborators: Int
+    public var company: String
+    public var createdAt: String
+    public var diskUsage: Int
+    public var email: String
+    public var eventsUrl: String
     public var followers: Int
     public var following: Int
-    public var created_at: String
-    public var updated_at: String
-    public var total_private_repos: Int
-    public var owned_private_repos: Int
-    public var private_gists: Int
-    public var disk_usage: Int
-    public var collaborators: Int
-    public var two_factor_authentication: Bool
+    public var followers_url: String
+    public var following_url: String
+    public var gistsUrl: String
+    public var gravatarId: String
+    public var hireable: Bool
+    public var htmlUrl: String
+    public var id: Int
+    public var location: String
+    public var login: String
+    public var name: String
+    public var organizationsUrl: String
+    public var ownedPrivateRepos: Int
     public var plan: Plan
+    public var privateGists: Int
+    public var publicGists: Int
+    public var publicRepos: Int
+    public var receivedEventsUrl: String
+    public var reposUrl: String
+    public var siteAdmin: Bool
+    public var starredUrl: String
+    public var subscriptionsUrl: String
+    public var totalPrivateRepos: Int
+    public var twoFactorAuthentication: Bool
+    public var type: String
+    public var url: String
+    public var updatedAt: String
+
+    fileprivate enum CodingKeys: String, CodingKey {
+        case avatarUrl = "avatar_url"
+        case bio
+        case blog
+        case collaborators
+        case company
+        case createdAt = "created_at"
+        case diskUsage = "disk_usage"
+        case email
+        case eventsUrl = "events_url"
+        case followers
+        case following
+        case followersUrl = "followers_url"
+        case followingUrl = "following_url"
+        case gistsUrl = "gists_url"
+        case gravatarId = "gravatar_id"
+        case hireable
+        case htmlUrl = "html_url"
+        case id
+        case location
+        case login
+        case name
+        case organizationsUrl = "organizations_url"
+        case ownedPrivateRepos = "owned_private_repos"
+        case plan
+        case privateGists = "private_gists"
+        case publicGists = "public_gists"
+        case publicRepos = "public_repos"
+        case receivedEventsUrl = "received_events_url"
+        case reposUrl = "repos_url"
+        case siteAdmin = "site_admin"
+        case starredUrl = "starred_url"
+        case subscriptionsUrl = "subscriptions_url"
+        case totalPrivateRepos = "total_private_repos"
+        case twoFactorAuthentication = "two_factor_authentication"
+        case type
+        case url
+        case updatedAt = "updated_at"
+    }
 
     public struct Plan: Codable {
-        public var name: String
-        public var space: Int
-        public var private_repos: Int
         public var collaborators: Int
-    }
+        public var name: String
+        public var private_repos: Int
+        public var space: Int
+   }
 }
