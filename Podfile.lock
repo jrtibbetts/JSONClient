@@ -1,0 +1,23 @@
+PODS:
+  - OAuthSwift (1.2.0)
+  - PromiseKit (6.2.1):
+    - PromiseKit/CorePromise (= 6.2.1)
+    - PromiseKit/Foundation (= 6.2.1)
+    - PromiseKit/UIKit (= 6.2.1)
+  - PromiseKit/CorePromise (6.2.1)
+  - PromiseKit/Foundation (6.2.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.2.1):
+    - PromiseKit/CorePromise
+
+DEPENDENCIES:
+  - OAuthSwift
+  - PromiseKit
+
+SPEC CHECKSUMS:
+  OAuthSwift: 7fd6855b8e4d58eb5a30d156ea9bed7a8aecd1ca
+  PromiseKit: edaca6f0a7ed73b08c287600537d13867a7fabc7
+
+PODFILE CHECKSUM: df81b3729d82cd89bb0428be32120ac029316fb6
+
+COCOAPODS: 1.4.0

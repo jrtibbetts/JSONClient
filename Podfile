@@ -6,9 +6,8 @@ target 'JSONClient' do
   use_frameworks!
 
   # Pods for JSONClient
-  pod 'mxcl/PromiseKit'
-  pod 'OAuthSwift/OAuthSwift'
-  pod 'PromiseKit/Foundation'
+  pod 'PromiseKit'
+  pod 'OAuthSwift'
 
   target 'JSONClientTests' do
     inherit! :search_paths
