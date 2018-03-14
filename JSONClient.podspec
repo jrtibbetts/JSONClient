@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "JSONClient"
-  s.version      = "0.4.0"
+  s.version      = "0.6.0"
   s.summary      = "A simple iOS client that posts and gets JSON data from a REST API using authenticated or unauthenticated requests."
 
   # This description is used to generate tags and improve search results.
