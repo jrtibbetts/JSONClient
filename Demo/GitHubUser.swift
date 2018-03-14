@@ -14,8 +14,8 @@ public struct GitHubUser: Codable {
     public var eventsUrl: String
     public var followers: Int
     public var following: Int
-    public var followers_url: String
-    public var following_url: String
+    public var followersUrl: String
+    public var followingUrl: String
     public var gistsUrl: String
     public var gravatarId: String
     public var hireable: Bool
