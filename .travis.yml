@@ -3,4 +3,8 @@ os: osx
 osx_image: xcode9.2
 xcode_project: JSONClient.xcodeproj
 xcode_scheme: JSONClient
+script:
+    - xcodebuild -scheme JSONClientTests -workspace JSONClient.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=10.0' build test
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
 
