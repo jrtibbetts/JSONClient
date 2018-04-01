@@ -16,8 +16,6 @@
 		960368B72058DB3D00D24CE7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 960368B22058DB3C00D24CE7 /* LICENSE */; };
 		960368B82058DB3D00D24CE7 /* CODE_OF_CONDUCT.md in Resources */ = {isa = PBXBuildFile; fileRef = 960368B32058DB3C00D24CE7 /* CODE_OF_CONDUCT.md */; };
 		960368B92058DB3D00D24CE7 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 960368B42058DB3D00D24CE7 /* Cartfile.private */; };
-		964F13C3204F141300B54B97 /* Ambassador.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964F13C1204F141300B54B97 /* Ambassador.framework */; };
-		964F13C4204F141300B54B97 /* Embassy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964F13C2204F141300B54B97 /* Embassy.framework */; };
 		964F13D02051E2B900B54B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13CF2051E2B900B54B97 /* AppDelegate.swift */; };
 		964F13D22051E2B900B54B97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13D12051E2B900B54B97 /* ViewController.swift */; };
 		964F13D52051E2B900B54B97 /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964F13D32051E2B900B54B97 /* Demo.storyboard */; };
@@ -139,8 +137,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				964F13C3204F141300B54B97 /* Ambassador.framework in Frameworks */,
-				964F13C4204F141300B54B97 /* Embassy.framework in Frameworks */,
 				96601204203A8A310035FE96 /* OAuthSwift.framework in Frameworks */,
 				96601205203A8A310035FE96 /* PromiseKit.framework in Frameworks */,
 				966011E3203A839C0035FE96 /* JSONClient.framework in Frameworks */,
