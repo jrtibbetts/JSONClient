@@ -81,7 +81,7 @@ open class JSONClient: NSObject {
                             fulfill(try self.handleSuccessfulData(data!))
                         } catch {
                             /// The data couldn't be decoded into the expected
-                            /// type `T`.
+                            /// type T.
                             reject(JSONErr.parseFailed(error: error))
                         }
                     }

@@ -103,7 +103,7 @@ open class AuthorizedJSONClient: JSONClient {
     open func authorizedPost<T: Codable>(url: URL,
                                          object: T,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
-        guard let _ = oAuthClient else {
+        if oAuthClient == nil {
             return Promise<T> { (_, reject) in
                 reject(JSONErr.unauthorizedAttempt)
             }

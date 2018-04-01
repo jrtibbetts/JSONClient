@@ -9,7 +9,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public static let callbackUrl = URL(string: "jsonclientdemo://oauth-callback/github")!
     var window: UIWindow?
 
-
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
