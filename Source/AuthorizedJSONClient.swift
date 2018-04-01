@@ -41,7 +41,7 @@ open class AuthorizedJSONClient: JSONClient {
                                         headers: Headers = [:],
                                         params: [String: Any] = [:]) -> Promise<T> {
         guard let url = URL(string: path, relativeTo: baseUrl) else {
-            return Promise<T>() { (_, reject) in
+            return Promise<T> { (_, reject) in
                 reject(JSONErr.invalidUrl(urlString: path))
             }
         }
@@ -52,21 +52,22 @@ open class AuthorizedJSONClient: JSONClient {
     open func authorizedGet<T: Codable>(url: URL,
                                         headers: Headers = [:],
                                         params: [String: Any] = [:]) -> Promise<T> {
-        return Promise<T>() { (fulfill, reject) in
-            guard let oAuthClient = oAuthClient else {
+        guard let oAuthClient = oAuthClient else {
+            return Promise<T> { (fulfill, reject) in
                 reject(JSONErr.unauthorizedAttempt)
-                return
             }
+        }
 
-            let _ = oAuthClient.get(url.absoluteString,
-                                    parameters: params,
-                                    headers: headers,
-                                    success: { (response) in
-                                        do {
-                                            fulfill(try self.handleSuccessfulResponse(response))
-                                        } catch {
-                                            reject(JSONErr.parseFailed(error: error))
-                                        }
+        return Promise<T> { (fulfill, reject) in
+            _ = oAuthClient.get(url.absoluteString,
+                                parameters: params,
+                                headers: headers,
+                                success: { (response) in
+                                    do {
+                                        fulfill(try self.handleSuccessfulResponse(response))
+                                    } catch {
+                                        reject(JSONErr.parseFailed(error: error))
+                                    }
             }, failure: { (error) in
                 reject(error)
             })
@@ -74,22 +75,25 @@ open class AuthorizedJSONClient: JSONClient {
     }
 
     open func authorizedPost<T: Codable>(url: URL,
+                                         jsonData: Data? = nil,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
-        return Promise<T>() { (fulfill, reject) in
-            guard let oAuthClient = oAuthClient else {
+        guard let oAuthClient = oAuthClient else {
+            return Promise<T> { (fulfill, reject) in
                 reject(JSONErr.unauthorizedAttempt)
-                return
             }
+        }
 
-            let _ = oAuthClient.post(url.absoluteString,
-                                     parameters: [:],
-                                     headers: headers,
-                                     success: { (response) in
-                                        do {
-                                            fulfill(try self.handleSuccessfulResponse(response))
-                                        } catch {
-                                            reject(JSONErr.parseFailed(error: error))
-                                        }
+        return Promise<T> { (fulfill, reject) in
+            _ = oAuthClient.post(url.absoluteString,
+                                 parameters: [:],
+                                 headers: headers,
+                                 body: jsonData,
+                                 success: { (response) in
+                                    do {
+                                        fulfill(try self.handleSuccessfulResponse(response))
+                                    } catch {
+                                        reject(JSONErr.parseFailed(error: error))
+                                    }
             }, failure: { (error) in
                 reject(error)
             })
@@ -99,29 +103,17 @@ open class AuthorizedJSONClient: JSONClient {
     open func authorizedPost<T: Codable>(url: URL,
                                          object: T,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
-        return Promise<T>() { (fulfill, reject) in
-            guard let oAuthClient = oAuthClient else {
+        guard let _ = oAuthClient else {
+            return Promise<T> { (fulfill, reject) in
                 reject(JSONErr.unauthorizedAttempt)
-                return
             }
+        }
 
-            do {
-                let data = try JSONUtils.jsonData(forObject: object)
-
-                let _ = oAuthClient.post(url.absoluteString,
-                                         parameters: [:],
-                                         headers: headers,
-                                         body: data,
-                                         success: { (response) in
-                                            do {
-                                                fulfill(try self.handleSuccessfulResponse(response))
-                                            } catch {
-                                                reject(JSONErr.parseFailed(error: error))
-                                            }
-                }, failure: { (error) in
-                    reject(error)
-                })
-            } catch {
+        do {
+            let data = try JSONUtils.jsonData(forObject: object)
+            return authorizedPost(url: url, jsonData: data, headers: headers)
+        } catch {
+            return Promise<T> { (fulfill, reject) in
                 reject(error)
             }
         }

@@ -7,13 +7,13 @@ import UIKit
 /// An `AuthorizedJSONClient` implementation that uses OAuth 1 for
 /// authentication and authorization.
 open class OAuth1JSONClient: AuthorizedJSONClient {
-
+    
     /// The OAuth engine. Note that there's already an `oAuth` property in the
     /// superclass, and its type is `OAuthSwift`, which is the superclass of
     /// `OAuth1Swift`. This one is here so that we don't have to cast the
     /// `oAuth` property to the desired type.
     fileprivate let oAuth1: OAuth1Swift
-
+    
     /// Initialize the client with the app's hashes on the server, as well as
     /// the server's various OAuth-related URLs.
     ///
@@ -43,7 +43,7 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
                              accessTokenUrl: accessTokenUrl)
         super.init(oAuth: oAuth1, baseUrl: baseUrl)
     }
-
+    
     /// Launch the service's sign-in page in a modal Safari web view. After the
     /// user has successfully authenticated, the web page will be redirected to
     /// the callback URL, which is unique to the client application.
@@ -55,19 +55,19 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
     ///
     /// - returns:  A `Promise` containing whatever type of data is sent back
     ///             by the server after authentication succeeds.
-    open func authorize<T>(presentingViewController: UIViewController,
-                           callbackUrlString: String) -> Promise<T> {
+    open func authorize<OAuthSwiftCredential>(presentingViewController: UIViewController,
+                                              callbackUrlString: String) -> Promise<OAuthSwiftCredential> {
         oAuth1.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
-
-        return Promise<T>() { [weak self] (fulfill, reject) in
-            let _ = self?.oAuth1.authorize(withCallbackURL: callbackUrlString,
-                                           success: { [weak self] (credentials, response, parameters) in
-                                            self?.oAuthClient = OAuthSwiftClient(credential: credentials)
+        
+        return Promise<OAuthSwiftCredential> { [weak self] (fulfill, reject) in
+            _ = self?.oAuth1.authorize(withCallbackURL: callbackUrlString,
+                                       success: { [weak self] (credential, _, _) in
+                                        self?.oAuthClient = OAuthSwiftClient(credential: credential)
+                                        fulfill(credential as! OAuthSwiftCredential)
                 }, failure: { (error) in
                     reject(error)
             })
         }
     }
-
+    
 }
-
