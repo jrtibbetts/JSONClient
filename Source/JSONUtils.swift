@@ -18,7 +18,12 @@ public struct JSONUtils {
 
     /// The decoder that all decoding functions use. It uses the default
     /// decoding strategies.
-    fileprivate static let decoder = JSONDecoder()
+    fileprivate static let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        return decoder
+    }()
 
     /// The encoder that all encoding functions use. It uses the default
     /// encoding strategies.
