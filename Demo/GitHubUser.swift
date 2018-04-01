@@ -3,6 +3,7 @@
 import Foundation
 
 public struct GitHubUser: Codable {
+
     public var avatarUrl: String
     public var bio: String
     public var blog: URL
@@ -41,50 +42,10 @@ public struct GitHubUser: Codable {
     public var url: String
     public var updatedAt: String
 
-    fileprivate enum CodingKeys: String, CodingKey {
-        case avatarUrl = "avatar_url"
-        case bio
-        case blog
-        case collaborators
-        case company
-        case createdAt = "created_at"
-        case diskUsage = "disk_usage"
-        case email
-        case eventsUrl = "events_url"
-        case followers
-        case following
-        case followersUrl = "followers_url"
-        case followingUrl = "following_url"
-        case gistsUrl = "gists_url"
-        case gravatarId = "gravatar_id"
-        case hireable
-        case htmlUrl = "html_url"
-        case id
-        case location
-        case login
-        case name
-        case organizationsUrl = "organizations_url"
-        case ownedPrivateRepos = "owned_private_repos"
-        case plan
-        case privateGists = "private_gists"
-        case publicGists = "public_gists"
-        case publicRepos = "public_repos"
-        case receivedEventsUrl = "received_events_url"
-        case reposUrl = "repos_url"
-        case siteAdmin = "site_admin"
-        case starredUrl = "starred_url"
-        case subscriptionsUrl = "subscriptions_url"
-        case totalPrivateRepos = "total_private_repos"
-        case twoFactorAuthentication = "two_factor_authentication"
-        case type
-        case url
-        case updatedAt = "updated_at"
-    }
-
     public struct Plan: Codable {
         public var collaborators: Int
         public var name: String
-        public var private_repos: Int
+        public var privateRepos: Int
         public var space: Int
    }
 }

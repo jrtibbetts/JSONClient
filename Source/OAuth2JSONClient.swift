@@ -6,18 +6,18 @@ import PromiseKit
 /// An `AuthorizedJSONClient` implementation that uses OAuth 2 for
 /// authentication and authorization.
 open class OAuth2JSONClient: AuthorizedJSONClient {
-
+    
     /// The OAuth engine. Note that there's already an `oAuth` property in the
     /// superclass, and its type is `OAuthSwift`, which is the superclass of
     /// `OAuth2Swift`. This one is here so that we don't have to cast the
     /// `oAuth` property to the desired type.
     fileprivate let oAuth2: OAuth2Swift
-
+    
     /// A one-time random string value that's added to request headers and
     /// checked against a response's headers to ensure that the call was
     /// made by the right entity.
     fileprivate let state: String = "\(arc4random_uniform(UINT32_MAX))"
-
+    
     /// Initialize the client with the app's hashes on the server, as well as
     /// the server's various OAuth-related URLs.
     ///
@@ -44,7 +44,7 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                              responseType: "token")  // will it always be "token"?
         super.init(oAuth: oAuth2, baseUrl: baseUrl)
     }
-
+    
     /// Launch the service's sign-in page in a modal Safari web view. After the
     /// user has successfully authenticated, the web page will be redirected to
     /// the callback URL, which is unique to the client application.
@@ -59,21 +59,22 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
     ///
     /// - returns:  A `Promise` containing whatever type of data is sent back
     ///             by the server after authentication succeeds.
-    open func authorize<T>(presentingViewController: UIViewController,
-                           callbackUrlString: String,
-                           scope: String = "") -> Promise<T> {
+    open func authorize(presentingViewController: UIViewController,
+                        callbackUrlString: String,
+                        scope: String = "") -> Promise<OAuthSwiftCredential> {
         oAuth2.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
-
-        return Promise<T>() { (fulfill, reject) in
-            let _ = self.oAuth2.authorize(withCallbackURL: callbackUrlString,
-                                          scope: scope,
-                                          state: state,
-                                          success: { [weak self] (credentials, response, parameters) in
-                                            self?.oAuthClient = OAuthSwiftClient(credential: credentials)
+        
+        return Promise<OAuthSwiftCredential> { (fulfill, reject) in
+            _ = self.oAuth2.authorize(withCallbackURL: callbackUrlString,
+                                      scope: scope,
+                                      state: state,
+                                      success: { [weak self] (credentials, _, _) in
+                                        self?.oAuthClient = OAuthSwiftClient(credential: credentials)
+                                        fulfill(credentials)
                 }, failure: { (error) in
                     reject(error)
             })
         }
     }
-
+    
 }

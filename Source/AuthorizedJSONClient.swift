@@ -53,7 +53,7 @@ open class AuthorizedJSONClient: JSONClient {
                                         headers: Headers = [:],
                                         params: [String: Any] = [:]) -> Promise<T> {
         guard let oAuthClient = oAuthClient else {
-            return Promise<T> { (fulfill, reject) in
+            return Promise<T> { (_, reject) in
                 reject(JSONErr.unauthorizedAttempt)
             }
         }
@@ -78,7 +78,7 @@ open class AuthorizedJSONClient: JSONClient {
                                          jsonData: Data? = nil,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         guard let oAuthClient = oAuthClient else {
-            return Promise<T> { (fulfill, reject) in
+            return Promise<T> { (_, reject) in
                 reject(JSONErr.unauthorizedAttempt)
             }
         }
@@ -104,7 +104,7 @@ open class AuthorizedJSONClient: JSONClient {
                                          object: T,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         guard let _ = oAuthClient else {
-            return Promise<T> { (fulfill, reject) in
+            return Promise<T> { (_, reject) in
                 reject(JSONErr.unauthorizedAttempt)
             }
         }
@@ -113,7 +113,7 @@ open class AuthorizedJSONClient: JSONClient {
             let data = try JSONUtils.jsonData(forObject: object)
             return authorizedPost(url: url, jsonData: data, headers: headers)
         } catch {
-            return Promise<T> { (fulfill, reject) in
+            return Promise<T> { (_, reject) in
                 reject(error)
             }
         }
