@@ -55,15 +55,15 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
     ///
     /// - returns:  A `Promise` containing whatever type of data is sent back
     ///             by the server after authentication succeeds.
-    open func authorize<OAuthSwiftCredential>(presentingViewController: UIViewController,
-                                              callbackUrlString: String) -> Promise<OAuthSwiftCredential> {
+    open func authorize(presentingViewController: UIViewController,
+                        callbackUrlString: String) -> Promise<OAuthSwiftCredential> {
         oAuth1.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
         
         return Promise<OAuthSwiftCredential> { [weak self] (fulfill, reject) in
             _ = self?.oAuth1.authorize(withCallbackURL: callbackUrlString,
                                        success: { [weak self] (credential, _, _) in
                                         self?.oAuthClient = OAuthSwiftClient(credential: credential)
-                                        fulfill(credential as! OAuthSwiftCredential)
+                                        fulfill(credential)
                 }, failure: { (error) in
                     reject(error)
             })
