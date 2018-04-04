@@ -70,6 +70,26 @@ open class AuthorizedJSONClient: JSONClient {
         }
     }
 
+    open func authorizedPost<T: Codable>(path: String,
+                                         jsonData: Data? = nil,
+                                         headers: OAuthSwift.Headers = [:]) -> Promise<T> {
+        guard let url = URL(string: path, relativeTo: baseUrl) else {
+            return JSONErr.invalidUrl(urlString: path).rejectedPromise()
+        }
+
+        return authorizedPost(url: url, jsonData: jsonData, headers: headers)
+    }
+
+    open func authorizedPost<T: Codable>(path: String,
+                                         object: T,
+                                         headers: OAuthSwift.Headers = [:]) -> Promise<T> {
+        guard let url = URL(string: path, relativeTo: baseUrl) else {
+            return RejectedPromise<T>(error: JSONErr.invalidUrl(urlString: path))
+        }
+
+        return authorizedPost(url: url, object: object, headers: headers)
+    }
+
     open func authorizedPost<T: Codable>(url: URL,
                                          jsonData: Data? = nil,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
