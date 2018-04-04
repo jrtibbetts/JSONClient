@@ -41,9 +41,7 @@ open class AuthorizedJSONClient: JSONClient {
                                         headers: Headers = [:],
                                         params: [String: Any] = [:]) -> Promise<T> {
         guard let url = URL(string: path, relativeTo: baseUrl) else {
-            return Promise<T> { (_, reject) in
-                reject(JSONErr.invalidUrl(urlString: path))
-            }
+            return JSONErr.invalidUrl(urlString: path).rejectedPromise()
         }
 
         return authorizedGet(url: url, headers: headers, params: params)
@@ -53,9 +51,7 @@ open class AuthorizedJSONClient: JSONClient {
                                         headers: Headers = [:],
                                         params: [String: Any] = [:]) -> Promise<T> {
         guard let oAuthClient = oAuthClient else {
-            return Promise<T> { (_, reject) in
-                reject(JSONErr.unauthorizedAttempt)
-            }
+            return JSONErr.unauthorizedAttempt.rejectedPromise()
         }
 
         return Promise<T> { (fulfill, reject) in
@@ -78,9 +74,7 @@ open class AuthorizedJSONClient: JSONClient {
                                          jsonData: Data? = nil,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         guard let oAuthClient = oAuthClient else {
-            return Promise<T> { (_, reject) in
-                reject(JSONErr.unauthorizedAttempt)
-            }
+            return JSONErr.unauthorizedAttempt.rejectedPromise()
         }
 
         return Promise<T> { (fulfill, reject) in
@@ -104,9 +98,7 @@ open class AuthorizedJSONClient: JSONClient {
                                          object: T,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         if oAuthClient == nil {
-            return Promise<T> { (_, reject) in
-                reject(JSONErr.unauthorizedAttempt)
-            }
+            return JSONErr.unauthorizedAttempt.rejectedPromise()
         }
 
         do {

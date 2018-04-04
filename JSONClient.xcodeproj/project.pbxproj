@@ -38,6 +38,8 @@
 		9689BC5A2049D0C500F8DEB1 /* SampleFoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 9689BC592049D0C500F8DEB1 /* SampleFoo.json */; };
 		96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC96204B96A00083A7DA /* MockClientTests.swift */; };
 		96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */; };
+		96EDCFD7207489C800F08E86 /* RejectedPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCFD6207489C800F08E86 /* RejectedPromise.swift */; };
+		96EDCFD920748F4F00F08E86 /* RejectedPromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCFD820748F4F00F08E86 /* RejectedPromiseTests.swift */; };
 		96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */; };
 		96F0EBFF2054DE11004A124A /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EBFE2054DE11004A124A /* GitHubClient.swift */; };
 		96F0EC012054E07F004A124A /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EC002054E07F004A124A /* GitHubUser.swift */; };
@@ -111,6 +113,8 @@
 		9689BC592049D0C500F8DEB1 /* SampleFoo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleFoo.json; sourceTree = "<group>"; };
 		96D8CC96204B96A00083A7DA /* MockClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClientTests.swift; sourceTree = "<group>"; };
 		96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONClientTests.swift; sourceTree = "<group>"; };
+		96EDCFD6207489C800F08E86 /* RejectedPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedPromise.swift; sourceTree = "<group>"; };
+		96EDCFD820748F4F00F08E86 /* RejectedPromiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedPromiseTests.swift; sourceTree = "<group>"; };
 		96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedJSONClient.swift; sourceTree = "<group>"; };
 		96F0EBFE2054DE11004A124A /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		96F0EC002054E07F004A124A /* GitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				966011F3203A83DF0035FE96 /* MockClient.swift */,
 				960368982056097200D24CE7 /* OAuth1JSONClient.swift */,
 				9603689A205609FA00D24CE7 /* OAuth2JSONClient.swift */,
+				96EDCFD6207489C800F08E86 /* RejectedPromise.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -207,13 +212,14 @@
 		966011E6203A839C0035FE96 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9603689C2056D94000D24CE7 /* AuthorizedJSONClientTests.swift */,
 				964F1415205333E400B54B97 /* DiscogsInfo.swift */,
 				966011E9203A839C0035FE96 /* Info.plist */,
 				96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */,
 				966011FB203A840D0035FE96 /* JSONUtilsTests.swift */,
 				96D8CC96204B96A00083A7DA /* MockClientTests.swift */,
+				96EDCFD820748F4F00F08E86 /* RejectedPromiseTests.swift */,
 				9689BC592049D0C500F8DEB1 /* SampleFoo.json */,
-				9603689C2056D94000D24CE7 /* AuthorizedJSONClientTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 				96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */,
 				966011F6203A83E00035FE96 /* MockClient.swift in Sources */,
 				966011F8203A83E00035FE96 /* JSONUtils.swift in Sources */,
+				96EDCFD7207489C800F08E86 /* RejectedPromise.swift in Sources */,
 				966011F7203A83E00035FE96 /* JSONClient.swift in Sources */,
 				9603689B205609FA00D24CE7 /* OAuth2JSONClient.swift in Sources */,
 			);
@@ -409,6 +416,7 @@
 				96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */,
 				9603689E2056E05700D24CE7 /* DiscogsInfo.swift in Sources */,
 				9603689D2056D94000D24CE7 /* AuthorizedJSONClientTests.swift in Sources */,
+				96EDCFD920748F4F00F08E86 /* RejectedPromiseTests.swift in Sources */,
 				96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */,
 				966011FE203A840D0035FE96 /* JSONUtilsTests.swift in Sources */,
 			);

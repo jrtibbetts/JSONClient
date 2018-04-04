@@ -32,7 +32,28 @@ class AuthorizedJSONClientTests: JSONClientTests {
                wasUnauthorizedWithMessage: errorMessage)
     }
 
-    func testAuthorizedPostBeforeAuthorizationFails() {
+    func testAuthorizedPostWithPathBeforeAuthorizationFails() {
+        let client = validJSONClient() as! AuthorizedJSONClient
+        let path = "https://api.discogs.com"
+        let promise: Promise<DiscogsInfo> = client.authorizedPost(path: path)
+        let errorMessage = "The call should have been rejected because the user isn't authorized"
+
+        assert(promise: promise,
+               wasUnauthorizedWithMessage: errorMessage)
+    }
+
+    func testAuthorizedPostWithPathAndDataBeforeAuthorizationFails() {
+        let client = validJSONClient() as! AuthorizedJSONClient
+        let path = "https://api.discogs.com"
+        let string = "This is the payload to be posted."
+        let promise: Promise<String> = client.authorizedPost(path: path, object: string)
+        let errorMessage = "The call should have been rejected because the user isn't authorized"
+
+        assert(promise: promise,
+               wasUnauthorizedWithMessage: errorMessage)
+    }
+
+    func testAuthorizedPostWithUrlBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
         let url = URL(string: "https://api.discogs.com")!
         let promise: Promise<DiscogsInfo> = client.authorizedPost(url: url)
@@ -42,7 +63,7 @@ class AuthorizedJSONClientTests: JSONClientTests {
                wasUnauthorizedWithMessage: errorMessage)
     }
 
-    func testAuthorizedPostWithDataBeforeAuthorizationFails() {
+    func testAuthorizedPostWithUrlAndDataBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
         let url = URL(string: "https://api.discogs.com")!
         let string = "This is the payload to be posted."

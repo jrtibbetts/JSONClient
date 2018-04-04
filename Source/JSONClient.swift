@@ -14,6 +14,7 @@ open class JSONClient: NSObject {
     /// with `Foundation.JSONError`, which are thrown by Foundation parsing
     /// calls.
     public enum JSONErr: Error {
+
         /// Thrown if a path contains illegal URL characters or is `nil`.
         case invalidUrl(urlString: String?)
         /// Thrown if there's no JSON data at a given path.
@@ -21,7 +22,13 @@ open class JSONClient: NSObject {
         /// Thrown if the JSON at a given path can't be decoded into the
         /// expected type.
         case parseFailed(error: Error)
+        /// Thrown if the endpoint returned an HTTP 401 (unauthorized) code.
         case unauthorizedAttempt
+
+        func rejectedPromise<T: Codable>() -> Promise<T> {
+            return RejectedPromise(error: self)
+        }
+
     }
     
     // MARK: - Properties
