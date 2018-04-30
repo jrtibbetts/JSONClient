@@ -8,7 +8,7 @@ import PromiseKit
 open class JSONClient: NSObject {
     
     public typealias Headers = [String: String]
-    public typealias Parameters = [URLQueryItem]
+    public typealias Parameters = [String: String]
     
     /// Errors that can be thrown by the `JSONClient`. Don't confuse the name
     /// with `Foundation.JSONError`, which are thrown by Foundation parsing
@@ -60,7 +60,7 @@ open class JSONClient: NSObject {
     /// - parameter path: The path of the URL, relative to the `baseUrl`, or,
     ///             the absolute URL if `baseUrl` is `nil`.
     /// - parameter headers: Custom header values to use in the request.
-    /// - parameter params: Parameter name/value pairs to be appended to the
+    /// - parameter parameters: Parameter name/value pairs to be appended to the
     ///             URL.
     ///
     /// - throws:   `JSONError.invalidUrl` if `path` contains illegal
@@ -69,11 +69,11 @@ open class JSONClient: NSObject {
     ///             `JSONError.parseFailed` if the JSON at `path` isn't valid
     ///             for the expected type.
     open func get<T: Codable>(path: String,
-                              headers: Headers = [:],
-                              params: Parameters = []) -> Promise<T> {
+                              headers: Headers = Headers(),
+                              parameters: Parameters = Parameters()) -> Promise<T> {
         return Promise<T> { (fulfill, reject) in
             do {
-                let urlRequest = try request(forPath: path, headers: headers, params: params)
+                let urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
                 
                 urlSession.dataTask(with: urlRequest) { (data, _, error) in
                     if let error = error {
@@ -106,11 +106,13 @@ open class JSONClient: NSObject {
     }
 
     open func request(forPath path: String,
-                      headers: Headers = [:],
-                      params: Parameters = []) throws -> URLRequest {
+                      headers: Headers = Headers(),
+                      parameters: Parameters = Parameters()) throws -> URLRequest {
         let initialUrl = URL(string: path, relativeTo: baseUrl)
         var components = URLComponents()
-        components.queryItems = params
+        components.queryItems = parameters.map { (key, value) -> URLQueryItem in
+            URLQueryItem(name: key, value: value)
+        }
 
         guard let url = components.url(relativeTo: initialUrl) else {
             throw JSONErr.invalidUrl(urlString: path)

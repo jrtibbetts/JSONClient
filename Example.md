@@ -73,7 +73,7 @@ or
 ```
 var promise: Promise<UserInfo> = client.get(path: "userInfo",
                                             headers: ["User-Agent": "My App's User-Agent Identifier"],
-                                            params: [URLQueryItem(name: "username", value: "Charlemagne"])
+                                            parameters: [URLQueryItem(name: "username", value: "Charlemagne"])
 ```
  4. The returned `Promise`  is processed by calling its `then` function (if successful) and `catch` *function* (if not).
 ```

@@ -38,25 +38,25 @@ open class AuthorizedJSONClient: JSONClient {
     /// `GET` JSON data that requires client authentication to access and
     /// return it as a `Promise` of the desired `Codable` data type.
     open func authorizedGet<T: Codable>(path: String,
-                                        headers: Headers = [:],
-                                        params: [String: Any] = [:]) -> Promise<T> {
+                                        headers: Headers = Headers(),
+                                        parameters: Parameters = Parameters()) -> Promise<T> {
         guard let url = URL(string: path, relativeTo: baseUrl) else {
             return JSONErr.invalidUrl(urlString: path).rejectedPromise()
         }
 
-        return authorizedGet(url: url, headers: headers, params: params)
+        return authorizedGet(url: url, headers: headers, parameters: parameters)
     }
 
     open func authorizedGet<T: Codable>(url: URL,
-                                        headers: Headers = [:],
-                                        params: [String: Any] = [:]) -> Promise<T> {
+                                        headers: Headers = Headers(),
+                                        parameters: Parameters = Parameters()) -> Promise<T> {
         guard let oAuthClient = oAuthClient else {
             return JSONErr.unauthorizedAttempt.rejectedPromise()
         }
 
         return Promise<T> { (fulfill, reject) in
             _ = oAuthClient.get(url.absoluteString,
-                                parameters: params,
+                                parameters: parameters,
                                 headers: headers,
                                 success: { (response) in
                                     do {
