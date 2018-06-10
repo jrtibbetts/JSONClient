@@ -19,9 +19,14 @@ open class JSONClient: NSObject {
         case invalidUrl(urlString: String?)
         /// Thrown if there's no JSON data at a given path.
         case nilData
+        /// Thrown if the server returned a 404 status code. (All other non-200
+        /// errors should be reported with a `.serverError` case.)
+        case notFound
         /// Thrown if the JSON at a given path can't be decoded into the
         /// expected type.
         case parseFailed(error: Error)
+        /// Thrown if the server returned anything other than a 200 status code.
+        case serverError(statusCode: Int)
         /// Thrown if the endpoint returned an HTTP 401 (unauthorized) code.
         case unauthorizedAttempt
 
@@ -75,10 +80,14 @@ open class JSONClient: NSObject {
             do {
                 let urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
                 
-                urlSession.dataTask(with: urlRequest) { (data, _, error) in
+                urlSession.dataTask(with: urlRequest) { (data, response, error) in
                     if let error = error {
                         /// Usually an "unsupported URL" NSError.
                         reject(error)
+                    } else if let response = response as? HTTPURLResponse, response.statusCode == 404 {
+                        reject(JSONErr.notFound)
+                    } else if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                        reject(JSONErr.serverError(statusCode: response.statusCode))
                     } else if data == nil {
                         /// Make sure that we got some sort of data.
                         reject(JSONErr.nilData)
