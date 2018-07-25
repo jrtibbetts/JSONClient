@@ -31,11 +31,7 @@ class JSONUtilsTests: XCTestCase {
     }
     
     struct Foo: Codable, Equatable {
-        
-        static func ==(lhs: Foo, rhs: Foo) -> Bool {
-            return (lhs.foo == rhs.foo) && (lhs.bar == rhs.bar)
-        }
-        
+                
         var foo: Int
         var bar: String?
         
