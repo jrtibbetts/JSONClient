@@ -31,7 +31,7 @@ class JSONClientTests: XCTestCase {
 
         let promise: Promise<DiscogsInfo> = client.get(path: "https://api.discogs.com")
 
-        promise.then { (info) -> Void in
+        promise.done { (info) -> Void in
             XCTAssertEqual(info.apiVersion, "v2")
             XCTAssertEqual(info.documentationUrl, URL(string: "http://www.discogs.com/developers/"))
             exp.fulfill()
@@ -47,7 +47,7 @@ class JSONClientTests: XCTestCase {
         let exp = expectation(description: "Discogs info")
         let path = "relative/path/that/does/not/exist"
         let promise: Promise<DiscogsInfo> = client.get(path: path)
-        promise.then { (info) -> Void in
+        promise.done { (info) -> Void in
             XCTFail("get() should have failed because it has a nil base URL and a relative path that can't be resolved!")
             }.catch { (error) in
                 XCTAssertEqual(error.localizedDescription, "unsupported URL")
@@ -62,7 +62,7 @@ class JSONClientTests: XCTestCase {
         let exp = expectation(description: "Discogs info")
         let path = "1(*#%(*DFSLDKU%(*@)"
         let promise: Promise<DiscogsInfo> = client.get(path: path)
-        promise.then { (info) -> Void in
+        promise.done { (info) -> Void in
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
             }.catch { (error) in
                 XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
@@ -77,7 +77,7 @@ class JSONClientTests: XCTestCase {
         let exp = expectation(description: "Discogs info")
         let path = "1(*#%(*DFSLDKU%(*@)"
         let promise: Promise<DiscogsInfo> = client.get(path: path)
-        promise.then { (info) -> Void in
+        promise.done { (info) -> Void in
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
             }.catch { (error) in
                 XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
@@ -92,7 +92,7 @@ class JSONClientTests: XCTestCase {
         let exp = expectation(description: "Discogs info")
         let path = "/"
         let promise: Promise<String> = client.get(path: path)
-        promise.then { (info) -> Void in
+        promise.done { (info) -> Void in
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
             }.catch { (error) in
                 guard let error = error as? JSONClient.JSONErr else {

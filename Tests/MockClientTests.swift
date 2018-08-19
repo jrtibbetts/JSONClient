@@ -41,7 +41,7 @@ class MockClientTests: XCTestCase {
         let exp = expectation(description: "error mode default error")
         let promise: Promise<String> = client.apply(toJsonObjectIn: "SampleFoo")
 
-        promise.then { (promise) -> Void in
+        promise.done { (promise) -> Void in
             XCTFail("This should have thrown a default error.")
             }.catch { (error) in
                 XCTAssertTrue(error.localizedDescription.contains(errorDomain))
@@ -59,7 +59,7 @@ class MockClientTests: XCTestCase {
         let exp = expectation(description: "error mode default error")
         let promise: Promise<String> = client.apply(toJsonObjectIn: "SampleFoo", error: customError)
 
-        promise.then { (promise) -> Void in
+        promise.done { (promise) -> Void in
             XCTFail("This should have thrown a default error.")
             }.catch { (error) in
                 XCTAssertEqual(error.localizedDescription, customError.localizedDescription)
@@ -77,7 +77,7 @@ class MockClientTests: XCTestCase {
         let exp = expectation(description: "error mode default error")
         let promise: Promise<String> = client.apply(toJsonObjectIn: "SampleFoo", error: customError)
 
-        promise.then { (promise) -> Void in
+        promise.done { (promise) -> Void in
             XCTFail("This should have thrown a default error.")
             }.catch { (error) in
                 XCTAssertTrue(type(of: error) == JSONFileLoadingError.self)
