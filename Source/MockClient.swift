@@ -35,15 +35,15 @@ open class MockClient: JSONClient {
     
     public func apply<T: Codable>(toJsonObjectIn fileName: String,
                                   error: Error? = nil) -> Promise<T> {
-        return Promise<T> { (fulfill, reject) in
+        return Promise<T> { (seal) in
             if errorMode {
-                reject(error ?? NSError(domain: errorDomain, code: 0, userInfo: nil))
+                seal.reject(error ?? NSError(domain: errorDomain, code: 0, userInfo: nil))
             } else {
                 do {
                     let obj: T = try JSONUtils.jsonObject(forFileNamed: fileName, inBundle: bundle)
-                    fulfill(obj)
+                    seal.fulfill(obj)
                 } catch {
-                    reject(error)
+                    seal.reject(error)
                 }
             }
         }

@@ -54,18 +54,18 @@ open class AuthorizedJSONClient: JSONClient {
             return JSONErr.unauthorizedAttempt.rejectedPromise()
         }
 
-        return Promise<T> { (fulfill, reject) in
+        return Promise<T> { (seal) in
             _ = oAuthClient.get(url.absoluteString,
                                 parameters: parameters,
                                 headers: headers,
                                 success: { (response) in
                                     do {
-                                        fulfill(try self.handleSuccessfulResponse(response))
+                                        seal.fulfill(try self.handleSuccessfulResponse(response))
                                     } catch {
-                                        reject(JSONErr.parseFailed(error: error))
+                                        seal.reject(JSONErr.parseFailed(error: error))
                                     }
             }, failure: { (error) in
-                reject(error)
+                _ = seal.reject(error)
             })
         }
     }
@@ -84,7 +84,7 @@ open class AuthorizedJSONClient: JSONClient {
                                          object: T,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
         guard let url = URL(string: path, relativeTo: baseUrl) else {
-            return RejectedPromise<T>(error: JSONErr.invalidUrl(urlString: path))
+            return Promise<T>(error: JSONErr.invalidUrl(urlString: path))
         }
 
         return authorizedPost(url: url, object: object, headers: headers)
@@ -97,19 +97,19 @@ open class AuthorizedJSONClient: JSONClient {
             return JSONErr.unauthorizedAttempt.rejectedPromise()
         }
 
-        return Promise<T> { (fulfill, reject) in
+        return Promise<T> { (seal) in
             _ = oAuthClient.post(url.absoluteString,
                                  parameters: [:],
                                  headers: headers,
                                  body: jsonData,
                                  success: { (response) in
                                     do {
-                                        fulfill(try self.handleSuccessfulResponse(response))
+                                        seal.fulfill(try self.handleSuccessfulResponse(response))
                                     } catch {
-                                        reject(JSONErr.parseFailed(error: error))
+                                        seal.reject(JSONErr.parseFailed(error: error))
                                     }
             }, failure: { (error) in
-                reject(error)
+                _ = seal.reject(error)
             })
         }
     }
@@ -125,8 +125,8 @@ open class AuthorizedJSONClient: JSONClient {
             let data = try JSONUtils.jsonData(forObject: object)
             return authorizedPost(url: url, jsonData: data, headers: headers)
         } catch {
-            return Promise<T> { (_, reject) in
-                reject(error)
+            return Promise<T> { (seal) in
+                seal.reject(error)
             }
         }
     }

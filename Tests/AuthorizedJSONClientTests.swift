@@ -116,7 +116,7 @@ class AuthorizedJSONClientTests: JSONClientTests {
                             wasUnauthorizedWithMessage errorMessage: String) {
         let exp = expectation(description: errorMessage)
 
-        promise.then { (obj) -> Void in
+        promise.done { (obj) -> Void in
             XCTFail(errorMessage)
             }.catch { (error) in
                 guard let error = error as? JSONClient.JSONErr else {

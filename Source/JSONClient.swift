@@ -31,7 +31,7 @@ open class JSONClient: NSObject {
         case unauthorizedAttempt
 
         func rejectedPromise<T: Codable>() -> Promise<T> {
-            return RejectedPromise(error: self)
+            return Promise(error: self)
         }
 
     }
@@ -76,34 +76,34 @@ open class JSONClient: NSObject {
     open func get<T: Codable>(path: String,
                               headers: Headers = Headers(),
                               parameters: Parameters = Parameters()) -> Promise<T> {
-        return Promise<T> { (fulfill, reject) in
+        return Promise<T> { (seal) in
             do {
                 let urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
                 
                 urlSession.dataTask(with: urlRequest) { (data, response, error) in
                     if let error = error {
                         /// Usually an "unsupported URL" NSError.
-                        reject(error)
+                        seal.reject(error)
                     } else if let response = response as? HTTPURLResponse, response.statusCode == 404 {
-                        reject(JSONErr.notFound)
+                        seal.reject(JSONErr.notFound)
                     } else if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-                        reject(JSONErr.serverError(statusCode: response.statusCode))
+                        seal.reject(JSONErr.serverError(statusCode: response.statusCode))
                     } else if data == nil {
                         /// Make sure that we got some sort of data.
-                        reject(JSONErr.nilData)
+                        seal.reject(JSONErr.nilData)
                     } else {
                         do {
                             /// The data is non-`nil`, so parse it.
-                            fulfill(try self.handleSuccessfulData(data!))
+                            seal.fulfill(try self.handleSuccessfulData(data!))
                         } catch {
                             /// The data couldn't be decoded into the expected
                             /// type T.
-                            reject(JSONErr.parseFailed(error: error))
+                            seal.reject(JSONErr.parseFailed(error: error))
                         }
                     }
                     }.resume()  // Kick off the request. Don't forget this!
             } catch {
-                reject(error)
+                seal.reject(error)
             }
         }
     }
