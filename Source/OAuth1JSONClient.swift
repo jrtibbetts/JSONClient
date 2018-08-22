@@ -8,6 +8,11 @@ import UIKit
 /// authentication and authorization.
 open class OAuth1JSONClient: AuthorizedJSONClient {
     
+    /// The storage location of the `OAuthSwiftCredential`. By default, this is
+    /// `UserDefaults.standard`, but it can be assigned to other defaults if
+    /// needed, such as for unit testing.
+    open var defaults: UserDefaults = UserDefaults.standard
+
     /// The OAuth engine. Note that there's already an `oAuth` property in the
     /// superclass, and its type is `OAuthSwift`, which is the superclass of
     /// `OAuth1Swift`. This one is here so that we don't have to cast the
@@ -41,7 +46,7 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
                              requestTokenUrl: requestTokenUrl,
                              authorizeUrl: authorizeUrl,
                              accessTokenUrl: accessTokenUrl)
-        super.init(oAuth: oAuth1, baseUrl: baseUrl)
+        super.init(oAuth: oAuth1, authorizeUrl: authorizeUrl, baseUrl: baseUrl)
     }
 
     /// Launch the service's sign-in page in a modal Safari web view. After the
