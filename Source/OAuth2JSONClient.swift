@@ -42,7 +42,7 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                              authorizeUrl: authorizeUrl,
                              accessTokenUrl: accessTokenUrl,
                              responseType: "token")  // will it always be "token"?
-        super.init(oAuth: oAuth2, baseUrl: baseUrl)
+        super.init(oAuth: oAuth2, authorizeUrl: authorizeUrl, baseUrl: baseUrl)
     }
     
     /// Launch the service's sign-in page in a modal Safari web view. After the

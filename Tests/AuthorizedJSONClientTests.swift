@@ -10,7 +10,7 @@ class AuthorizedJSONClientTests: JSONClientTests {
     override func validJSONClient(baseUrl: URL? = nil) -> JSONClient {
         let oAuth = OAuth1Swift(consumerKey: "foo", consumerSecret: "bar")
         
-        return AuthorizedJSONClient(oAuth: oAuth, baseUrl: baseUrl)
+        return AuthorizedJSONClient(oAuth: oAuth, authorizeUrl: "http://www.cnn.com", baseUrl: baseUrl)
     }
 
     func testAuthorizedGetWithPathBeforeAuthorizationFails() {
