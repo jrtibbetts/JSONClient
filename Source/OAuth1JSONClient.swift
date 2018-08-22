@@ -7,11 +7,6 @@ import UIKit
 /// An `AuthorizedJSONClient` implementation that uses OAuth 1 for
 /// authentication and authorization.
 open class OAuth1JSONClient: AuthorizedJSONClient {
-    
-    /// The storage location of the `OAuthSwiftCredential`. By default, this is
-    /// `UserDefaults.standard`, but it can be assigned to other defaults if
-    /// needed, such as for unit testing.
-    open var defaults: UserDefaults = UserDefaults.standard
 
     /// The OAuth engine. Note that there's already an `oAuth` property in the
     /// superclass, and its type is `OAuthSwift`, which is the superclass of

@@ -7,8 +7,11 @@ import PromiseKit
 /// authorized REST calls for restricted resources.
 open class AuthorizedJSONClient: JSONClient {
 
-    // MARK: - Properties
+    // MARK: - Public Properties
 
+    /// The defaults object where the client's OAuth credential will be stored.
+    
+    open var defaults: UserDefaults = UserDefaults.standard
 
     /// The OAuth authentication mode that the client will use for
     /// authorization. This will be either `OAuth1Swift` or `OAuth2Swift`.
@@ -18,6 +21,13 @@ open class AuthorizedJSONClient: JSONClient {
     /// headers in calls to the server. Subclasses should assign a value to
     /// this once the user successfully authenticates with the server.
     var oAuthClient: OAuthSwiftClient?
+
+    // MARK: Internal Properties
+
+    /// The service's endpoint for initiating an authorization sequence. This
+    /// is used internally as the `UserDefaults` key for storing the OAuth
+    /// credential.
+    fileprivate var authorizeUrl: String
 
     // MARK: - Initialization
 
@@ -35,6 +45,7 @@ open class AuthorizedJSONClient: JSONClient {
                 authorizeUrl: String,
                 baseUrl: URL? = nil) {
         self.oAuth = oAuth
+        self.authorizeUrl = authorizeUrl
         super.init(baseUrl: baseUrl)
     }
 
