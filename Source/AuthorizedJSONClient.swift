@@ -25,10 +25,14 @@ open class AuthorizedJSONClient: JSONClient {
     ///
     /// - parameter oAuth: The OAuth authentication mode. This will be either
     ///             `OAuth1Swift` or `OAuth2Swift`.
+    /// - parameter authorizeUrl: For the purposes of this class, this is used
+    ///             as the `UserDefaults` key for storing the OAuth
+    ///             credential.
     /// - parameter baseUrl: The API URL that all paths will be resolved
     ///             against. If it's `nil` (the default), then each path that's
     ///             passed to the REST functions must be an absolute URL string.
     public init(oAuth: OAuthSwift,
+                authorizeUrl: String,
                 baseUrl: URL? = nil) {
         self.oAuth = oAuth
         super.init(baseUrl: baseUrl)
