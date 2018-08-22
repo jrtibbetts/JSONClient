@@ -43,7 +43,7 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
                              accessTokenUrl: accessTokenUrl)
         super.init(oAuth: oAuth1, baseUrl: baseUrl)
     }
-    
+
     /// Launch the service's sign-in page in a modal Safari web view. After the
     /// user has successfully authenticated, the web page will be redirected to
     /// the callback URL, which is unique to the client application.
@@ -65,7 +65,7 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
                                         self?.oAuthClient = OAuthSwiftClient(credential: credential)
                                         seal.fulfill(credential)
                 }, failure: { (error) in
-                    _ = seal.reject(error)
+                    seal.reject(error)
             })
         }
     }
