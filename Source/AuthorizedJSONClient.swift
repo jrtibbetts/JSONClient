@@ -35,7 +35,7 @@ open class AuthorizedJSONClient: JSONClient {
                 do {
                     return try JSONDecoder().decode(OAuthSwiftCredential.self, from: cachedData)
                 } catch {
-                    assertionFailure("Failed to retrieve the cached OAuthCredential: \(error.localizedDescription)")
+                    assertionFailure("Failed to decode the cached OAuth credential: \(error.localizedDescription)")
                     
                     return nil
                 }
@@ -45,12 +45,12 @@ open class AuthorizedJSONClient: JSONClient {
         }
 
         set {
-            if let credential = oAuthCredential {
+            if let credential = newValue {
                 do {
                     let cachedData: Data = try JSONEncoder().encode(credential)
                     defaults.set(cachedData, forKey: authorizeUrl)
                 } catch {
-                    assertionFailure("Failed to cache the OAuth credential: \(error.localizedDescription)")
+                    assertionFailure("Failed to encode the OAuth credential: \(error.localizedDescription)")
                 }
             }
         }
