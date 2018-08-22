@@ -118,11 +118,14 @@ class AuthorizedJSONClientTests: JSONClientTests {
         let credential = OAuthSwiftCredential(consumerKey: key, consumerSecret: secret)
 
         let client = validJSONClient() as! AuthorizedJSONClient
+        let originalDefaults = client.defaults  // reset the client.defaults to this later
+        client.defaults = UserDefaults(suiteName: self.name)!  // custom defaults for testing
         client.oAuthCredential = credential
         let decodedCredential = client.oAuthCredential
         XCTAssertEqual(credential, decodedCredential)
 
         client.oAuthCredential = nil
+        client.defaults = originalDefaults
     }
 
     func assert<T: Codable>(promise: Promise<T>,
