@@ -112,6 +112,17 @@ class AuthorizedJSONClientTests: JSONClientTests {
         }
     }
 
+    func testSetCredentialInStandardDefaultsOk() {
+        let key = "aslkdfj3q4fal;ksdfjal;skdfj"
+        let secret = "asdlkfj3l4kjrtl;kad meerlktjl;3k4j"
+        let credential = OAuthSwiftCredential(consumerKey: key, consumerSecret: secret)
+
+        let client = validJSONClient() as! AuthorizedJSONClient
+        client.oAuthCredential = credential
+        let decodedCredential = client.oAuthCredential
+        XCTAssertEqual(credential, decodedCredential)
+    }
+
     func assert<T: Codable>(promise: Promise<T>,
                             wasUnauthorizedWithMessage errorMessage: String) {
         let exp = expectation(description: errorMessage)
