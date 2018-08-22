@@ -63,7 +63,8 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                         callbackUrlString: String,
                         scope: String = "") -> Promise<OAuthSwiftCredential> {
         oAuth2.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
-        
+
+
         return Promise<OAuthSwiftCredential> { (seal) in
             _ = self.oAuth2.authorize(withCallbackURL: callbackUrlString,
                                       scope: scope,
@@ -72,7 +73,7 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                                         self?.oAuthClient = OAuthSwiftClient(credential: credentials)
                                         seal.fulfill(credentials)
                 }, failure: { (error) in
-                    _ = seal.reject(error)
+                    seal.reject(error)
             })
         }
     }

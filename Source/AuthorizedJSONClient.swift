@@ -9,14 +9,15 @@ open class AuthorizedJSONClient: JSONClient {
 
     // MARK: - Properties
 
-    /// The client that handles OAuth authorization and inserts the relevant
-    /// headers in calls to the server. Subclasses should assign a value to
-    /// this once the user successfully authenticates with the server.
-    var oAuthClient: OAuthSwiftClient?
 
     /// The OAuth authentication mode that the client will use for
     /// authorization. This will be either `OAuth1Swift` or `OAuth2Swift`.
     var oAuth: OAuthSwift
+
+    /// The client that handles OAuth authorization and inserts the relevant
+    /// headers in calls to the server. Subclasses should assign a value to
+    /// this once the user successfully authenticates with the server.
+    var oAuthClient: OAuthSwiftClient?
 
     // MARK: - Initialization
 
