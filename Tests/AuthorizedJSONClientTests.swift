@@ -121,6 +121,8 @@ class AuthorizedJSONClientTests: JSONClientTests {
         client.oAuthCredential = credential
         let decodedCredential = client.oAuthCredential
         XCTAssertEqual(credential, decodedCredential)
+
+        client.oAuthCredential = nil
     }
 
     func assert<T: Codable>(promise: Promise<T>,
