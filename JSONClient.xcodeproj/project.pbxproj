@@ -16,6 +16,7 @@
 		960368B72058DB3D00D24CE7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 960368B22058DB3C00D24CE7 /* LICENSE */; };
 		960368B82058DB3D00D24CE7 /* CODE_OF_CONDUCT.md in Resources */ = {isa = PBXBuildFile; fileRef = 960368B32058DB3C00D24CE7 /* CODE_OF_CONDUCT.md */; };
 		960368B92058DB3D00D24CE7 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 960368B42058DB3D00D24CE7 /* Cartfile.private */; };
+		9621BF1C215B178900C8EBB3 /* GitHub.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF1B215B178900C8EBB3 /* GitHub.plist */; };
 		964F13D02051E2B900B54B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13CF2051E2B900B54B97 /* AppDelegate.swift */; };
 		964F13D22051E2B900B54B97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13D12051E2B900B54B97 /* ViewController.swift */; };
 		964F13D52051E2B900B54B97 /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964F13D32051E2B900B54B97 /* Demo.storyboard */; };
@@ -85,6 +86,7 @@
 		960368B22058DB3C00D24CE7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		960368B32058DB3C00D24CE7 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
 		960368B42058DB3D00D24CE7 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
+		9621BF1B215B178900C8EBB3 /* GitHub.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GitHub.plist; sourceTree = "<group>"; };
 		964F13C1204F141300B54B97 /* Ambassador.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ambassador.framework; path = Carthage/Build/iOS/Ambassador.framework; sourceTree = "<group>"; };
 		964F13C2204F141300B54B97 /* Embassy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Embassy.framework; path = Carthage/Build/iOS/Embassy.framework; sourceTree = "<group>"; };
 		964F13CD2051E2B900B54B97 /* JSONClientDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONClientDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				964F13CF2051E2B900B54B97 /* AppDelegate.swift */,
 				964F13D62051E2B900B54B97 /* Assets.xcassets */,
 				964F13D32051E2B900B54B97 /* Demo.storyboard */,
+				9621BF1B215B178900C8EBB3 /* GitHub.plist */,
 				96F0EBFE2054DE11004A124A /* GitHubClient.swift */,
 				96F0EC002054E07F004A124A /* GitHubUser.swift */,
 				964F13DB2051E2B900B54B97 /* Info.plist */,
@@ -305,7 +308,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Poikile Creations";
 				TargetAttributes = {
 					964F13CC2051E2B900B54B97 = {
@@ -314,11 +317,12 @@
 					};
 					966011D8203A839B0035FE96 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					966011E1203A839C0035FE96 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -349,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				964F13DA2051E2B900B54B97 /* LaunchScreen.storyboard in Resources */,
+				9621BF1C215B178900C8EBB3 /* GitHub.plist in Resources */,
 				964F13D72051E2B900B54B97 /* Assets.xcassets in Resources */,
 				964F13D52051E2B900B54B97 /* Demo.storyboard in Resources */,
 			);
@@ -540,12 +545,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -597,7 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -629,7 +633,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -655,7 +659,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -674,7 +678,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -693,7 +697,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClientTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

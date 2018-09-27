@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ty-Hx-ZCq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ty-Hx-ZCq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--JSONClientDemo-->
+        <!--JSONClient Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="JSONClientDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,51 +18,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unr-A5-zhw" userLabel="Github Button">
-                                <rect key="frame" x="125" y="64" width="124" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Sign In to GitHub">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="loadGitHubWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSp-eR-sGl"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pR-qN-mx0">
-                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7he-rc-bTA">
+                                <rect key="frame" x="16" y="74" width="343" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo1-Iq-aiO">
-                                        <rect key="frame" x="8" y="8" width="375" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="GitHub username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LN4-kX-dkY" userLabel="User Name">
+                                        <rect key="frame" x="0.0" y="0.0" width="202" height="30"/>
                                         <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unr-A5-zhw" userLabel="Github Button">
+                                        <rect key="frame" x="210" y="0.0" width="133" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Get GitHub Profile">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loadGitHubWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSp-eR-sGl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pR-qN-mx0">
+                                <rect key="frame" x="0.0" y="112" width="375" height="555"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aM-ul-4Z7">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="16"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo1-Iq-aiO">
+                                                <rect key="frame" x="8" y="8" width="359" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="leadingMargin" secondItem="zo1-Iq-aiO" secondAttribute="leading" id="1m6-8C-eHd"/>
+                                            <constraint firstAttribute="topMargin" secondItem="zo1-Iq-aiO" secondAttribute="top" id="acv-SY-UBA"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="zo1-Iq-aiO" secondAttribute="bottom" id="hcI-B6-RPi"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="zo1-Iq-aiO" secondAttribute="trailing" id="kjM-4U-G7x"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="zo1-Iq-aiO" secondAttribute="trailing" id="6SA-tY-wP2"/>
-                                    <constraint firstAttribute="leadingMargin" secondItem="zo1-Iq-aiO" secondAttribute="leading" id="Jnw-Ue-Vv2"/>
-                                    <constraint firstAttribute="topMargin" secondItem="zo1-Iq-aiO" secondAttribute="top" id="WIK-pB-oeX"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="zo1-Iq-aiO" secondAttribute="bottom" id="m5i-Mw-D8U"/>
+                                    <constraint firstItem="1aM-ul-4Z7" firstAttribute="width" secondItem="3pR-qN-mx0" secondAttribute="width" id="Hrd-5G-yz4"/>
+                                    <constraint firstAttribute="bottom" secondItem="1aM-ul-4Z7" secondAttribute="bottom" id="Tje-Va-Zr3"/>
+                                    <constraint firstItem="1aM-ul-4Z7" firstAttribute="top" secondItem="3pR-qN-mx0" secondAttribute="top" id="Vlk-s5-QXc"/>
+                                    <constraint firstItem="1aM-ul-4Z7" firstAttribute="leading" secondItem="3pR-qN-mx0" secondAttribute="leading" id="vUQ-ql-ZDu"/>
+                                    <constraint firstAttribute="trailing" secondItem="1aM-ul-4Z7" secondAttribute="trailing" id="xCY-2V-xYF"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="3pR-qN-mx0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Sk-rw-hcj"/>
+                            <constraint firstItem="7he-rc-bTA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CjB-6y-Uz4"/>
+                            <constraint firstItem="3pR-qN-mx0" firstAttribute="top" secondItem="7he-rc-bTA" secondAttribute="bottom" constant="8" symbolic="YES" id="CtO-Kb-A6Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3pR-qN-mx0" secondAttribute="bottom" id="JI6-CN-Q0G"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3pR-qN-mx0" secondAttribute="trailing" id="V4I-wH-oax"/>
-                            <constraint firstItem="Unr-A5-zhw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VQ6-nj-UMl"/>
-                            <constraint firstItem="zo1-Iq-aiO" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="b1b-FU-alE"/>
-                            <constraint firstItem="Unr-A5-zhw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qrC-NZ-9qE"/>
-                            <constraint firstItem="3pR-qN-mx0" firstAttribute="top" secondItem="Unr-A5-zhw" secondAttribute="bottom" id="sim-TC-8Ue"/>
+                            <constraint firstItem="7he-rc-bTA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="ZDU-cr-8Wm"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="7he-rc-bTA" secondAttribute="trailing" id="mgW-RC-0ZE"/>
+                            <constraint firstItem="7he-rc-bTA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oCO-b7-9aG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="JSONClientDemo" id="3gy-Mr-cbf"/>
+                    <navigationItem key="navigationItem" title="JSONClient Demo" id="3gy-Mr-cbf"/>
                     <connections>
+                        <outlet property="lookUpButton" destination="Unr-A5-zhw" id="cLh-C8-iLP"/>
                         <outlet property="outputLabel" destination="zo1-Iq-aiO" id="EQo-Bv-pHK"/>
-                        <outlet property="signInButton" destination="Unr-A5-zhw" id="cLh-C8-iLP"/>
+                        <outlet property="userNameField" destination="LN4-kX-dkY" id="2zq-3g-Oeg"/>
+                        <outlet property="view" destination="LN4-kX-dkY" id="hU6-Se-ZA6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,5 +123,5 @@
             <point key="canvasLocation" x="-20.800000000000001" y="146.62668665667167"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

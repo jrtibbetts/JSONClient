@@ -39,7 +39,7 @@ open class JSONClient: NSObject {
     // MARK: - Properties
     
     /// The root URL for server requests.
-    open let baseUrl: URL?
+    public let baseUrl: URL?
 
     /// The session that will handle all REST calls.
     open var urlSession: URLSession
