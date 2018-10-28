@@ -23,7 +23,7 @@ public struct GitHubUser: Codable {
 //    public var htmlUrl: String
 //    public var id: Int
 //    public var location: String
-//    public var login: String
+    public var login: String
     public var name: String
 //    public var organizationsUrl: String
 //    public var ownedPrivateRepos: Int

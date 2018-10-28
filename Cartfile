@@ -1,3 +1,4 @@
+github "jrtibbetts/Stylobate"
 github "OAuthSwift/OAuthSwift"
 github "mxcl/PromiseKit"
 github "PromiseKit/Foundation"

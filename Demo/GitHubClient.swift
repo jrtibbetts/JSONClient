@@ -28,7 +28,11 @@ open class GitHubClient: OAuth2JSONClient {
                    baseUrl: baseUrl)
     }
 
-    public func userData(for userName: String) -> Promise<GitHubUser> {
+    open func authorizedUserData() -> Promise<GitHubUser> {
+        return authorizedGet(path: "user")
+    }
+
+    open func userData(for userName: String) -> Promise<GitHubUser> {
         return get(path: "users/\(userName)")
     }
 

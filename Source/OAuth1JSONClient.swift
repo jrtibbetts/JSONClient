@@ -57,9 +57,9 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
     ///             by the server after authentication succeeds.
     open func authorize(presentingViewController: UIViewController,
                         callbackUrlString: String) -> Promise<OAuthSwiftCredential> {
-        if let credential = oAuthCredential, !credential.isTokenExpired() {
-            return Promise<OAuthSwiftCredential>.value(credential)
-        } else {
+//        if let credential = oAuthCredential, !credential.isTokenExpired() {
+//            return Promise<OAuthSwiftCredential>.value(credential)
+//        } else {
             oAuth1.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
 
             return Promise<OAuthSwiftCredential> { [weak self] (seal) in
@@ -72,7 +72,7 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
                         seal.reject(error)
                 })
             }
-        }
+//        }
     }
     
 }
