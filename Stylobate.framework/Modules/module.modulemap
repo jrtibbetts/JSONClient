@@ -1,0 +1,11 @@
+framework module Stylobate {
+  umbrella header "Stylobate.h"
+
+  export *
+  module * { export * }
+}
+
+module Stylobate.Swift {
+    header "Stylobate-Swift.h"
+    requires objc
+}
