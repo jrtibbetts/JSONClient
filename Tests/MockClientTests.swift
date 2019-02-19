@@ -2,6 +2,7 @@
 
 @testable import JSONClient
 import PromiseKit
+import Stylobate
 import XCTest
 
 class MockClientTests: XCTestCase {

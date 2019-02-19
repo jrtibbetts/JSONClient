@@ -2,6 +2,7 @@
 
 import Foundation
 import PromiseKit
+import Stylobate
 
 /// Base class for mock client implementations of third-party services.
 open class MockClient: JSONClient {

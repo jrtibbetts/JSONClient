@@ -3,6 +3,7 @@
 import Foundation
 import OAuthSwift
 import PromiseKit
+import Stylobate
 
 /// A REST client that uses OAuth authentication and gets and posts JSON data.
 open class JSONClient: NSObject {

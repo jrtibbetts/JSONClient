@@ -2,6 +2,7 @@
 
 import OAuthSwift
 import PromiseKit
+import Stylobate
 
 /// A JSON client that can be authenticated against a server and make
 /// authorized REST calls for restricted resources.

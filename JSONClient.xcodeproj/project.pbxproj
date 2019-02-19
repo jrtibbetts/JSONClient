@@ -29,8 +29,6 @@
 		966011EA203A839C0035FE96 /* JSONClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 966011DC203A839B0035FE96 /* JSONClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		966011F6203A83E00035FE96 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F3203A83DF0035FE96 /* MockClient.swift */; };
 		966011F7203A83E00035FE96 /* JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F4203A83DF0035FE96 /* JSONClient.swift */; };
-		966011F8203A83E00035FE96 /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F5203A83E00035FE96 /* JSONUtils.swift */; };
-		966011FE203A840D0035FE96 /* JSONUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011FB203A840D0035FE96 /* JSONUtilsTests.swift */; };
 		96601202203A88640035FE96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601200203A88640035FE96 /* OAuthSwift.framework */; };
 		96601203203A88640035FE96 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; };
 		96601204203A8A310035FE96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601200203A88640035FE96 /* OAuthSwift.framework */; };
@@ -102,8 +100,6 @@
 		966011E9203A839C0035FE96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		966011F3203A83DF0035FE96 /* MockClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		966011F4203A83DF0035FE96 /* JSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONClient.swift; sourceTree = "<group>"; };
-		966011F5203A83E00035FE96 /* JSONUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
-		966011FB203A840D0035FE96 /* JSONUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtilsTests.swift; sourceTree = "<group>"; };
 		96601200203A88640035FE96 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		96601201203A88640035FE96 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		9689BC592049D0C500F8DEB1 /* SampleFoo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleFoo.json; sourceTree = "<group>"; };
@@ -194,7 +190,6 @@
 				966011DD203A839B0035FE96 /* Info.plist */,
 				966011DC203A839B0035FE96 /* JSONClient.h */,
 				966011F4203A83DF0035FE96 /* JSONClient.swift */,
-				966011F5203A83E00035FE96 /* JSONUtils.swift */,
 				966011F3203A83DF0035FE96 /* MockClient.swift */,
 				960368982056097200D24CE7 /* OAuth1JSONClient.swift */,
 				9603689A205609FA00D24CE7 /* OAuth2JSONClient.swift */,
@@ -209,7 +204,6 @@
 				964F1415205333E400B54B97 /* DiscogsInfo.swift */,
 				966011E9203A839C0035FE96 /* Info.plist */,
 				96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */,
-				966011FB203A840D0035FE96 /* JSONUtilsTests.swift */,
 				96D8CC96204B96A00083A7DA /* MockClientTests.swift */,
 				9689BC592049D0C500F8DEB1 /* SampleFoo.json */,
 			);
@@ -394,7 +388,6 @@
 				960368992056097200D24CE7 /* OAuth1JSONClient.swift in Sources */,
 				96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */,
 				966011F6203A83E00035FE96 /* MockClient.swift in Sources */,
-				966011F8203A83E00035FE96 /* JSONUtils.swift in Sources */,
 				966011F7203A83E00035FE96 /* JSONClient.swift in Sources */,
 				9603689B205609FA00D24CE7 /* OAuth2JSONClient.swift in Sources */,
 			);
@@ -408,7 +401,6 @@
 				9603689E2056E05700D24CE7 /* DiscogsInfo.swift in Sources */,
 				9603689D2056D94000D24CE7 /* AuthorizedJSONClientTests.swift in Sources */,
 				96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */,
-				966011FE203A840D0035FE96 /* JSONUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
