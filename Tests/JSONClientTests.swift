@@ -138,7 +138,7 @@ class JSONClientTests: XCTestCase {
         let headers = ["header1": "foo", "header2": "bar"]
         let parameters = ["bar": "bar2", "foo": "foo1"]
         let request = try client.request(forPath: "some/path", headers: headers, parameters: parameters)
-        XCTAssertEqual(request.url?.absoluteString, "https://api.discogs.com/some/path?foo=foo1&bar=bar2")
+        XCTAssertEqual(request.url?.absoluteString, "https://api.discogs.com/some/path?bar=bar2&foo=foo1")
         XCTAssertEqual(request.allHTTPHeaderFields!.count, 2)
         XCTAssertEqual(request.allHTTPHeaderFields!["header1"], "foo")
         XCTAssertEqual(request.allHTTPHeaderFields!["header2"], "bar")
