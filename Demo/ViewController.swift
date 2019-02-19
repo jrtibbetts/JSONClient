@@ -1,86 +1,57 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 import JSONClient
-import OAuthSwift
 import PromiseKit
 import Stylobate
 import UIKit
 
 final class ViewController: UIViewController, UITextFieldDelegate {
 
-    // MARK: Outlets
+    // MARK: - Outlets
 
-    @IBOutlet weak var errorLabel: UILabel?
+    @IBOutlet weak var githubUsernameField: UITextField!
 
-    @IBOutlet weak var errorView: UIView?
+    @IBOutlet weak var outputLabel: UILabel!
 
-    @IBOutlet weak var lookUpButton: UIButton?
+    @IBOutlet weak var signInButton: UIButton!
 
-    @IBOutlet weak var profileTable: UITableView?
-
-    // MARK: Other Properties
+    // MARK: - Other Properties
 
     fileprivate var gitHubClient = GitHubClient()
-
-    fileprivate var userInfo: GitHubUser?
-
-    // MARK: Actions
-
-    @IBAction func loadGitHub(sender: UIView?) {
-        guard let gitHubClient = gitHubClient else {
-            errorLabel?.text = """
-Failed to load the GitHub configuration. You must add a file called
-'GitHub.plist' that contains your app's consumerKey, consumerSecret,
-authorizationUrl, accessTokenUrl, and baseUrl.
-"""
-            return
-        }
-
-        let promise: Promise<OAuthSwiftCredential> = gitHubClient.authorize(presentingViewController: self,
-                                                                            callbackUrlString: AppDelegate.callbackUrl.absoluteString,
-                                                                            scope: "user")
-
-        promise.then { (credential) -> Promise<GitHubUser> in
-            return gitHubClient.authorizedUserData()
-            }.done { (userInfo) in
-                self.userInfo = userInfo
-                self.profileTable?.reloadData()
-                self.profileTable?.isHidden = false
-            }.catch { (error) in
-                self.errorView?.isHidden = false
-                self.errorLabel?.text = "Error: \(error.localizedDescription)"
-        }
-    }
 
     // MARK: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        errorView?.isHidden = true
-        profileTable?.dataSource = self
-        profileTable?.delegate = self
+        githubUsernameField.delegate = self
+        outputLabel.isEnabled = false
+        signInButton.isEnabled = false
     }
 
-}
+    // MARK: - UITextFieldDelegate
 
-// MARK: - UITableViewDataSource
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        if let text = textField.text, text.count > 0 {
+            signInButton.isEnabled = string.count > 0
+        } else {
+            signInButton.isEnabled = false
+        }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
-        cell.textLabel?.text = "User Name"
-        cell.detailTextLabel?.text = userInfo?.name
-
-        return cell
+        return true
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
+    // MARK: - Actions
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    @IBAction func loadGitHub(sender: UIView?) {
+        let promise: Promise<GitHubUser> = gitHubClient.user(userName: githubUsernameField.text!)
+        promise.done { (user) -> Void in
+            self.outputLabel.text = user.name
+            self.outputLabel.isEnabled = true
+            }.catch { (error) in
+                self.outputLabel.text = "Error: \(error.localizedDescription)"
+        }
     }
 
 }
