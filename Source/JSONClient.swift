@@ -82,7 +82,9 @@ open class JSONClient: NSObject {
                 let urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
                 
                 urlSession.dataTask(with: urlRequest) { (data, response, error) in
-                    self.check(response: response, forError: error, seal: seal)
+                    if self.willReject(seal: seal, ifResponse: response, hasError: error) {
+                        return
+                    }
 
                     if data == nil {
                         /// Make sure that we got some sort of data.
@@ -97,7 +99,7 @@ open class JSONClient: NSObject {
                             seal.reject(JSONErr.parseFailed(error: error))
                         }
                     }
-                    }.resume()  // Kick off the request. Don't forget this!
+                }.resume()  // Kick off the request. Don't forget this!
             } catch {
                 seal.reject(error)
             }
@@ -106,22 +108,24 @@ open class JSONClient: NSObject {
 
     // MARK: - Utility functions
 
-    private func check<T>(response: URLResponse?,
-                          forError error: Error?,
-                          seal: Resolver<T>) {
+    private func willReject<T>(seal: Resolver<T>,
+                               ifResponse response: URLResponse?,
+                               hasError error: Error?) -> Bool {
         if let error = error {
             /// Usually an "unsupported URL" NSError.
             seal.reject(error)
         } else if let response = response as? HTTPURLResponse {
             switch response.statusCode {
             case 200:
-                return
+                return false
             case 404:
                 seal.reject(JSONErr.notFound)
             default:
                 seal.reject(JSONErr.serverError(statusCode: response.statusCode))
             }
         }
+
+        return true
     }
     
     open func handleSuccessfulData<T: Codable>(_ data: Data) throws -> T {
