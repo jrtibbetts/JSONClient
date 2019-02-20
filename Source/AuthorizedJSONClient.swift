@@ -102,12 +102,8 @@ open class AuthorizedJSONClient: JSONClient {
             _ = oAuthClient.get(url.absoluteString,
                                 parameters: parameters,
                                 headers: headers,
-                                success: { (response) in
-                                    do {
-                                        seal.fulfill(try self.handleSuccessfulResponse(response))
-                                    } catch {
-                                        seal.reject(JSONErr.parseFailed(error: error))
-                                    }
+                                success: { [weak self] (response) in
+                                    self?.handle(response: response, seal: seal)
             }, failure: { (error) in
                 _ = seal.reject(error)
             })
@@ -146,12 +142,8 @@ open class AuthorizedJSONClient: JSONClient {
                                  parameters: [:],
                                  headers: headers,
                                  body: jsonData,
-                                 success: { (response) in
-                                    do {
-                                        seal.fulfill(try self.handleSuccessfulResponse(response))
-                                    } catch {
-                                        seal.reject(JSONErr.parseFailed(error: error))
-                                    }
+                                 success: { [weak self] (response) in
+                                    self?.handle(response: response, seal: seal)
             }, failure: { (error) in
                 _ = seal.reject(error)
             })
@@ -176,6 +168,15 @@ open class AuthorizedJSONClient: JSONClient {
     }
 
     // MARK: - Utility functions
+
+    internal func handle<T: Codable>(response: OAuthSwiftResponse,
+                                     seal: Resolver<T>) {
+        do {
+            seal.fulfill(try self.handleSuccessfulResponse(response))
+        } catch {
+            seal.reject(JSONErr.parseFailed(error: error))
+        }
+    }
 
     internal func handleSuccessfulResponse<T: Codable>(_ response: OAuthSwiftResponse) throws -> T {
         return try handleSuccessfulData(response.data)
