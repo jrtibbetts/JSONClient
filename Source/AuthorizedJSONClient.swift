@@ -177,8 +177,22 @@ open class AuthorizedJSONClient: JSONClient {
 
     // MARK: - Utility functions
 
-    open func handleSuccessfulResponse<T: Codable>(_ response: OAuthSwiftResponse) throws -> T {
+    internal func handleSuccessfulResponse<T: Codable>(_ response: OAuthSwiftResponse) throws -> T {
         return try handleSuccessfulData(response.data)
+    }
+
+    /// Fulfill a seal with specified OAuth credentials. This is a convenience
+    /// function borne out of a complaint by Codebeat that the `success` block
+    /// in `authorize(presentingViewController:callbackUrlString:)` was
+    /// duplicated in both subclasses of `AuthorizedJSONClient`.
+    ///
+    /// - parameter seal: The `Promise`'s resolver.
+    /// - parameter withCredential: The OAuth credential.
+    internal func fulfill(seal: Resolver<OAuthSwiftCredential>,
+                          withCredential credential: OAuthSwiftCredential) {
+        oAuthClient = OAuthSwiftClient(credential: credential)
+        oAuthCredential = credential
+        seal.fulfill(credential)
     }
 
 }

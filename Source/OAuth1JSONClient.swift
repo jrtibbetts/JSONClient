@@ -65,9 +65,7 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
             return Promise<OAuthSwiftCredential> { [weak self] (seal) in
                 _ = self?.oAuth1.authorize(withCallbackURL: callbackUrlString,
                                            success: { [weak self] (credential, _, _) in
-                                            self?.oAuthClient = OAuthSwiftClient(credential: credential)
-                                            self?.oAuthCredential = credential
-                                            seal.fulfill(credential)
+                                            self?.fulfill(seal: seal, withCredential: credential)
                     }, failure: { (error) in
                         seal.reject(error)
                 })

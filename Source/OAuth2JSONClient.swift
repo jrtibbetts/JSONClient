@@ -72,9 +72,7 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                                           scope: scope,
                                           state: state,
                                           success: { [weak self] (credential, _, _) in
-                                            self?.oAuthClient = OAuthSwiftClient(credential: credential)
-                                            self?.oAuthCredential = credential
-                                            seal.fulfill(credential)
+                                            self?.fulfill(seal: seal, withCredential: credential)
                     }, failure: { (error) in
                         seal.reject(error)
                 })
