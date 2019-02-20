@@ -78,31 +78,32 @@ open class JSONClient: NSObject {
                               headers: Headers = Headers(),
                               parameters: Parameters = Parameters()) -> Promise<T> {
         return Promise<T> { (seal) in
-            do {
-                let urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
-                
-                urlSession.dataTask(with: urlRequest) { (data, response, error) in
-                    if self.willReject(seal: seal, ifResponse: response, hasError: error) {
-                        return
-                    }
+            let urlRequest: URLRequest
 
-                    if data == nil {
-                        /// Make sure that we got some sort of data.
-                        seal.reject(JSONErr.nilData)
-                    } else {
-                        do {
-                            /// The data is non-`nil`, so parse it.
-                            seal.fulfill(try self.handleSuccessfulData(data!))
-                        } catch {
-                            /// The data couldn't be decoded into the expected
-                            /// type T.
-                            seal.reject(JSONErr.parseFailed(error: error))
-                        }
-                    }
-                }.resume()  // Kick off the request. Don't forget this!
+            do {
+                urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
             } catch {
                 seal.reject(error)
+                return
             }
+
+            urlSession.dataTask(with: urlRequest) { (data, response, error) in
+                if self.willReject(seal: seal, ifResponse: response, hasError: error) {
+                    return
+                } else if data == nil {
+                    /// Make sure that we got some sort of data.
+                    seal.reject(JSONErr.nilData)
+                } else {
+                    do {
+                        /// The data is non-`nil`, so parse it.
+                        seal.fulfill(try self.handleSuccessfulData(data!))
+                    } catch {
+                        /// The data couldn't be decoded into the expected
+                        /// type T.
+                        seal.reject(JSONErr.parseFailed(error: error))
+                    }
+                }
+            }.resume()  // Kick off the request. Don't forget this!
         }
     }
 
