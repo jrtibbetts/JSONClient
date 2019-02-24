@@ -50,6 +50,7 @@ open class AuthorizedJSONClient: JSONClient {
                 do {
                     let cachedData: Data = try JSONEncoder().encode(credential)
                     defaults.set(cachedData, forKey: authorizeUrl)
+                    oAuthClient = OAuthSwiftClient(credential: credential)
                 } catch {
                     assertionFailure("Failed to encode the OAuth credential: \(error.localizedDescription)")
                 }
@@ -74,7 +75,12 @@ open class AuthorizedJSONClient: JSONClient {
                 baseUrl: URL? = nil) {
         self.oAuth = oAuth
         self.authorizeUrl = authorizeUrl
+
         super.init(baseUrl: baseUrl)
+
+        if let credential = oAuthCredential {
+            oAuthClient = OAuthSwiftClient(credential: credential)
+        }
     }
 
     // MARK: - REST methods
@@ -191,8 +197,7 @@ open class AuthorizedJSONClient: JSONClient {
     /// - parameter withCredential: The OAuth credential.
     internal func fulfill(seal: Resolver<OAuthSwiftCredential>,
                           withCredential credential: OAuthSwiftCredential) {
-        oAuthClient = OAuthSwiftClient(credential: credential)
-        oAuthCredential = credential
+        oAuthCredential = credential  // sets the OAuthSwiftClient, too.
         seal.fulfill(credential)
     }
 
