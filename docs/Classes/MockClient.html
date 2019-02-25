@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MockClient Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/MockClient" class="dashAnchor"></a>
+    <a title="MockClient Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JSONClient Docs</a> (75% documented)</p>
+        <p class="header-right"><a href="https://github.com/jrtibbetts/JSONClient"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JSONClient Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MockClient Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AuthorizedJSONClient.html">AuthorizedJSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient.html">JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient/JSONErr.html">– JSONErr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MockClient.html">MockClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth1JSONClient.html">OAuth1JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth2JSONClient.html">OAuth2JSONClient</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MockClient</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MockClient</span> <span class="p">:</span> <span class="kt"><a href="../Classes/JSONClient.html">JSONClient</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Base class for mock client implementations of third-party services.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient10MockClientC9errorModeSbvp"></a>
+                    <a name="//apple_ref/swift/Property/errorMode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient10MockClientC9errorModeSbvp">errorMode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If <code>true</code>, each API call will pass a non-<code>nil</code> <code>Error</code> object to the
+completion block instead of a valid data object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">errorMode</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient10MockClientC6bundleSo8NSBundleCvp"></a>
+                    <a name="//apple_ref/swift/Property/bundle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient10MockClientC6bundleSo8NSBundleCvp">bundle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bundle that contains this implementation and the local JSON data
+files that is parses to return data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Bundle</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient10MockClientC6bundleACSo8NSBundleC_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(bundle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient10MockClientC6bundleACSo8NSBundleC_tcfc">init(bundle:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">bundle</span><span class="p">:</span> <span class="kt">Bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="o">.</span><span class="n">main</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient10MockClientC11errorDomain6bundleACSS_So8NSBundleCtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(errorDomain:bundle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient10MockClientC11errorDomain6bundleACSS_So8NSBundleCtcfc">init(errorDomain:bundle:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">errorDomain</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="o">.</span><span class="n">main</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Utilities"></a>
+                <a name="//apple_ref/swift/Section/Utilities" class="dashAnchor"></a>
+                <a href="#/Utilities">
+                  <h3 class="section-name">Utilities</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient10MockClientC5apply14toJsonObjectIn5error10PromiseKit0J0CyxGSS_s5Error_pSgtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/apply(toJsonObjectIn:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient10MockClientC5apply14toJsonObjectIn5error10PromiseKit0J0CyxGSS_s5Error_pSgtSeRzSERzlF">apply(toJsonObjectIn:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">apply</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">toJsonObjectIn</span> <span class="nv">fileName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                              <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/jrtibbetts/JSONClient" target="_blank" rel="external">Jason R Tibbetts</a>. All rights reserved. (Last updated: 2019-02-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

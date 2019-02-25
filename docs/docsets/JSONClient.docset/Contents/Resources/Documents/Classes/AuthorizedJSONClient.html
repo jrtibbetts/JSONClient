@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AuthorizedJSONClient Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/AuthorizedJSONClient" class="dashAnchor"></a>
+    <a title="AuthorizedJSONClient Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JSONClient Docs</a> (75% documented)</p>
+        <p class="header-right"><a href="https://github.com/jrtibbetts/JSONClient"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JSONClient Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        AuthorizedJSONClient Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AuthorizedJSONClient.html">AuthorizedJSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient.html">JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient/JSONErr.html">– JSONErr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MockClient.html">MockClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth1JSONClient.html">OAuth1JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth2JSONClient.html">OAuth2JSONClient</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>AuthorizedJSONClient</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">AuthorizedJSONClient</span> <span class="p">:</span> <span class="kt"><a href="../Classes/JSONClient.html">JSONClient</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A JSON client that can be authenticated against a server and make
+authorized REST calls for restricted resources.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Public Properties" class="dashAnchor"></a>
+                <a href="#/Public%20Properties">
+                  <h3 class="section-name">Public Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C8defaultsSo14NSUserDefaultsCvp"></a>
+                    <a name="//apple_ref/swift/Property/defaults" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C8defaultsSo14NSUserDefaultsCvp">defaults</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The defaults object where the client&rsquo;s OAuth credential will be stored.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">defaults</span><span class="p">:</span> <span class="kt">UserDefaults</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C5oAuth12authorizeUrl04baseE0AC10OAuthSwiftAGC_SS10Foundation3URLVSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(oAuth:authorizeUrl:baseUrl:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C5oAuth12authorizeUrl04baseE0AC10OAuthSwiftAGC_SS10Foundation3URLVSgtcfc">init(oAuth:authorizeUrl:baseUrl:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize the client with an OAuth type and an optional base URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">oAuth</span><span class="p">:</span> <span class="kt">OAuthSwift</span><span class="p">,</span>
+            <span class="nv">authorizeUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">baseUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>oAuth</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The OAuth authentication mode. This will be either
+        <code>OAuth1Swift</code> or <code>OAuth2Swift</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>authorizeUrl</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>For the purposes of this class, this is used
+        as the <code>UserDefaults</code> key for storing the OAuth
+        credential.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>baseUrl</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The API URL that all paths will be resolved
+        against. If it&rsquo;s <code>nil</code> (the default), then each path that&rsquo;s
+        passed to the REST functions must be an absolute URL string.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/REST%20methods"></a>
+                <a name="//apple_ref/swift/Section/REST methods" class="dashAnchor"></a>
+                <a href="#/REST%20methods">
+                  <h3 class="section-name">REST methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C13authorizedGet4path7headers10parameters10PromiseKit0H0CyxGSS_SDyS2SGALtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/authorizedGet(path:headers:parameters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C13authorizedGet4path7headers10parameters10PromiseKit0H0CyxGSS_SDyS2SGALtSeRzSERzlF">authorizedGet(path:headers:parameters:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>HTTP <code>GET</code> JSON data from a path that requires client authentication to
+access and return it as a <code>Promise</code> of the desired <code>Codable</code> data type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">authorizedGet</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                                    <span class="nv">headers</span><span class="p">:</span> <span class="kt">Headers</span> <span class="o">=</span> <span class="kt">Headers</span><span class="p">(),</span>
+                                    <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Parameters</span> <span class="o">=</span> <span class="kt">Parameters</span><span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The endpoint path, relative to the <code>baseUrl</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>headers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The headers to send with the request. The OAuth
+        client will set any required authentication-related headers
+        itself. The default is an empty dictionary.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Query parameters for the URL. The default is
+        empty.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Promise&lt;T&gt;</code> to get the JSON object at the specified path.
+       It will be rejected if the URL is malformed, or if the JSON
+       data couldn&rsquo;t be parsed into the requested object type.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C13authorizedGet3url7headers10parameters10PromiseKit0H0CyxG10Foundation3URLV_SDyS2SGAOtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/authorizedGet(url:headers:parameters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C13authorizedGet3url7headers10parameters10PromiseKit0H0CyxG10Foundation3URLV_SDyS2SGAOtSeRzSERzlF">authorizedGet(url:headers:parameters:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>HTTP <code>GET</code> JSON data from a URL that requires client authentication to
+access and return it as a <code>Promise</code> of the desired <code>Codable</code> data type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">authorizedGet</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+                                    <span class="nv">headers</span><span class="p">:</span> <span class="kt">Headers</span> <span class="o">=</span> <span class="kt">Headers</span><span class="p">(),</span>
+                                    <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Parameters</span> <span class="o">=</span> <span class="kt">Parameters</span><span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The endpoint URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>headers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The headers to send with the request. The OAuth
+        client will set any required authentication-related headers
+        itself. The default is an empty dictionary.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Query parameters for the URL. The default is
+        empty.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Promise&lt;T&gt;</code> to get the JSON object at the specified URL.
+       It will be rejected if the URL is malformed, or if the JSON
+       data couldn&rsquo;t be parsed into the requested object type.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C14authorizedPost4path8jsonData7headers10PromiseKit0I0CyxGSS_10Foundation0G0VSgSDyS2SGtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/authorizedPost(path:jsonData:headers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C14authorizedPost4path8jsonData7headers10PromiseKit0I0CyxGSS_10Foundation0G0VSgSDyS2SGtSeRzSERzlF">authorizedPost(path:jsonData:headers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>HTTP <code>POST</code> JSON data to a path that requires client authentication to
+access and return it as a <code>Promise</code> of the desired <code>Codable</code> response
+type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">authorizedPost</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                                     <span class="nv">jsonData</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                                     <span class="nv">headers</span><span class="p">:</span> <span class="kt">OAuthSwift</span><span class="o">.</span><span class="kt">Headers</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The endpoint path, relative to the <code>baseUrl</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>jsonData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The JSON data to post. The default is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>headers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The headers to send with the request. The OAuth
+        client will set any required authentication-related headers
+        itself. The default is an empty dictionary.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Promise&lt;T&gt;</code> to get the JSON object at the specified path.
+       It will be rejected if the URL is malformed, or if the JSON
+       data couldn&rsquo;t be parsed into the requested object type.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C14authorizedPost4path6object7headers10PromiseKit0H0CyxGSS_xSDyS2SGtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/authorizedPost(path:object:headers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C14authorizedPost4path6object7headers10PromiseKit0H0CyxGSS_xSDyS2SGtSeRzSERzlF">authorizedPost(path:object:headers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>HTTP <code>POST</code> JSON data to a path that requires client authentication to
+access and return it as a <code>Promise</code> of the desired <code>Codable</code> response
+type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">authorizedPost</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                                     <span class="nv">object</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span>
+                                     <span class="nv">headers</span><span class="p">:</span> <span class="kt">OAuthSwift</span><span class="o">.</span><span class="kt">Headers</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The endpoint path, relative to the <code>baseUrl</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>jsonData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The JSON data to post. The default is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>headers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The headers to send with the request. The OAuth
+        client will set any required authentication-related headers
+        itself. The default is an empty dictionary.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Promise&lt;T&gt;</code> to get the JSON object at the specified path.
+       It will be rejected if the URL is malformed, or if the JSON
+       data couldn&rsquo;t be parsed into the requested object type.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C14authorizedPost3url8jsonData7headers10PromiseKit0I0CyxG10Foundation3URLV_AL0G0VSgSDyS2SGtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/authorizedPost(url:jsonData:headers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C14authorizedPost3url8jsonData7headers10PromiseKit0I0CyxG10Foundation3URLV_AL0G0VSgSDyS2SGtSeRzSERzlF">authorizedPost(url:jsonData:headers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">authorizedPost</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+                                     <span class="nv">jsonData</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                                     <span class="nv">headers</span><span class="p">:</span> <span class="kt">OAuthSwift</span><span class="o">.</span><span class="kt">Headers</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient010AuthorizedA0C14authorizedPost3url6object7headers10PromiseKit0H0CyxG10Foundation3URLV_xSDyS2SGtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/authorizedPost(url:object:headers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient010AuthorizedA0C14authorizedPost3url6object7headers10PromiseKit0H0CyxG10Foundation3URLV_xSDyS2SGtSeRzSERzlF">authorizedPost(url:object:headers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">authorizedPost</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+                                     <span class="nv">object</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span>
+                                     <span class="nv">headers</span><span class="p">:</span> <span class="kt">OAuthSwift</span><span class="o">.</span><span class="kt">Headers</span> <span class="o">=</span> <span class="p">[:])</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/jrtibbetts/JSONClient" target="_blank" rel="external">Jason R Tibbetts</a>. All rights reserved. (Last updated: 2019-02-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

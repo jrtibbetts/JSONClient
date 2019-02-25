@@ -28,8 +28,11 @@ open class AuthorizedJSONClient: JSONClient {
     /// The service's endpoint for initiating an authorization sequence. This
     /// is used internally as the `UserDefaults` key for storing the OAuth
     /// credential.
-    fileprivate var authorizeUrl: String
+    private var authorizeUrl: String
 
+    /// The credential that's returned by the OAuth server after authentication
+    /// has been successful. Setting this will also set the internal
+    /// `OAuthSwiftClient`.
     internal var oAuthCredential: OAuthSwiftCredential? {
         get {
             if let cachedData = defaults.object(forKey: authorizeUrl) as? Data {
@@ -85,8 +88,19 @@ open class AuthorizedJSONClient: JSONClient {
 
     // MARK: - REST methods
 
-    /// `GET` JSON data that requires client authentication to access and
-    /// return it as a `Promise` of the desired `Codable` data type.
+    /// HTTP `GET` JSON data from a path that requires client authentication to
+    /// access and return it as a `Promise` of the desired `Codable` data type.
+    ///
+    /// - parameter path: The endpoint path, relative to the `baseUrl`.
+    /// - parameter headers: The headers to send with the request. The OAuth
+    ///             client will set any required authentication-related headers
+    ///             itself. The default is an empty dictionary.
+    /// - parameter parameters: Query parameters for the URL. The default is
+    ///             empty.
+    ///
+    /// - returns: A `Promise<T>` to get the JSON object at the specified path.
+    ///            It will be rejected if the URL is malformed, or if the JSON
+    ///            data couldn't be parsed into the requested object type.
     open func authorizedGet<T: Codable>(path: String,
                                         headers: Headers = Headers(),
                                         parameters: Parameters = Parameters()) -> Promise<T> {
@@ -97,6 +111,19 @@ open class AuthorizedJSONClient: JSONClient {
         return authorizedGet(url: url, headers: headers, parameters: parameters)
     }
 
+    /// HTTP `GET` JSON data from a URL that requires client authentication to
+    /// access and return it as a `Promise` of the desired `Codable` data type.
+    ///
+    /// - parameter path: The endpoint URL.
+    /// - parameter headers: The headers to send with the request. The OAuth
+    ///             client will set any required authentication-related headers
+    ///             itself. The default is an empty dictionary.
+    /// - parameter parameters: Query parameters for the URL. The default is
+    ///             empty.
+    ///
+    /// - returns: A `Promise<T>` to get the JSON object at the specified URL.
+    ///            It will be rejected if the URL is malformed, or if the JSON
+    ///            data couldn't be parsed into the requested object type.
     open func authorizedGet<T: Codable>(url: URL,
                                         headers: Headers = Headers(),
                                         parameters: Parameters = Parameters()) -> Promise<T> {
@@ -116,6 +143,19 @@ open class AuthorizedJSONClient: JSONClient {
         }
     }
 
+    /// HTTP `POST` JSON data to a path that requires client authentication to
+    /// access and return it as a `Promise` of the desired `Codable` response
+    /// type.
+    ///
+    /// - parameter path: The endpoint path, relative to the `baseUrl`.
+    /// - parameter jsonData: The JSON data to post. The default is `nil`.
+    /// - parameter headers: The headers to send with the request. The OAuth
+    ///             client will set any required authentication-related headers
+    ///             itself. The default is an empty dictionary.
+    ///
+    /// - returns: A `Promise<T>` to get the JSON object at the specified path.
+    ///            It will be rejected if the URL is malformed, or if the JSON
+    ///            data couldn't be parsed into the requested object type.
     open func authorizedPost<T: Codable>(path: String,
                                          jsonData: Data? = nil,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
@@ -126,6 +166,19 @@ open class AuthorizedJSONClient: JSONClient {
         return authorizedPost(url: url, jsonData: jsonData, headers: headers)
     }
 
+    /// HTTP `POST` JSON data to a path that requires client authentication to
+    /// access and return it as a `Promise` of the desired `Codable` response
+    /// type.
+    ///
+    /// - parameter path: The endpoint path, relative to the `baseUrl`.
+    /// - parameter jsonData: The JSON data to post. The default is `nil`.
+    /// - parameter headers: The headers to send with the request. The OAuth
+    ///             client will set any required authentication-related headers
+    ///             itself. The default is an empty dictionary.
+    ///
+    /// - returns: A `Promise<T>` to get the JSON object at the specified path.
+    ///            It will be rejected if the URL is malformed, or if the JSON
+    ///            data couldn't be parsed into the requested object type.
     open func authorizedPost<T: Codable>(path: String,
                                          object: T,
                                          headers: OAuthSwift.Headers = [:]) -> Promise<T> {
@@ -184,6 +237,14 @@ open class AuthorizedJSONClient: JSONClient {
         }
     }
 
+    /// Handle an HTTP `200` response by parsing its data into a `Codable`
+    /// object.
+    ///
+    /// - parameter response: The response object.
+    ///
+    /// - returns: The parsed `Codable` object.
+    ///
+    /// - throws: If the `Codable` object couldn't be parsed.
     internal func handleSuccessfulResponse<T: Codable>(_ response: OAuthSwiftResponse) throws -> T {
         return try handleSuccessfulData(response.data)
     }

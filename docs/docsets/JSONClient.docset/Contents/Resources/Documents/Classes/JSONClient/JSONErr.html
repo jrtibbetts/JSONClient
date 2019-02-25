@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JSONErr Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/JSONErr" class="dashAnchor"></a>
+    <a title="JSONErr Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../../index.html">JSONClient Docs</a> (75% documented)</p>
+        <p class="header-right"><a href="https://github.com/jrtibbetts/JSONClient"><img src="../../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../index.html">JSONClient Reference</a>
+        <img id="carat" src="../../img/carat.png" />
+        JSONErr Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Classes/AuthorizedJSONClient.html">AuthorizedJSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/JSONClient.html">JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/JSONClient/JSONErr.html">– JSONErr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MockClient.html">MockClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/OAuth1JSONClient.html">OAuth1JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/OAuth2JSONClient.html">OAuth2JSONClient</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>JSONErr</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JSONErr</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                </div>
+              </div>
+            <p>Errors that can be thrown by the <code><a href="../../Classes/JSONClient.html">JSONClient</a></code>. Don&rsquo;t confuse the name
+with <code>Foundation.JSONError</code>, which are thrown by Foundation parsing
+calls.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7JSONErrO10invalidUrlyADSSSg_tcADmF"></a>
+                    <a name="//apple_ref/swift/Element/invalidUrl(urlString:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7JSONErrO10invalidUrlyADSSSg_tcADmF">invalidUrl(urlString:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown if a path contains illegal URL characters or is <code>nil</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">invalidUrl</span><span class="p">(</span><span class="nv">urlString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7JSONErrO7nilDatayA2DmF"></a>
+                    <a name="//apple_ref/swift/Element/nilData" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7JSONErrO7nilDatayA2DmF">nilData</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown if there&rsquo;s no JSON data at a given path.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">nilData</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7JSONErrO8notFoundyA2DmF"></a>
+                    <a name="//apple_ref/swift/Element/notFound" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7JSONErrO8notFoundyA2DmF">notFound</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown if the server returned a 404 status code. (All other non-200
+errors should be reported with a <code>.serverError</code> case.)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">notFound</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7JSONErrO11parseFailedyADs5Error_p_tcADmF"></a>
+                    <a name="//apple_ref/swift/Element/parseFailed(error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7JSONErrO11parseFailedyADs5Error_p_tcADmF">parseFailed(error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown if the JSON at a given path can&rsquo;t be decoded into the
+expected type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">parseFailed</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7JSONErrO11serverErroryADSi_tcADmF"></a>
+                    <a name="//apple_ref/swift/Element/serverError(statusCode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7JSONErrO11serverErroryADSi_tcADmF">serverError(statusCode:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown if the server returned anything other than a 200 status code.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">serverError</span><span class="p">(</span><span class="nv">statusCode</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7JSONErrO19unauthorizedAttemptyA2DmF"></a>
+                    <a name="//apple_ref/swift/Element/unauthorizedAttempt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7JSONErrO19unauthorizedAttemptyA2DmF">unauthorizedAttempt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Thrown if the endpoint returned an HTTP 401 (unauthorized) code.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unauthorizedAttempt</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/jrtibbetts/JSONClient" target="_blank" rel="external">Jason R Tibbetts</a>. All rights reserved. (Last updated: 2019-02-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

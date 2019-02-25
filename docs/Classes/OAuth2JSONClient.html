@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OAuth2JSONClient Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/OAuth2JSONClient" class="dashAnchor"></a>
+    <a title="OAuth2JSONClient Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JSONClient Docs</a> (75% documented)</p>
+        <p class="header-right"><a href="https://github.com/jrtibbetts/JSONClient"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JSONClient Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        OAuth2JSONClient Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AuthorizedJSONClient.html">AuthorizedJSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient.html">JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient/JSONErr.html">– JSONErr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MockClient.html">MockClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth1JSONClient.html">OAuth1JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth2JSONClient.html">OAuth2JSONClient</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>OAuth2JSONClient</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">OAuth2JSONClient</span> <span class="p">:</span> <span class="kt"><a href="../Classes/AuthorizedJSONClient.html">AuthorizedJSONClient</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>An <code><a href="../Classes/AuthorizedJSONClient.html">AuthorizedJSONClient</a></code> implementation that uses OAuth 2 for
+authentication and authorization.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient06OAuth2A0C11consumerKey0C6Secret12authorizeUrl011accessTokenG004baseG0ACSS_S3S10Foundation3URLVSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(consumerKey:consumerSecret:authorizeUrl:accessTokenUrl:baseUrl:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient06OAuth2A0C11consumerKey0C6Secret12authorizeUrl011accessTokenG004baseG0ACSS_S3S10Foundation3URLVSgtcfc">init(consumerKey:consumerSecret:authorizeUrl:accessTokenUrl:baseUrl:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize the client with the app&rsquo;s hashes on the server, as well as
+the server&rsquo;s various OAuth-related URLs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">consumerKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">consumerSecret</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">authorizeUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">accessTokenUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">baseUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>consumerKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The hash that identifies the app that this
+        client communicates with. It&rsquo;s also called a client key.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>consumerSecret</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The password hash for the server app. This
+        value should not be included in publicly-visible code.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>authorizeUrl</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the app&rsquo;s sign-in page.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>accessTokenUrl</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL where the OAuth client can exchange
+        a request token for an access token.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>baseUrl</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The service&rsquo;s root-level URL. All relative paths
+        that are passed to the various REST functions will be
+        resolved against this URL. If it&rsquo;s <code>nil</code>, then all paths
+        must be absolute URL strings.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClient06OAuth2A0C9authorize24presentingViewController17callbackUrlString5scope10PromiseKit0K0Cy10OAuthSwift0mN10CredentialCGSo06UIViewF0C_S2StF"></a>
+                    <a name="//apple_ref/swift/Method/authorize(presentingViewController:callbackUrlString:scope:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClient06OAuth2A0C9authorize24presentingViewController17callbackUrlString5scope10PromiseKit0K0Cy10OAuthSwift0mN10CredentialCGSo06UIViewF0C_S2StF">authorize(presentingViewController:callbackUrlString:scope:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Launch the service&rsquo;s sign-in page in a modal Safari web view. After the
+user has successfully authenticated, the web page will be redirected to
+the callback URL, which is unique to the client application.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">authorize</span><span class="p">(</span><span class="nv">presentingViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                    <span class="nv">callbackUrlString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                    <span class="nv">scope</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">OAuthSwiftCredential</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>presentingViewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller over which the
+        Safari view controller will be presented modally.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callbackUrlString</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL that the web view will load
+        after authentication succeeds.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scope</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The level of access that the client is requesting.
+        See the server&rsquo;s documentation for what scopes are
+        supported. The default value is an empty string.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Promise</code> containing whatever type of data is sent back
+        by the server after authentication succeeds.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/jrtibbetts/JSONClient" target="_blank" rel="external">Jason R Tibbetts</a>. All rights reserved. (Last updated: 2019-02-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JSONClient Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/JSONClient" class="dashAnchor"></a>
+    <a title="JSONClient Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JSONClient Docs</a> (75% documented)</p>
+        <p class="header-right"><a href="https://github.com/jrtibbetts/JSONClient"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JSONClient Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        JSONClient Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AuthorizedJSONClient.html">AuthorizedJSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient.html">JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JSONClient/JSONErr.html">– JSONErr</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MockClient.html">MockClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth1JSONClient.html">OAuth1JSONClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OAuth2JSONClient.html">OAuth2JSONClient</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>JSONClient</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">JSONClient</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>A REST client that uses OAuth authentication and gets and posts JSON data.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7Headersa"></a>
+                    <a name="//apple_ref/swift/Alias/Headers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7Headersa">Headers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Headers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC10Parametersa"></a>
+                    <a name="//apple_ref/swift/Alias/Parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC10Parametersa">Parameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Parameters</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7JSONErrO"></a>
+                    <a name="//apple_ref/swift/Enum/JSONErr" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7JSONErrO">JSONErr</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Errors that can be thrown by the <code><a href="../Classes/JSONClient.html">JSONClient</a></code>. Don&rsquo;t confuse the name
+with <code>Foundation.JSONError</code>, which are thrown by Foundation parsing
+calls.</p>
+
+                        <a href="../Classes/JSONClient/JSONErr.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JSONErr</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7baseUrl10Foundation3URLVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/baseUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7baseUrl10Foundation3URLVSgvp">baseUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The root URL for server requests.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">baseUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC10urlSessionSo12NSURLSessionCvp"></a>
+                    <a name="//apple_ref/swift/Property/urlSession" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC10urlSessionSo12NSURLSessionCvp">urlSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The session that will handle all REST calls.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <a href="#/Initializers">
+                  <h3 class="section-name">Initializers</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7baseUrlAB10Foundation3URLVSg_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(baseUrl:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7baseUrlAB10Foundation3URLVSg_tcfc">init(baseUrl:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create the client.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">baseUrl</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>baseUrl</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL against which all relative paths will be
+        resolved. If it&rsquo;s <code>nil</code>, then paths passed to client&rsquo;s
+        methods must be absolute ones.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/REST%20methods"></a>
+                <a name="//apple_ref/swift/Section/REST methods" class="dashAnchor"></a>
+                <a href="#/REST%20methods">
+                  <h3 class="section-name">REST methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC3get4path7headers10parameters10PromiseKit0F0CyxGSS_SDyS2SGAKtSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/get(path:headers:parameters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC3get4path7headers10parameters10PromiseKit0F0CyxGSS_SDyS2SGAKtSeRzSERzlF">get(path:headers:parameters:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the JSON data at the specified path (relative to the <code><a href="../Classes/JSONClient.html#/s:10JSONClientAAC7baseUrl10Foundation3URLVSgvp">baseUrl</a></code>)
+and decode it to the expected type.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code>JSONError.invalidUrl</code> if <code>path</code> contains illegal
+        characters, <code>JSONError.nilData</code> if <code>path</code> is valid,
+        but has no content that can be parsed,
+        <code>JSONError.parseFailed</code> if the JSON at <code>path</code> isn&rsquo;t valid
+        for the expected type.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="k">get</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                          <span class="nv">headers</span><span class="p">:</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC7Headersa">Headers</a></span> <span class="o">=</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC7Headersa">Headers</a></span><span class="p">(),</span>
+                          <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC10Parametersa">Parameters</a></span> <span class="o">=</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC10Parametersa">Parameters</a></span><span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The path of the URL, relative to the <code><a href="../Classes/JSONClient.html#/s:10JSONClientAAC7baseUrl10Foundation3URLVSgvp">baseUrl</a></code>, or,
+        the absolute URL if <code><a href="../Classes/JSONClient.html#/s:10JSONClientAAC7baseUrl10Foundation3URLVSgvp">baseUrl</a></code> is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>headers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Custom header values to use in the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Parameter name/value pairs to be appended to the
+        URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Utility%20functions"></a>
+                <a name="//apple_ref/swift/Section/Utility functions" class="dashAnchor"></a>
+                <a href="#/Utility%20functions">
+                  <h3 class="section-name">Utility functions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC20handleSuccessfulDatayx10Foundation0D0VKSeRzSERzlF"></a>
+                    <a name="//apple_ref/swift/Method/handleSuccessfulData(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC20handleSuccessfulDatayx10Foundation0D0VKSeRzSERzlF">handleSuccessfulData(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">handleSuccessfulData</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10JSONClientAAC7request7forPath7headers10parameters10Foundation10URLRequestVSS_SDyS2SGAJtKF"></a>
+                    <a name="//apple_ref/swift/Method/request(forPath:headers:parameters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10JSONClientAAC7request7forPath7headers10parameters10Foundation10URLRequestVSS_SDyS2SGAJtKF">request(forPath:headers:parameters:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">forPath</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                  <span class="nv">headers</span><span class="p">:</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC7Headersa">Headers</a></span> <span class="o">=</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC7Headersa">Headers</a></span><span class="p">(),</span>
+                  <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC10Parametersa">Parameters</a></span> <span class="o">=</span> <span class="kt"><a href="../Classes/JSONClient.html#/s:10JSONClientAAC10Parametersa">Parameters</a></span><span class="p">())</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">URLRequest</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/jrtibbetts/JSONClient" target="_blank" rel="external">Jason R Tibbetts</a>. All rights reserved. (Last updated: 2019-02-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

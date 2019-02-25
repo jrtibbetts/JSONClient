@@ -1,0 +1,68 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/AuthorizedJSONClient.swift",
+      "line": 192,
+      "symbol": "AuthorizedJSONClient.authorizedPost(url:jsonData:headers:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/AuthorizedJSONClient.swift",
+      "line": 212,
+      "symbol": "AuthorizedJSONClient.authorizedPost(url:object:headers:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/JSONClient.swift",
+      "line": 11,
+      "symbol": "JSONClient.Headers",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/JSONClient.swift",
+      "line": 12,
+      "symbol": "JSONClient.Parameters",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/JSONClient.swift",
+      "line": 132,
+      "symbol": "JSONClient.handleSuccessfulData(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/JSONClient.swift",
+      "line": 136,
+      "symbol": "JSONClient.request(forPath:headers:parameters:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/MockClient.swift",
+      "line": 20,
+      "symbol": "MockClient.init(bundle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/MockClient.swift",
+      "line": 27,
+      "symbol": "MockClient.init(errorDomain:bundle:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jason/Developer/poikile/JSONClient/Source/MockClient.swift",
+      "line": 37,
+      "symbol": "MockClient.apply(toJsonObjectIn:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/jason/Developer/poikile/JSONClient"
+}
