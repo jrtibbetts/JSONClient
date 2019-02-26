@@ -14,6 +14,14 @@ open class AuthorizedJSONClient: JSONClient {
 
     open var defaults: UserDefaults = UserDefaults.standard
 
+    public var signedIn: Bool {
+        if let credential = oAuthCredential {
+            return !credential.isTokenExpired()
+        } else {
+            return false
+        }
+    }
+
     /// The OAuth authentication mode that the client will use for
     /// authorization. This will be either `OAuth1Swift` or `OAuth2Swift`.
     var oAuth: OAuthSwift
@@ -86,7 +94,7 @@ open class AuthorizedJSONClient: JSONClient {
         }
     }
 
-    // MARK: - REST methods
+    // MARK: - REST Functions
 
     /// HTTP `GET` JSON data from a path that requires client authentication to
     /// access and return it as a `Promise` of the desired `Codable` data type.
