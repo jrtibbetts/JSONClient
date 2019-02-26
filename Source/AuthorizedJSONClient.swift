@@ -57,7 +57,9 @@ open class AuthorizedJSONClient: JSONClient {
         }
 
         set {
-            if let credential = newValue {
+            if newValue == nil {
+                oAuthClient = nil
+            } else if let credential = newValue {
                 do {
                     let cachedData: Data = try JSONEncoder().encode(credential)
                     defaults.set(cachedData, forKey: authorizeUrl)
@@ -92,6 +94,12 @@ open class AuthorizedJSONClient: JSONClient {
         if let credential = oAuthCredential {
             oAuthClient = OAuthSwiftClient(credential: credential)
         }
+    }
+
+    // MARK: - Lifecycle Functions
+
+    open func signOut() {
+        oAuthCredential = nil
     }
 
     // MARK: - REST Functions
