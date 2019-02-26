@@ -14,12 +14,8 @@ open class AuthorizedJSONClient: JSONClient {
 
     open var defaults: UserDefaults = UserDefaults.standard
 
-    public var signedIn: Bool {
-        if let credential = oAuthCredential {
-            return !credential.isTokenExpired()
-        } else {
-            return false
-        }
+    open var isSignedIn: Bool {
+        return oAuthCredential?.isTokenExpired() ?? false
     }
 
     /// The OAuth authentication mode that the client will use for
