@@ -99,7 +99,7 @@ open class AuthorizedJSONClient: JSONClient {
     // MARK: - Lifecycle Functions
 
     open func signOut() {
-        oAuthCredential = nil
+        oAuthCredential = nil  // also nullifies the OAuthSwift client
     }
 
     // MARK: - REST Functions
