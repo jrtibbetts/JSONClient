@@ -12,7 +12,7 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
     /// superclass, and its type is `OAuthSwift`, which is the superclass of
     /// `OAuth1Swift`. This one is here so that we don't have to cast the
     /// `oAuth` property to the desired type.
-    fileprivate let oAuth1: OAuth1Swift
+    private let oAuth1: OAuth1Swift
     
     /// Initialize the client with the app's hashes on the server, as well as
     /// the server's various OAuth-related URLs.

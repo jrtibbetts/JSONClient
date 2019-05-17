@@ -17,7 +17,7 @@ final class ViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Other Properties
 
-    fileprivate var gitHubClient = GitHubClient()
+    private var gitHubClient = GitHubClient()
 
     // MARK: - UIViewController
 

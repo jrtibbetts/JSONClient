@@ -15,7 +15,7 @@ open class MockClient: JSONClient {
     /// files that is parses to return data.
     public private(set) var bundle: Bundle
     
-    fileprivate let errorDomain: String
+    private let errorDomain: String
     
     public init(bundle: Bundle = Bundle.main) {
         self.errorMode = false

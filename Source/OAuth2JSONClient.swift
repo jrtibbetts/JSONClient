@@ -11,12 +11,12 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
     /// superclass, and its type is `OAuthSwift`, which is the superclass of
     /// `OAuth2Swift`. This one is here so that we don't have to cast the
     /// `oAuth` property to the desired type.
-    fileprivate let oAuth2: OAuth2Swift
+    private let oAuth2: OAuth2Swift
     
     /// A one-time random string value that's added to request headers and
     /// checked against a response's headers to ensure that the call was
     /// made by the right entity.
-    fileprivate let state: String = "\(arc4random_uniform(UINT32_MAX))"
+    private let state: String = "\(arc4random_uniform(UINT32_MAX))"
     
     /// Initialize the client with the app's hashes on the server, as well as
     /// the server's various OAuth-related URLs.
