@@ -9,8 +9,12 @@ class AuthorizedJSONClientTests: JSONClientTests {
     
     override func validJSONClient(baseUrl: URL? = nil) -> JSONClient {
         let oAuth = OAuth1Swift(consumerKey: "foo", consumerSecret: "bar")
-        
-        return AuthorizedJSONClient(oAuth: oAuth, authorizeUrl: "http://www.cnn.com", baseUrl: baseUrl)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return AuthorizedJSONClient(oAuth: oAuth,
+                                    authorizeUrl: "http://www.cnn.com",
+                                    baseUrl: baseUrl,
+                                    jsonDecoder: decoder)
     }
 
     func testAuthorizedGetWithPathBeforeAuthorizationFails() {
@@ -156,12 +160,16 @@ class AuthorizedJSONClientTests: JSONClientTests {
 class OAuth1JSONClientTests: AuthorizedJSONClientTests {
 
     override func validJSONClient(baseUrl: URL? = nil) -> JSONClient {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         return OAuth1JSONClient(consumerKey: "foo",
                                 consumerSecret: "bar",
                                 requestTokenUrl: "one",
                                 authorizeUrl: "two",
                                 accessTokenUrl: "three",
-                                baseUrl: baseUrl)
+                                baseUrl: baseUrl,
+                                jsonDecoder: jsonDecoder)
     }
 
 }
@@ -169,11 +177,15 @@ class OAuth1JSONClientTests: AuthorizedJSONClientTests {
 class OAuth2JSONClientTests: AuthorizedJSONClientTests {
 
     override func validJSONClient(baseUrl: URL? = nil) -> JSONClient {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+
         return OAuth2JSONClient(consumerKey: "foo",
                                 consumerSecret: "bar",
                                 authorizeUrl: "one",
                                 accessTokenUrl: "two",
-                                baseUrl: baseUrl)
+                                baseUrl: baseUrl,
+                                jsonDecoder: jsonDecoder)
     }
 
 }

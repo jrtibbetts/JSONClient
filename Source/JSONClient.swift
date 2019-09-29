@@ -42,9 +42,11 @@ open class JSONClient: NSObject {
     /// The root URL for server requests.
     public let baseUrl: URL?
 
+    public let jsonDecoder: JSONDecoder
+
     /// The session that will handle all REST calls.
     open var urlSession: URLSession
-    
+
     // MARK: - Initializers
     
     /// Create the client.
@@ -52,8 +54,11 @@ open class JSONClient: NSObject {
     /// - parameter baseUrl: The URL against which all relative paths will be
     ///             resolved. If it's `nil`, then paths passed to client's
     ///             methods must be absolute ones.
-    public init(baseUrl: URL? = nil) {
+    /// - parameter jsonDecoder: The decoder for JSON responses.
+    public init(baseUrl: URL? = nil,
+                jsonDecoder: JSONDecoder) {
         self.baseUrl = baseUrl
+        self.jsonDecoder = jsonDecoder
         self.urlSession = URLSession(configuration: .default)
         super.init()
     }
@@ -130,7 +135,7 @@ open class JSONClient: NSObject {
     }
     
     open func handleSuccessfulData<T: Codable>(_ data: Data) throws -> T {
-        return try JSONUtils.jsonObject(data: data)
+        return try JSONUtils.jsonObject(data: data, decoder: jsonDecoder)
     }
 
     open func request(forPath path: String,

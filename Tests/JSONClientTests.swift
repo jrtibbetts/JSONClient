@@ -7,7 +7,11 @@ import XCTest
 class JSONClientTests: XCTestCase {
 
     func validJSONClient(baseUrl: URL? = nil) -> JSONClient {
-        return JSONClient(baseUrl: baseUrl)
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        let client = JSONClient(baseUrl: baseUrl, jsonDecoder: jsonDecoder)
+
+        return client
     }
 
     // MARK: init()
@@ -39,7 +43,7 @@ class JSONClientTests: XCTestCase {
                 XCTFail("Failed to get Discogs info: \(error.localizedDescription)")
         }
 
-        wait(for: [exp], timeout: 5.0)
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testGetWithNilBaseUrlAndRelativePathRejectsPromise() {

@@ -36,13 +36,14 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                 consumerSecret: String,
                 authorizeUrl: String,
                 accessTokenUrl: String,
-                baseUrl: URL? = nil) {
+                baseUrl: URL? = nil,
+                jsonDecoder: JSONDecoder) {
         oAuth2 = OAuth2Swift(consumerKey: consumerKey,
                              consumerSecret: consumerSecret,
                              authorizeUrl: authorizeUrl,
                              accessTokenUrl: accessTokenUrl,
                              responseType: "token")  // will it always be "token"?
-        super.init(oAuth: oAuth2, authorizeUrl: authorizeUrl, baseUrl: baseUrl)
+        super.init(oAuth: oAuth2, authorizeUrl: authorizeUrl, baseUrl: baseUrl, jsonDecoder: jsonDecoder)
     }
     
     /// Launch the service's sign-in page in a modal Safari web view. After the

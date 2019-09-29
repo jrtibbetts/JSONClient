@@ -21,7 +21,7 @@ open class MockClient: JSONClient {
         self.errorMode = false
         self.errorDomain = "Error domains aren't used in non-error mode!"
         self.bundle = bundle
-        super.init()
+        super.init(jsonDecoder: JSONDecoder())
     }
     
     public init(errorDomain: String,
@@ -29,7 +29,7 @@ open class MockClient: JSONClient {
         self.errorMode = true
         self.errorDomain = errorDomain
         self.bundle = bundle
-        super.init()
+        super.init(jsonDecoder: JSONDecoder())
     }
     
     // MARK: - Utilities

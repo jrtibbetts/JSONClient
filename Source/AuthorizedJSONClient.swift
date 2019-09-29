@@ -85,11 +85,12 @@ open class AuthorizedJSONClient: JSONClient {
     ///             passed to the REST functions must be an absolute URL string.
     public init(oAuth: OAuthSwift,
                 authorizeUrl: String,
-                baseUrl: URL? = nil) {
+                baseUrl: URL? = nil,
+                jsonDecoder: JSONDecoder) {
         self.oAuth = oAuth
         self.authorizeUrl = authorizeUrl
 
-        super.init(baseUrl: baseUrl)
+        super.init(baseUrl: baseUrl, jsonDecoder: jsonDecoder)
 
         if let credential = oAuthCredential {
             oAuthClient = OAuthSwiftClient(credential: credential)
@@ -233,7 +234,7 @@ open class AuthorizedJSONClient: JSONClient {
         }
 
         do {
-            let data = try JSONUtils.jsonData(forObject: object)
+            let data = try JSONEncoder().encode(object)
             return authorizedPost(url: url, jsonData: data, headers: headers)
         } catch {
             return Promise<T> { (seal) in
