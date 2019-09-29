@@ -64,12 +64,14 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
             oAuth1.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
 
             return Promise<OAuthSwiftCredential> { [weak self] (seal) in
-                _ = self?.oAuth1.authorize(withCallbackURL: callbackUrlString,
-                                           success: { [weak self] (credential, _, _) in
-                                            self?.fulfill(seal: seal, withCredential: credential)
-                    }, failure: { (error) in
+                _ = self?.oAuth1.authorize(withCallbackURL: callbackUrlString) { (result) in
+                    switch result {
+                    case .success(let (credential, _, _)):
+                        seal.fulfill(credential)
+                    case .failure(let error):
                         seal.reject(error)
-                })
+                    }
+                }
             }
         }
     }

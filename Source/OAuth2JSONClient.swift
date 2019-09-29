@@ -71,12 +71,14 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
             return Promise<OAuthSwiftCredential> { (seal) in
                 _ = self.oAuth2.authorize(withCallbackURL: callbackUrlString,
                                           scope: scope,
-                                          state: state,
-                                          success: { [weak self] (credential, _, _) in
-                                            self?.fulfill(seal: seal, withCredential: credential)
-                    }, failure: { (error) in
-                        seal.reject(error)
-                })
+                                          state: state) { [unowned self] (result) in
+                                            switch result {
+                                            case .success(let (credential, _, _)):
+                                                self.fulfill(seal: seal, withCredential: credential)
+                                            case .failure(let error):
+                                                seal.reject(error)
+                                            }
+                }
             }
         }
     }

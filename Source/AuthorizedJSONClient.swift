@@ -149,14 +149,21 @@ open class AuthorizedJSONClient: JSONClient {
         }
 
         return Promise<T> { (seal) in
-            _ = oAuthClient.get(url.absoluteString,
-                                parameters: parameters,
-                                headers: headers,
-                                success: { [weak self] (response) in
-                                    self?.handle(response: response, seal: seal)
-            }, failure: { (error) in
-                _ = seal.reject(error)
-            })
+            oAuthClient.get(url,
+                            parameters: parameters,
+                            headers: headers) { [unowned self] (result) in
+                                switch result {
+                                case .success(let response):
+                                    do {
+                                        let object: T = try self.handleSuccessfulResponse(response)
+                                        seal.fulfill(object)
+                                    } catch {
+                                        seal.reject(error)
+                                    }
+                                case .failure(let error):
+                                    seal.reject(error)
+                                }
+            }
         }
     }
 
@@ -214,15 +221,22 @@ open class AuthorizedJSONClient: JSONClient {
         }
 
         return Promise<T> { (seal) in
-            _ = oAuthClient.post(url.absoluteString,
+            _ = oAuthClient.post(url,
                                  parameters: [:],
                                  headers: headers,
-                                 body: jsonData,
-                                 success: { [weak self] (response) in
-                                    self?.handle(response: response, seal: seal)
-            }, failure: { (error) in
-                _ = seal.reject(error)
-            })
+                                 body: jsonData) { [unowned self] (result) in
+                                    switch result {
+                                    case .success(let response):
+                                        do {
+                                            let object: T = try self.handleSuccessfulResponse(response)
+                                            seal.fulfill(object)
+                                        } catch {
+                                            seal.reject(error)
+                                        }
+                                    case .failure(let error):
+                                        seal.reject(error)
+                                    }
+            }
         }
     }
 
