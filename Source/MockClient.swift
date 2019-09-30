@@ -16,20 +16,14 @@ open class MockClient: JSONClient {
     public private(set) var bundle: Bundle
     
     private let errorDomain: String
-    
-    public init(bundle: Bundle = Bundle.main) {
-        self.errorMode = false
-        self.errorDomain = "Error domains aren't used in non-error mode!"
+
+    public init(errorDomain: String? = nil,
+                bundle: Bundle = Bundle.main,
+                jsonDecoder: JSONDecoder = JSONDecoder()) {
+        self.errorMode = errorDomain != nil
+        self.errorDomain = errorDomain ?? "The client isn't in error mode."
         self.bundle = bundle
-        super.init(jsonDecoder: JSONDecoder())
-    }
-    
-    public init(errorDomain: String,
-                bundle: Bundle = Bundle.main) {
-        self.errorMode = true
-        self.errorDomain = errorDomain
-        self.bundle = bundle
-        super.init(jsonDecoder: JSONDecoder())
+        super.init(jsonDecoder: jsonDecoder)
     }
     
     // MARK: - Utilities
