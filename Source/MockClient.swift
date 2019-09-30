@@ -35,7 +35,9 @@ open class MockClient: JSONClient {
                 seal.reject(error ?? NSError(domain: errorDomain, code: 0, userInfo: nil))
             } else {
                 do {
-                    let obj: T = try JSONUtils.jsonObject(forFileNamed: fileName, inBundle: bundle)
+                    let obj: T = try JSONUtils.jsonObject(forFileNamed: fileName,
+                                                          inBundle: bundle,
+                                                          decoder: jsonDecoder)
                     seal.fulfill(obj)
                 } catch {
                     seal.reject(error)
