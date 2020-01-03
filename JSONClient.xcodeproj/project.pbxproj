@@ -15,7 +15,6 @@
 		960368B62058DB3D00D24CE7 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 960368B12058DB3C00D24CE7 /* Cartfile.resolved */; };
 		960368B72058DB3D00D24CE7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 960368B22058DB3C00D24CE7 /* LICENSE */; };
 		960368B82058DB3D00D24CE7 /* CODE_OF_CONDUCT.md in Resources */ = {isa = PBXBuildFile; fileRef = 960368B32058DB3C00D24CE7 /* CODE_OF_CONDUCT.md */; };
-		960368B92058DB3D00D24CE7 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 960368B42058DB3D00D24CE7 /* Cartfile.private */; };
 		964F13D02051E2B900B54B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13CF2051E2B900B54B97 /* AppDelegate.swift */; };
 		964F13D22051E2B900B54B97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F13D12051E2B900B54B97 /* ViewController.swift */; };
 		964F13D52051E2B900B54B97 /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964F13D32051E2B900B54B97 /* Demo.storyboard */; };
@@ -87,7 +86,6 @@
 		960368B12058DB3C00D24CE7 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		960368B22058DB3C00D24CE7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		960368B32058DB3C00D24CE7 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
-		960368B42058DB3D00D24CE7 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		964F13CD2051E2B900B54B97 /* JSONClientDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONClientDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964F13CF2051E2B900B54B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		964F13D12051E2B900B54B97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				960368B32058DB3C00D24CE7 /* CODE_OF_CONDUCT.md */,
 				964F1417205384FD00B54B97 /* Example.md */,
 				964F14182053CDE500B54B97 /* README.md */,
-				960368B42058DB3D00D24CE7 /* Cartfile.private */,
 				960368B12058DB3C00D24CE7 /* Cartfile.resolved */,
 				964F13CE2051E2B900B54B97 /* Demo */,
 				966011FF203A88630035FE96 /* Frameworks */,
@@ -373,7 +370,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				960368B52058DB3D00D24CE7 /* Cartfile in Resources */,
-				960368B92058DB3D00D24CE7 /* Cartfile.private in Resources */,
 				960368B62058DB3D00D24CE7 /* Cartfile.resolved in Resources */,
 				960368B72058DB3D00D24CE7 /* LICENSE in Resources */,
 				960368B82058DB3D00D24CE7 /* CODE_OF_CONDUCT.md in Resources */,
