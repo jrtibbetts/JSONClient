@@ -1,5 +1,6 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
+import Foundation
 import OAuthSwift
 import PromiseKit
 import Stylobate

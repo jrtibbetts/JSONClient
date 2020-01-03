@@ -1,7 +1,9 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
+import Foundation
 import OAuthSwift
 import PromiseKit
+import UIKit
 
 /// An `AuthorizedJSONClient` implementation that uses OAuth 2 for
 /// authentication and authorization.
