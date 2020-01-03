@@ -22,6 +22,7 @@ let pkg = Package(
     targets: [
         .target(
             name: "JSONClient",
+            dependencies: ["Stylobate"],
             path: "Source"
         )
     ]
