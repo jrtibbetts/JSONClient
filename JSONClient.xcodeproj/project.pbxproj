@@ -20,8 +20,6 @@
 		964F13D52051E2B900B54B97 /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964F13D32051E2B900B54B97 /* Demo.storyboard */; };
 		964F13D72051E2B900B54B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 964F13D62051E2B900B54B97 /* Assets.xcassets */; };
 		964F13DA2051E2B900B54B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 964F13D82051E2B900B54B97 /* LaunchScreen.storyboard */; };
-		964F140D20522BFB00B54B97 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96601200203A88640035FE96 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		964F140F20522BFB00B54B97 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F141120522BFB00B54B97 /* JSONClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		964F14192053CDE600B54B97 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 964F14182053CDE500B54B97 /* README.md */; };
 		9659768F23BED90100FD3B98 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9659768E23BED90100FD3B98 /* OAuthSwift */; };
@@ -32,11 +30,7 @@
 		966011EA203A839C0035FE96 /* JSONClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 966011DC203A839B0035FE96 /* JSONClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		966011F6203A83E00035FE96 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F3203A83DF0035FE96 /* MockClient.swift */; };
 		966011F7203A83E00035FE96 /* JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F4203A83DF0035FE96 /* JSONClient.swift */; };
-		96601204203A8A310035FE96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601200203A88640035FE96 /* OAuthSwift.framework */; };
-		96601205203A8A310035FE96 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96601201203A88640035FE96 /* PromiseKit.framework */; };
 		9689BC5A2049D0C500F8DEB1 /* SampleFoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 9689BC592049D0C500F8DEB1 /* SampleFoo.json */; };
-		968C4A8E221B9DEA006B51EE /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968C4A8D221B9DEA006B51EE /* Stylobate.framework */; };
-		968C4A8F221B9DEA006B51EE /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 968C4A8D221B9DEA006B51EE /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC96204B96A00083A7DA /* MockClientTests.swift */; };
 		96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */; };
 		96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */; };
@@ -68,9 +62,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				964F140D20522BFB00B54B97 /* OAuthSwift.framework in Embed Frameworks */,
-				964F140F20522BFB00B54B97 /* PromiseKit.framework in Embed Frameworks */,
-				968C4A8F221B9DEA006B51EE /* Stylobate.framework in Embed Frameworks */,
 				964F141120522BFB00B54B97 /* JSONClient.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -103,10 +94,7 @@
 		966011E9203A839C0035FE96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		966011F3203A83DF0035FE96 /* MockClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		966011F4203A83DF0035FE96 /* JSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONClient.swift; sourceTree = "<group>"; };
-		96601200203A88640035FE96 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
-		96601201203A88640035FE96 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		9689BC592049D0C500F8DEB1 /* SampleFoo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleFoo.json; sourceTree = "<group>"; };
-		968C4A8D221B9DEA006B51EE /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stylobate.framework; sourceTree = "<group>"; };
 		96D8CC96204B96A00083A7DA /* MockClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClientTests.swift; sourceTree = "<group>"; };
 		96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONClientTests.swift; sourceTree = "<group>"; };
 		96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedJSONClient.swift; sourceTree = "<group>"; };
@@ -119,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				968C4A8E221B9DEA006B51EE /* Stylobate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +125,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96601204203A8A310035FE96 /* OAuthSwift.framework in Frameworks */,
-				96601205203A8A310035FE96 /* PromiseKit.framework in Frameworks */,
 				966011E3203A839C0035FE96 /* JSONClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,7 +157,6 @@
 				964F14182053CDE500B54B97 /* README.md */,
 				960368B12058DB3C00D24CE7 /* Cartfile.resolved */,
 				964F13CE2051E2B900B54B97 /* Demo */,
-				966011FF203A88630035FE96 /* Frameworks */,
 				966011DA203A839B0035FE96 /* Products */,
 				966011DB203A839B0035FE96 /* Source */,
 				966011E6203A839C0035FE96 /* Tests */,
@@ -214,16 +198,6 @@
 				9689BC592049D0C500F8DEB1 /* SampleFoo.json */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		966011FF203A88630035FE96 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				96601200203A88640035FE96 /* OAuthSwift.framework */,
-				96601201203A88640035FE96 /* PromiseKit.framework */,
-				968C4A8D221B9DEA006B51EE /* Stylobate.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
