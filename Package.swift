@@ -16,7 +16,7 @@ let pkg = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/jrtibbetts/Stylobate.git", .upToNextMajor(from: "0.27.0")),
+        .package(url: "https://github.com/jrtibbetts/Stylobate.git", .upToNextMajor(from: "0.32.3")),
         .package(url: "https://github.com/OAuthSwift/OAuthSwift.git", .upToNextMajor(from: "2.1.0")),
         .package(url: "https://github.com/mxcl/PromiseKit.git", .upToNextMajor(from: "6.12.0"))
     ],
