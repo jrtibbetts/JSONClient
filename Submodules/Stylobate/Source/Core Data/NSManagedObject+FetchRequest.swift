@@ -13,9 +13,9 @@ public extension NSManagedObject {
 //    class func deleteAll(fromCoordinator coordinator: NSPersistentStoreCoordinator,
 //                         context: NSManagedObjectContext) throws {
 //        let allRequest = Self.fetchRequestForAll()
-//        // swiftlint:disable force_cast
+//        // swiftlint : disable force_cast
 //        let deleteRequest = NSBatchDeleteRequest(fetchRequest: allRequest as! NSFetchRequest<NSFetchRequestResult>)
-//        // swiftlint:enable force_cast
+//        // swiftlint : enable force_cast
 //
 //        let error = try coordinator.execute(deleteRequest, with: context) as? Error
 //
@@ -23,7 +23,7 @@ public extension NSManagedObject {
 //    }
 
     class func fetchRequest<T: NSManagedObject>(sortDescriptors sortCriteria: [NSSortDescriptor],
-                                                predicate: NSPredicate? = NSPredicate(value: true)) -> NSFetchRequest<T> {
+                                                predicate: NSPredicate? = .init(value: true)) -> NSFetchRequest<T> {
         let entityName = String(describing: self)
         let request: NSFetchRequest<T> = NSFetchRequest(entityName: entityName)
         request.sortDescriptors = sortCriteria

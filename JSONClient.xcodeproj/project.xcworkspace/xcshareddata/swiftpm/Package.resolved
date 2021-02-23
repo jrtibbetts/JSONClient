@@ -65,15 +65,6 @@
         }
       },
       {
-        "package": "Stylobate",
-        "repositoryURL": "https://github.com/jrtibbetts/Stylobate",
-        "state": {
-          "branch": null,
-          "revision": "dea95d38f351591e994c63d297de4fbccf6cc89b",
-          "version": "0.27.2"
-        }
-      },
-      {
         "package": "Swifter",
         "repositoryURL": "https://github.com/httpswift/swifter.git",
         "state": {

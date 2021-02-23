@@ -4,7 +4,7 @@
 import CoreData
 import XCTest
 
-// swiftlint:disable force_cast
+// swiftlint : disable force_cast
 class NSManagedObjectContextFetchOrCreate: FetchingTestBase {
 
     // MARK: - deleteAll()

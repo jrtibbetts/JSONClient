@@ -25,12 +25,13 @@
 		9659768F23BED90100FD3B98 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9659768E23BED90100FD3B98 /* OAuthSwift */; };
 		9659769223BED94000FD3B98 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9659769123BED94000FD3B98 /* PromiseKit */; };
 		9659769523BED97A00FD3B98 /* PMKFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 9659769423BED97A00FD3B98 /* PMKFoundation */; };
-		9659769823BED99F00FD3B98 /* Stylobate in Frameworks */ = {isa = PBXBuildFile; productRef = 9659769723BED99F00FD3B98 /* Stylobate */; };
 		966011E3203A839C0035FE96 /* JSONClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966011D9203A839B0035FE96 /* JSONClient.framework */; };
 		966011EA203A839C0035FE96 /* JSONClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 966011DC203A839B0035FE96 /* JSONClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		966011F6203A83E00035FE96 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F3203A83DF0035FE96 /* MockClient.swift */; };
 		966011F7203A83E00035FE96 /* JSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966011F4203A83DF0035FE96 /* JSONClient.swift */; };
 		9689BC5A2049D0C500F8DEB1 /* SampleFoo.json in Resources */ = {isa = PBXBuildFile; fileRef = 9689BC592049D0C500F8DEB1 /* SampleFoo.json */; };
+		96B7102325E58BC400EF91EE /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B7101B25E58BBB00EF91EE /* Stylobate.framework */; };
+		96B7102425E58BC400EF91EE /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96B7101B25E58BBB00EF91EE /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96D8CC97204B96A00083A7DA /* MockClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC96204B96A00083A7DA /* MockClientTests.swift */; };
 		96D8CC99204BCDEA0083A7DA /* JSONClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */; };
 		96F0EBFD2054CC2D004A124A /* AuthorizedJSONClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */; };
@@ -53,6 +54,20 @@
 			remoteGlobalIDString = 966011D8203A839B0035FE96;
 			remoteInfo = JSONClient;
 		};
+		96B7101A25E58BBB00EF91EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96B7101525E58BBB00EF91EE /* Stylobate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96EDF25D209F90B2009496FA;
+			remoteInfo = Stylobate;
+		};
+		96B7101C25E58BBB00EF91EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96B7101525E58BBB00EF91EE /* Stylobate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96EDF266209F90B2009496FA;
+			remoteInfo = StylobateTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +78,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				964F141120522BFB00B54B97 /* JSONClient.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96B7102525E58BC400EF91EE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				96B7102425E58BC400EF91EE /* Stylobate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +121,7 @@
 		966011F3203A83DF0035FE96 /* MockClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		966011F4203A83DF0035FE96 /* JSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONClient.swift; sourceTree = "<group>"; };
 		9689BC592049D0C500F8DEB1 /* SampleFoo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleFoo.json; sourceTree = "<group>"; };
+		96B7101525E58BBB00EF91EE /* Stylobate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Stylobate.xcodeproj; path = Stylobate/Stylobate.xcodeproj; sourceTree = "<group>"; };
 		96D8CC96204B96A00083A7DA /* MockClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClientTests.swift; sourceTree = "<group>"; };
 		96D8CC98204BCDEA0083A7DA /* JSONClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONClientTests.swift; sourceTree = "<group>"; };
 		96F0EBFC2054CC2D004A124A /* AuthorizedJSONClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizedJSONClient.swift; sourceTree = "<group>"; };
@@ -114,9 +141,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9659769823BED99F00FD3B98 /* Stylobate in Frameworks */,
 				9659768F23BED90100FD3B98 /* OAuthSwift in Frameworks */,
 				9659769223BED94000FD3B98 /* PromiseKit in Frameworks */,
+				96B7102325E58BC400EF91EE /* Stylobate.framework in Frameworks */,
 				9659769523BED97A00FD3B98 /* PMKFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,7 +186,9 @@
 				964F13CE2051E2B900B54B97 /* Demo */,
 				966011DA203A839B0035FE96 /* Products */,
 				966011DB203A839B0035FE96 /* Source */,
+				96B7101225E58B6D00EF91EE /* Submodules */,
 				966011E6203A839C0035FE96 /* Tests */,
+				96B7102225E58BC400EF91EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,6 +227,30 @@
 				9689BC592049D0C500F8DEB1 /* SampleFoo.json */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		96B7101225E58B6D00EF91EE /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				96B7101525E58BBB00EF91EE /* Stylobate.xcodeproj */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		96B7101625E58BBB00EF91EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96B7101B25E58BBB00EF91EE /* Stylobate.framework */,
+				96B7101D25E58BBB00EF91EE /* StylobateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96B7102225E58BC400EF91EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +294,7 @@
 				966011D5203A839B0035FE96 /* Frameworks */,
 				966011D6203A839B0035FE96 /* Headers */,
 				966011D7203A839B0035FE96 /* Resources */,
+				96B7102525E58BC400EF91EE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,7 +305,6 @@
 				9659768E23BED90100FD3B98 /* OAuthSwift */,
 				9659769123BED94000FD3B98 /* PromiseKit */,
 				9659769423BED97A00FD3B98 /* PMKFoundation */,
-				9659769723BED99F00FD3B98 /* Stylobate */,
 			);
 			productName = JSONClient;
 			productReference = 966011D9203A839B0035FE96 /* JSONClient.framework */;
@@ -282,7 +335,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Poikile Creations";
 				TargetAttributes = {
 					964F13CC2051E2B900B54B97 = {
@@ -315,10 +368,15 @@
 				9659768D23BED90100FD3B98 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				9659769023BED94000FD3B98 /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				9659769323BED97A00FD3B98 /* XCRemoteSwiftPackageReference "Foundation" */,
-				9659769623BED99F00FD3B98 /* XCRemoteSwiftPackageReference "Stylobate" */,
 			);
 			productRefGroup = 966011DA203A839B0035FE96 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 96B7101625E58BBB00EF91EE /* Products */;
+					ProjectRef = 96B7101525E58BBB00EF91EE /* Stylobate.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				966011D8203A839B0035FE96 /* JSONClient */,
@@ -327,6 +385,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		96B7101B25E58BBB00EF91EE /* Stylobate.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Stylobate.framework;
+			remoteRef = 96B7101A25E58BBB00EF91EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		96B7101D25E58BBB00EF91EE /* StylobateTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = StylobateTests.xctest;
+			remoteRef = 96B7101C25E58BBB00EF91EE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		964F13CB2051E2B900B54B97 /* Resources */ = {
@@ -444,6 +519,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,6 +544,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,6 +581,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -530,7 +608,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -567,6 +645,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -587,7 +666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -616,6 +695,8 @@
 				);
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,6 +705,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -647,6 +729,8 @@
 				);
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,6 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.poikile.JSONClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -671,6 +756,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -695,6 +781,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -774,14 +861,6 @@
 				minimumVersion = 3.3.4;
 			};
 		};
-		9659769623BED99F00FD3B98 /* XCRemoteSwiftPackageReference "Stylobate" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jrtibbetts/Stylobate";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.27.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -799,11 +878,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9659769323BED97A00FD3B98 /* XCRemoteSwiftPackageReference "Foundation" */;
 			productName = PMKFoundation;
-		};
-		9659769723BED99F00FD3B98 /* Stylobate */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9659769623BED99F00FD3B98 /* XCRemoteSwiftPackageReference "Stylobate" */;
-			productName = Stylobate;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
