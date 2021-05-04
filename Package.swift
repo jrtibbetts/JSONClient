@@ -31,8 +31,8 @@ let pkg = Package(
         ),
         .testTarget(name: "JSONClientTests",
                     dependencies: ["JSONClient"],
-                    path: "Tests"),
-
+                    path: "Tests",
+                    resources: [.copy("SampleFoo.json")])
     ]
 )
 
