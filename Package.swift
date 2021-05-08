@@ -27,12 +27,15 @@ let pkg = Package(
     targets: [
         .target(name: "JSONClient",
                 dependencies: ["Stylobate", "OAuthSwift", "PromiseKit"],
-                path: "Source"
+                path: "Source",
+                exclude: ["Info.plist"]
         ),
         .testTarget(name: "JSONClientTests",
                     dependencies: ["JSONClient"],
                     path: "Tests",
-                    resources: [.copy("SampleFoo.json")])
+                    exclude: ["Info.plist"],
+                    resources: [.copy("SampleFoo.json")]
+        )
     ]
 )
 
