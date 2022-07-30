@@ -1,7 +1,6 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 @testable import JSONClient
-import PromiseKit
 import Stylobate
 import XCTest
 
@@ -40,13 +39,16 @@ class MockClientTests: XCTestCase {
         let client = MockClient(errorDomain: errorDomain)
 
         let exp = expectation(description: "error mode default error")
-        let promise: Promise<String> = client.apply(toJsonObjectIn: "SampleFoo")
 
-        promise.done { (promise) -> Void in
-            XCTFail("This should have thrown a default error.")
-            }.catch { (error) in
+        Task {
+            do {
+                let _: String = try await client.apply(toJsonObjectIn: "SampleFoo")
+                XCTFail("This should have thrown a default error.")
+            } catch {
                 XCTAssertTrue(error.localizedDescription.contains(errorDomain))
-                exp.fulfill()
+            }
+
+            exp.fulfill()
         }
 
         wait(for: [exp], timeout: 5.0)
@@ -58,13 +60,16 @@ class MockClientTests: XCTestCase {
         let client = MockClient(errorDomain: "default error domain")
 
         let exp = expectation(description: "error mode default error")
-        let promise: Promise<String> = client.apply(toJsonObjectIn: "SampleFoo", error: customError)
 
-        promise.done { (promise) -> Void in
-            XCTFail("This should have thrown a default error.")
-            }.catch { (error) in
+        Task {
+            do {
+                let _: String = try await client.apply(toJsonObjectIn: "SampleFoo", error: customError)
+                XCTFail("This should have thrown a default error.")
+            } catch {
                 XCTAssertEqual(error.localizedDescription, customError.localizedDescription)
-                exp.fulfill()
+            }
+
+            exp.fulfill()
         }
 
         wait(for: [exp], timeout: 5.0)
@@ -76,16 +81,19 @@ class MockClientTests: XCTestCase {
         let client = MockClient()
 
         let exp = expectation(description: "error mode default error")
-        let promise: Promise<String> = client.apply(toJsonObjectIn: "SampleFoo", error: customError)
 
-        promise.done { (promise) -> Void in
-            XCTFail("This should have thrown a default error.")
-            }.catch { (error) in
+        Task {
+            do {
+                let _: String = try await client.apply(toJsonObjectIn: "SampleFoo", error: customError)
+                XCTFail("This should have thrown a default error.")
+            } catch {
                 XCTAssertTrue(type(of: error) == JSONFileLoadingError.self)
-                exp.fulfill()
+            }
+            
+            exp.fulfill()
         }
-
+        
         wait(for: [exp], timeout: 5.0)
     }
-
+    
 }

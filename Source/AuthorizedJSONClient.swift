@@ -1,9 +1,9 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
-import Foundation
 import OAuthSwift
-import PromiseKit
 import Stylobate
+import UIKit
+import OAuthSwiftAuthenticationServices
 
 /// A JSON client that can be authenticated against a server and make
 /// authorized REST calls for restricted resources.
@@ -33,6 +33,11 @@ open class AuthorizedJSONClient: JSONClient {
     var oAuthClient: OAuthSwiftClient?
 
     // MARK: Internal Properties
+
+    /// A one-time random string value that's added to request headers and
+    /// checked against a response's headers to ensure that the call was
+    /// made by the right entity.
+    let state: String = "\(arc4random_uniform(UINT32_MAX))"
 
     /// The service's endpoint for initiating an authorization sequence. This
     /// is used internally as the `UserDefaults` key for storing the OAuth
@@ -121,12 +126,12 @@ open class AuthorizedJSONClient: JSONClient {
     ///            data couldn't be parsed into the requested object type.
     open func authorizedGet<T: Codable>(path: String,
                                         headers: Headers = Headers(),
-                                        parameters: Parameters = Parameters()) -> Promise<T> {
+                                        parameters: Parameters = Parameters()) async throws -> T {
         guard let url = URL(string: path, relativeTo: baseUrl) else {
-            return JSONErr.invalidUrl(urlString: path).rejectedPromise()
+            throw JSONErr.invalidUrl(urlString: path)
         }
 
-        return authorizedGet(url: url, headers: headers, parameters: parameters)
+        return try await authorizedGet(url: url, headers: headers, parameters: parameters)
     }
 
     /// HTTP `GET` JSON data from a URL that requires client authentication to
@@ -144,28 +149,18 @@ open class AuthorizedJSONClient: JSONClient {
     ///            data couldn't be parsed into the requested object type.
     open func authorizedGet<T: Codable>(url: URL,
                                         headers: Headers = Headers(),
-                                        parameters: Parameters = Parameters()) -> Promise<T> {
+                                        parameters: Parameters = Parameters()) async throws -> T {
         guard let oAuthClient = oAuthClient else {
-            return JSONErr.unauthorizedAttempt.rejectedPromise()
+            throw JSONErr.unauthorizedAttempt
         }
 
-        return Promise<T> { (seal) in
+        return await withUnsafeContinuation { (continuation) in
             oAuthClient.get(url,
                             parameters: parameters,
-                            headers: headers) { [unowned self] (result) in
-                                switch result {
-                                case .success(let response):
-                                    do {
-                                        let object: T = try self.handleSuccessfulResponse(response)
-                                        seal.fulfill(object)
-                                    } catch {
-                                        seal.reject(error)
-                                    }
-                                case .failure(let error):
-                                    seal.reject(error)
-                                }
+                            headers: headers) { (result) in
+                continuation.resume(returning: result)
             }
-        }
+        } as! T
     }
 
     /// HTTP `POST` JSON data to a path that requires client authentication to
@@ -183,12 +178,12 @@ open class AuthorizedJSONClient: JSONClient {
     ///            data couldn't be parsed into the requested object type.
     open func authorizedPost<T: Codable>(path: String,
                                          jsonData: Data? = nil,
-                                         headers: OAuthSwift.Headers = [:]) -> Promise<T> {
+                                         headers: OAuthSwift.Headers = [:]) async throws -> T {
         guard let url = URL(string: path, relativeTo: baseUrl) else {
-            return JSONErr.invalidUrl(urlString: path).rejectedPromise()
+            throw JSONErr.invalidUrl(urlString: path)
         }
 
-        return authorizedPost(url: url, jsonData: jsonData, headers: headers)
+        return try await authorizedPost(url: url, jsonData: jsonData, headers: headers)
     }
 
     /// HTTP `POST` JSON data to a path that requires client authentication to
@@ -206,68 +201,39 @@ open class AuthorizedJSONClient: JSONClient {
     ///            data couldn't be parsed into the requested object type.
     open func authorizedPost<T: Codable>(path: String,
                                          object: T,
-                                         headers: OAuthSwift.Headers = [:]) -> Promise<T> {
+                                         headers: OAuthSwift.Headers = [:]) async throws -> T {
         guard let url = URL(string: path, relativeTo: baseUrl) else {
-            return Promise<T>(error: JSONErr.invalidUrl(urlString: path))
+            throw JSONErr.invalidUrl(urlString: path)
         }
 
-        return authorizedPost(url: url, object: object, headers: headers)
+        return try await authorizedPost(url: url, object: object, headers: headers)
+    }
+
+    open func authorizedPost<T: Codable>(url: URL,
+                                         object: T,
+                                         headers: OAuthSwift.Headers = [:]) async throws -> T {
+        let data = try JSONEncoder().encode(object)
+        return try await authorizedPost(url: url, jsonData: data, headers: headers)
     }
 
     open func authorizedPost<T: Codable>(url: URL,
                                          jsonData: Data? = nil,
-                                         headers: OAuthSwift.Headers = [:]) -> Promise<T> {
+                                         headers: OAuthSwift.Headers = [:]) async throws -> T {
         guard let oAuthClient = oAuthClient else {
-            return JSONErr.unauthorizedAttempt.rejectedPromise()
+            throw JSONErr.unauthorizedAttempt
         }
 
-        return Promise<T> { (seal) in
+        return await withUnsafeContinuation { (continuation) in
             _ = oAuthClient.post(url,
                                  parameters: [:],
                                  headers: headers,
-                                 body: jsonData) { [unowned self] (result) in
-                                    switch result {
-                                    case .success(let response):
-                                        do {
-                                            let object: T = try self.handleSuccessfulResponse(response)
-                                            seal.fulfill(object)
-                                        } catch {
-                                            seal.reject(error)
-                                        }
-                                    case .failure(let error):
-                                        seal.reject(error)
-                                    }
+                                 body: jsonData) { (result) in
+                continuation.resume(returning: result)
             }
-        }
-    }
-
-    open func authorizedPost<T: Codable>(url: URL,
-                                         object: T,
-                                         headers: OAuthSwift.Headers = [:]) -> Promise<T> {
-        if oAuthClient == nil {
-            return JSONErr.unauthorizedAttempt.rejectedPromise()
-        }
-
-        do {
-            let data = try JSONEncoder().encode(object)
-            return authorizedPost(url: url, jsonData: data, headers: headers)
-        } catch {
-            return Promise<T> { (seal) in
-                seal.reject(error)
-            }
-        }
+        } as! T
     }
 
     // MARK: - Utility functions
-
-    internal func handle<T: Codable>(response: OAuthSwiftResponse,
-                                     seal: Resolver<T>) {
-        do {
-            seal.fulfill(try self.handleSuccessfulResponse(response))
-        } catch {
-            seal.reject(JSONErr.parseFailed(error: error))
-        }
-    }
 
     /// Handle an HTTP `200` response by parsing its data into a `Codable`
     /// object.
@@ -279,19 +245,6 @@ open class AuthorizedJSONClient: JSONClient {
     /// - throws: If the `Codable` object couldn't be parsed.
     internal func handleSuccessfulResponse<T: Codable>(_ response: OAuthSwiftResponse) throws -> T {
         return try handleSuccessfulData(response.data)
-    }
-
-    /// Fulfill a seal with specified OAuth credentials. This is a convenience
-    /// function borne out of a complaint by Codebeat that the `success` block
-    /// in `authorize(presentingViewController:callbackUrlString:)` was
-    /// duplicated in both subclasses of `AuthorizedJSONClient`.
-    ///
-    /// - parameter seal: The `Promise`'s resolver.
-    /// - parameter withCredential: The OAuth credential.
-    internal func fulfill(seal: Resolver<OAuthSwiftCredential>,
-                          withCredential credential: OAuthSwiftCredential) {
-        oAuthCredential = credential  // sets the OAuthSwiftClient, too.
-        seal.fulfill(credential)
     }
 
 }

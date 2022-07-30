@@ -1,7 +1,6 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 import Foundation
-import PromiseKit
 import Stylobate
 
 /// Base class for mock client implementations of third-party services.
@@ -29,20 +28,13 @@ open class MockClient: JSONClient {
     // MARK: - Utilities
     
     public func apply<T: Codable>(toJsonObjectIn fileName: String,
-                                  error: Error? = nil) -> Promise<T> {
-        return Promise<T> { (seal) in
-            if errorMode {
-                seal.reject(error ?? NSError(domain: errorDomain, code: 0, userInfo: nil))
-            } else {
-                do {
-                    let obj: T = try JSONUtils.jsonObject(forFileNamed: fileName,
-                                                          inBundle: bundle,
-                                                          decoder: jsonDecoder)
-                    seal.fulfill(obj)
-                } catch {
-                    seal.reject(error)
-                }
-            }
+                                  error: Error? = nil) async throws -> T {
+        if errorMode {
+            throw (error ?? NSError(domain: errorDomain, code: 0, userInfo: nil))
+        } else {
+            return try JSONUtils.jsonObject(forFileNamed: fileName,
+                                            inBundle: bundle,
+                                            decoder: jsonDecoder)
         }
     }
     

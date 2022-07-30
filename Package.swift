@@ -1,11 +1,14 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 import PackageDescription
 
 let pkg = Package(
     name: "JSONClient",
 
     platforms: [
-        .iOS(.v14)
+        .iOS(.v14),
+        .tvOS(.v14),
+        .watchOS(.v7),
+        .macOS(.v11)
     ],
 
     products: [
@@ -19,14 +22,14 @@ let pkg = Package(
         .package(url: "https://github.com/jrtibbetts/Stylobate.git",
                  .branch("main")),
         .package(url: "https://github.com/OAuthSwift/OAuthSwift.git",
-                 .upToNextMajor(from: "2.1.0")),
-        .package(url: "https://github.com/mxcl/PromiseKit.git",
-                 .upToNextMajor(from: "6.12.0"))
+                 .upToNextMajor(from: "2.2.0")),
+        .package(url: "https://github.com/raxityo/OAuthSwiftAuthenticationServices",
+                 .branch("master"))
     ],
 
     targets: [
         .target(name: "JSONClient",
-                dependencies: ["Stylobate", "OAuthSwift", "PromiseKit"],
+                dependencies: ["Stylobate", "OAuthSwift", "OAuthSwiftAuthenticationServices"],
                 path: "Source",
                 exclude: ["Info.plist"]
         ),

@@ -2,7 +2,6 @@
 
 import Foundation
 import OAuthSwift
-import PromiseKit
 import Stylobate
 
 /// A REST client that uses OAuth authentication and gets and posts JSON data.
@@ -30,10 +29,6 @@ open class JSONClient: NSObject {
         case serverError(statusCode: Int)
         /// Thrown if the endpoint returned an HTTP 401 (unauthorized) code.
         case unauthorizedAttempt
-
-        func rejectedPromise<T: Codable>() -> Promise<T> {
-            return Promise(error: self)
-        }
 
     }
     
@@ -81,59 +76,13 @@ open class JSONClient: NSObject {
     ///             for the expected type.
     open func get<T: Codable>(path: String,
                               headers: Headers = Headers(),
-                              parameters: Parameters = Parameters()) -> Promise<T> {
-        return Promise<T> { (seal) in
-            let urlRequest: URLRequest
+                              parameters: Parameters = Parameters()) async throws -> T {
+        let urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
+        let (data, _) = try await urlSession.data(for: urlRequest)
 
-            do {
-                urlRequest = try request(forPath: path, headers: headers, parameters: parameters)
-            } catch {
-                seal.reject(error)
-                return
-            }
-
-            urlSession.dataTask(with: urlRequest) { (data, response, error) in
-                if self.willReject(seal: seal, ifResponse: response, hasError: error) {
-                    return
-                } else if data == nil {
-                    /// Make sure that we got some sort of data.
-                    seal.reject(JSONErr.nilData)
-                } else {
-                    do {
-                        /// The data is non-`nil`, so parse it.
-                        seal.fulfill(try self.handleSuccessfulData(data!))
-                    } catch {
-                        /// The data couldn't be decoded into the expected
-                        /// type T.
-                        seal.reject(JSONErr.parseFailed(error: error))
-                    }
-                }
-            }.resume()  // Kick off the request. Don't forget this!
-        }
+        return try handleSuccessfulData(data)
     }
 
-    // MARK: - Utility functions
-
-    private func willReject<T>(seal: Resolver<T>,
-                               ifResponse response: URLResponse?,
-                               hasError error: Error?) -> Bool {
-        if let error = error {
-            /// Usually an "unsupported URL" NSError.
-            seal.reject(error)
-        } else if let response = response as? HTTPURLResponse {
-            switch response.statusCode {
-            case 200:
-                return false
-            case 404:
-                seal.reject(JSONErr.notFound)
-            default:
-                seal.reject(JSONErr.serverError(statusCode: response.statusCode))
-            }
-        }
-
-        return true
-    }
-    
     open func handleSuccessfulData<T: Codable>(_ data: Data) throws -> T {
         return try JSONUtils.jsonObject(data: data, decoder: jsonDecoder)
     }

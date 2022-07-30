@@ -1,8 +1,7 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
-import Foundation
 import OAuthSwift
-import PromiseKit
+import OAuthSwiftAuthenticationServices
 import UIKit
 
 /// An `AuthorizedJSONClient` implementation that uses OAuth 2 for
@@ -14,12 +13,7 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
     /// `OAuth2Swift`. This one is here so that we don't have to cast the
     /// `oAuth` property to the desired type.
     private let oAuth2: OAuth2Swift
-    
-    /// A one-time random string value that's added to request headers and
-    /// checked against a response's headers to ensure that the call was
-    /// made by the right entity.
-    private let state: String = "\(arc4random_uniform(UINT32_MAX))"
-    
+
     /// Initialize the client with the app's hashes on the server, as well as
     /// the server's various OAuth-related URLs.
     ///
@@ -47,42 +41,42 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                              responseType: "token")  // will it always be "token"?
         super.init(oAuth: oAuth2, authorizeUrl: authorizeUrl, baseUrl: baseUrl, jsonDecoder: jsonDecoder)
     }
-    
+
     /// Launch the service's sign-in page in a modal Safari web view. After the
     /// user has successfully authenticated, the web page will be redirected to
     /// the callback URL, which is unique to the client application.
     ///
-    /// - parameter presentingViewController: The view controller over which the
-    ///             Safari view controller will be presented modally.
-    /// - parameter callbackUrlString: The URL that the web view will load
-    ///             after authentication succeeds.
+    /// - parameter callbackUrl: The URL that the web view will load after
+    ///             authentication succeeds.
     /// - parameter scope: The level of access that the client is requesting.
     ///             See the server's documentation for what scopes are
     ///             supported. The default value is an empty string.
     ///
     /// - returns:  A `Promise` containing whatever type of data is sent back
     ///             by the server after authentication succeeds.
-    open func authorize(presentingViewController: UIViewController,
-                        callbackUrlString: String,
-                        scope: String = "") -> Promise<OAuthSwiftCredential> {
+    open func authorize(callbackUrl: URL,
+                        scope: String = "",
+                        presentOver view: UIView) async throws -> OAuthSwiftCredential {
         if let credential = oAuthCredential, !credential.isTokenExpired() {
-            return Promise<OAuthSwiftCredential>.value(credential)
+            return credential
         } else {
-            oAuth2.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
+            oAuth2.authorizeURLHandler = await ASWebAuthenticationSessionURLHandler(callbackUrlScheme: callbackUrl.scheme!,
+                                                                                    presentationAnchor: view.window)
 
-            return Promise<OAuthSwiftCredential> { (seal) in
-                _ = self.oAuth2.authorize(withCallbackURL: callbackUrlString,
-                                          scope: scope,
-                                          state: state) { [unowned self] (result) in
-                                            switch result {
-                                            case .success(let (credential, _, _)):
-                                                self.fulfill(seal: seal, withCredential: credential)
-                                            case .failure(let error):
-                                                seal.reject(error)
-                                            }
+            return await withUnsafeContinuation { (continuation) in
+                oAuth2.authorize(withCallbackURL: callbackUrl,
+                                 scope: scope,
+                                 state: state) { (result) in
+                    switch result {
+                    case .success(let (credential, _, _)):
+                        continuation.resume(returning: credential)
+                    case .failure(let error):
+                        return
+//                        continuation.resume(throwing: error)
+                    }
                 }
             }
         }
     }
-    
+
 }

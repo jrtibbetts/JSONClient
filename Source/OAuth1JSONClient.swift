@@ -1,7 +1,7 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 import OAuthSwift
-import PromiseKit
+import OAuthSwiftAuthenticationServices
 import UIKit
 
 /// An `AuthorizedJSONClient` implementation that uses OAuth 1 for
@@ -56,24 +56,25 @@ open class OAuth1JSONClient: AuthorizedJSONClient {
     ///
     /// - returns:  A `Promise` containing whatever type of data is sent back
     ///             by the server after authentication succeeds.
-    open func authorize(presentingViewController: UIViewController,
-                        callbackUrlString: String) -> Promise<OAuthSwiftCredential> {
+    open func authorize(callbackUrl: URL,
+                        presentOver view: UIView) async throws -> OAuthSwiftCredential {
         if let credential = oAuthCredential, !credential.isTokenExpired() {
-            return Promise<OAuthSwiftCredential>.value(credential)
+            return credential
         } else {
-            oAuth1.authorizeURLHandler = SafariURLHandler(viewController: presentingViewController, oauthSwift: oAuth)
+            oAuth.authorizeURLHandler = await ASWebAuthenticationSessionURLHandler(callbackUrlScheme: callbackUrl.scheme!,
+                                                                                   presentationAnchor: view.window)
 
-            return Promise<OAuthSwiftCredential> { [weak self] (seal) in
-                _ = self?.oAuth1.authorize(withCallbackURL: callbackUrlString) { (result) in
+            return await withUnsafeContinuation { (continuation) in
+                _ = oAuth1.authorize(withCallbackURL: callbackUrl) { (result) in
                     switch result {
                     case .success(let (credential, _, _)):
-                        seal.fulfill(credential)
+                        continuation.resume(returning: credential)
                     case .failure(let error):
-                        seal.reject(error)
+                        return
                     }
                 }
             }
         }
     }
-    
+
 }

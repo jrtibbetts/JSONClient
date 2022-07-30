@@ -1,7 +1,6 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 import JSONClient
-import PromiseKit
 import UIKit
 
 open class GitHubClient: OAuth2JSONClient {

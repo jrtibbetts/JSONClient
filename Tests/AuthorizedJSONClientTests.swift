@@ -2,7 +2,6 @@
 
 @testable import JSONClient
 import OAuthSwift
-import PromiseKit
 import XCTest
 
 class AuthorizedJSONClientTests: JSONClientTests {
@@ -11,6 +10,7 @@ class AuthorizedJSONClientTests: JSONClientTests {
         let oAuth = OAuth1Swift(consumerKey: "foo", consumerSecret: "bar")
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+
         return AuthorizedJSONClient(oAuth: oAuth,
                                     authorizeUrl: "http://www.cnn.com",
                                     baseUrl: baseUrl,
@@ -19,63 +19,131 @@ class AuthorizedJSONClientTests: JSONClientTests {
 
     func testAuthorizedGetWithPathBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
-        let promise: Promise<DiscogsInfo> = client.authorizedGet(path: "/some/path")
-        let errorMessage = "The call should have been rejected because the user isn't authorized"
+        let exp = expectation(description: "Authorized GET of /some/path")
 
-        assert(promise: promise,
-               wasUnauthorizedWithMessage: errorMessage)
+        Task {
+            do {
+                let _: DiscogsInfo = try await client.authorizedGet(path: "/some/path")
+                XCTFail("The call should have been rejected because the user isn't authorized")
+            } catch {
+                guard let _ = error as? JSONClient.JSONErr else {
+                    XCTFail("Didn't expect a JSON parsing error")
+
+                    return
+                }
+            }
+
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testAuthorizedGetWithUrlBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
-        let url = URL(string: "https://api.discogs.com")!
-        let promise: Promise<DiscogsInfo> = client.authorizedGet(url: url)
-        let errorMessage = "The call should have been rejected because the user isn't authorized"
+        let exp = expectation(description: "Authorized GET of https://api.discogs.com")
 
-        assert(promise: promise,
-               wasUnauthorizedWithMessage: errorMessage)
+        Task {
+            do {
+                let url = URL(string: "https://api.discogs.com")!
+                let _: DiscogsInfo = try await client.authorizedGet(url: url)
+                XCTFail("The call should have been rejected because the user isn't authorized")
+            } catch {
+                guard let _ = error as? JSONClient.JSONErr else {
+                    XCTFail("Didn't expect a JSON parsing error")
+
+                    return
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testAuthorizedPostWithPathBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
-        let path = "https://api.discogs.com"
-        let promise: Promise<DiscogsInfo> = client.authorizedPost(path: path)
-        let errorMessage = "The call should have been rejected because the user isn't authorized"
+        let exp = expectation(description: "Authorized POST of https://api.discogs.com")
 
-        assert(promise: promise,
-               wasUnauthorizedWithMessage: errorMessage)
+        Task {
+            do {
+                let path = "https://api.discogs.com"
+                let _: DiscogsInfo = try await client.authorizedPost(path: path)
+                XCTFail("The call should have been rejected because the user isn't authorized")
+            } catch {
+                guard let _ = error as? JSONClient.JSONErr else {
+                    XCTFail("Didn't expect a JSON parsing error")
+
+                    return
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testAuthorizedPostWithPathAndDataBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
-        let path = "https://api.discogs.com"
-        let string = "This is the payload to be posted."
-        let promise: Promise<String> = client.authorizedPost(path: path, object: string)
-        let errorMessage = "The call should have been rejected because the user isn't authorized"
+        let exp = expectation(description: "Authorized POST of https://api.discogs.com")
 
-        assert(promise: promise,
-               wasUnauthorizedWithMessage: errorMessage)
+        Task {
+            do {
+                let path = "https://api.discogs.com"
+                let string = "This is the payload to be posted."
+                let _: String = try await client.authorizedPost(path: path, object: string)
+                XCTFail("The call should have been rejected because the user isn't authorized")
+            } catch {
+                guard let _ = error as? JSONClient.JSONErr else {
+                    XCTFail("Didn't expect a JSON parsing error")
+
+                    return
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testAuthorizedPostWithUrlBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
-        let url = URL(string: "https://api.discogs.com")!
-        let promise: Promise<DiscogsInfo> = client.authorizedPost(url: url)
-        let errorMessage = "The call should have been rejected because the user isn't authorized"
+        let exp = expectation(description: "Authorized POST of https://api.discogs.com")
 
-        assert(promise: promise,
-               wasUnauthorizedWithMessage: errorMessage)
+        Task {
+            do {
+                let url = URL(string: "https://api.discogs.com")!
+                let _: DiscogsInfo = try await client.authorizedPost(url: url)
+                XCTFail("The call should have been rejected because the user isn't authorized")
+            } catch {
+                guard let _ = error as? JSONClient.JSONErr else {
+                    XCTFail("Didn't expect a JSON parsing error")
+
+                    return
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testAuthorizedPostWithUrlAndDataBeforeAuthorizationFails() {
         let client = validJSONClient() as! AuthorizedJSONClient
-        let url = URL(string: "https://api.discogs.com")!
-        let string = "This is the payload to be posted."
-        let promise: Promise<String> = client.authorizedPost(url: url, object: string)
-        let errorMessage = "The call should have been rejected because the user isn't authorized"
+        let exp = expectation(description: "Authorized POST of https://api.discogs.com")
 
-        assert(promise: promise,
-               wasUnauthorizedWithMessage: errorMessage)
+        Task {
+            do {
+                let url = URL(string: "https://api.discogs.com")!
+                let string = "This is the payload to be posted."
+                let _: String = try await client.authorizedPost(url: url, object: string)
+                XCTFail("The call should have been rejected because the user isn't authorized")
+            } catch {
+                guard let _ = error as? JSONClient.JSONErr else {
+                    XCTFail("Didn't expect a JSON parsing error")
+
+                    return
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 10.0)
     }
 
     func testHandleSuccessfulResponseOk() {
@@ -130,29 +198,6 @@ class AuthorizedJSONClientTests: JSONClientTests {
 
         client.oAuthCredential = nil
         client.defaults = originalDefaults
-    }
-
-    func assert<T: Codable>(promise: Promise<T>,
-                            wasUnauthorizedWithMessage errorMessage: String) {
-        let exp = expectation(description: errorMessage)
-
-        promise.done { (obj) -> Void in
-            XCTFail(errorMessage)
-            }.catch { (error) in
-                guard let error = error as? JSONClient.JSONErr else {
-                    XCTFail(errorMessage)
-                    return
-                }
-
-                switch error {
-                case .unauthorizedAttempt:
-                    exp.fulfill()
-                default:
-                    XCTFail(errorMessage)
-                }
-        }
-
-        wait(for: [exp], timeout: 5.0)
     }
 
 }

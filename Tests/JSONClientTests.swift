@@ -1,7 +1,6 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 @testable import JSONClient
-import PromiseKit
 import XCTest
 
 class JSONClientTests: XCTestCase {
@@ -29,88 +28,75 @@ class JSONClientTests: XCTestCase {
 
     // MARK: get()
 
-    func testGetWithNilBaseUrlAndAbsolutePathOk() {
+    func testGetWithNilBaseUrlAndAbsolutePathOk() async throws {
         let client = validJSONClient(baseUrl: nil)
-        let exp = expectation(description: "Discogs info")
 
-        let promise: Promise<DiscogsInfo> = client.get(path: "https://api.discogs.com")
-
-        promise.done { (info) -> Void in
-            XCTAssertEqual(info.apiVersion, "v2")
-            XCTAssertEqual(info.documentationUrl, URL(string: "http://www.discogs.com/developers/"))
-            exp.fulfill()
-            }.catch { (error) in
-                XCTFail("Failed to get Discogs info: \(error.localizedDescription)")
-        }
-
-        wait(for: [exp], timeout: 10.0)
+        let info: DiscogsInfo = try await client.get(path: "https://api.discogs.com")
+        XCTAssertEqual(info.apiVersion, "v2")
+        XCTAssertEqual(info.documentationUrl, URL(string: "http://www.discogs.com/developers/"))
     }
 
-    func testGetWithNilBaseUrlAndRelativePathRejectsPromise() {
+    func testGetWithNilBaseUrlAndRelativePathFails() async throws {
         let client = validJSONClient(baseUrl: nil)
-        let exp = expectation(description: "Discogs info")
         let path = "relative/path/that/does/not/exist"
-        let promise: Promise<DiscogsInfo> = client.get(path: path)
-        promise.done { (info) -> Void in
+        let exp = expectation(description: "Discogs info")
+
+        do {
+            let _: DiscogsInfo = try await client.get(path: path)
+
             XCTFail("get() should have failed because it has a nil base URL and a relative path that can't be resolved!")
-            }.catch { (error) in
-                XCTAssertEqual(error.localizedDescription, "unsupported URL")
-                exp.fulfill()
+        } catch {
+            XCTAssertEqual(error.localizedDescription, "unsupported URL")
+            exp.fulfill()
         }
 
         wait(for: [exp], timeout: 1.0)
     }
 
-    func testGetWithNilBaseUrlAndGarbagePathRejectsPromise() {
+    func testGetWithNilBaseUrlAndGarbagePathFails() async throws {
         let client = validJSONClient(baseUrl: nil)
         let exp = expectation(description: "Discogs info")
         let path = "1(*#%(*DFSLDKU%(*@)"
-        let promise: Promise<DiscogsInfo> = client.get(path: path)
-        promise.done { (info) -> Void in
+
+        do {
+            let _: DiscogsInfo = try await client.get(path: path)
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
-            }.catch { (error) in
-                XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
-                exp.fulfill()
+        } catch {
+            XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
+            exp.fulfill()
         }
 
         wait(for: [exp], timeout: 1.0)
     }
 
-    func testGetWithValidBaseUrlAndInvalidPathRejectsPromise() {
+    func testGetWithValidBaseUrlAndInvalidPathFails() async throws {
         let client = validJSONClient(baseUrl: URL(string: "https://api.discogs.com")!)
-        let exp = expectation(description: "Discogs info")
         let path = "1(*#%(*DFSLDKU%(*@)"
-        let promise: Promise<DiscogsInfo> = client.get(path: path)
-        promise.done { (info) -> Void in
+        let exp = expectation(description: "Discogs info")
+
+        do {
+            let info: DiscogsInfo = try await client.get(path: path)
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
-            }.catch { (error) in
-                XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
-                exp.fulfill()
-       }
+        } catch {
+            XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))
+            exp.fulfill()
+        }
 
         wait(for: [exp], timeout: 1.0)
     }
 
-    func testGetWithValidBaseUrlAndPathButWrongTypeRejectsPromise() {
+    func testGetWithValidBaseUrlAndPathButWrongTypeFails() async throws {
         let client = validJSONClient(baseUrl: URL(string: "https://api.discogs.com")!)
-        let exp = expectation(description: "Discogs info")
         let path = "/"
-        let promise: Promise<String> = client.get(path: path)
-        promise.done { (info) -> Void in
-            XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
-            }.catch { (error) in
-                guard let error = error as? JSONClient.JSONErr else {
-                    XCTFail("get() should have failed with a JSONClient.JSONError.invalidUrl error")
-                    return
-                }
+        let exp = expectation(description: "Discogs info")
 
-                switch error {
-                case .parseFailed:
-                    exp.fulfill()
-                    break
-                default:
-                    XCTFail("get() should have failed with a parseFailed error")
-                }
+        do {
+            let _: String = try await client.get(path: path)
+            XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
+        } catch DecodingError.typeMismatch {
+            exp.fulfill()
+        } catch {
+            XCTFail("get() should have failed with a DecodingError.typeMismatch")
         }
 
         wait(for: [exp], timeout: 5.0)
