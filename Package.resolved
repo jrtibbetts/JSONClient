@@ -41,9 +41,9 @@
         "package": "OAuthSwift",
         "repositoryURL": "https://github.com/OAuthSwift/OAuthSwift",
         "state": {
-          "branch": null,
-          "revision": "d85964b96dbce94df961f28b996187c835089903",
-          "version": "2.2.0"
+          "branch": "master",
+          "revision": "73f97878d988e33cc0d5482c18db6264c37ffbcd",
+          "version": null
         }
       },
       {
@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/raxityo/OAuthSwiftAuthenticationServices",
         "state": {
           "branch": "master",
-          "revision": "0514afe23acd938c0baffa8a895d6b2247db01ce",
+          "revision": "84bc8a1215550347372e4cb0356fa91fec4a3ea4",
           "version": null
         }
       },
