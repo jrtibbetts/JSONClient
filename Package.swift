@@ -20,7 +20,7 @@ let pkg = Package(
 
     dependencies: [
         .package(url: "https://github.com/jrtibbetts/Stylobate.git",
-                 .branch("main")),
+                 .upToNextMinor(from: "0.34.0")),
         .package(url: "https://github.com/OAuthSwift/OAuthSwift.git",
                  .upToNextMajor(from: "2.2.0")),
         .package(url: "https://github.com/raxityo/OAuthSwiftAuthenticationServices",
