@@ -75,7 +75,7 @@ class JSONClientTests: XCTestCase {
         let exp = expectation(description: "Discogs info")
 
         do {
-            let info: DiscogsInfo = try await client.get(path: path)
+            let _: DiscogsInfo = try await client.get(path: path)
             XCTFail("get() should have failed because it has a nil base URL and a malformed path!")
         } catch {
             XCTAssertTrue(error.localizedDescription.contains("unsupported URL"))

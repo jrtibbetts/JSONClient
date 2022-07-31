@@ -70,9 +70,8 @@ open class OAuth2JSONClient: AuthorizedJSONClient {
                     switch result {
                     case .success(let (credential, _, _)):
                         continuation.resume(returning: credential)
-                    case .failure(let error):
+                    case .failure:
                         return
-//                        continuation.resume(throwing: error)
                     }
                 }
             }

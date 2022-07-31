@@ -3,7 +3,6 @@
 import OAuthSwift
 import Stylobate
 import UIKit
-import OAuthSwiftAuthenticationServices
 
 /// A JSON client that can be authenticated against a server and make
 /// authorized REST calls for restricted resources.
